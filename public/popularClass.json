@@ -1,0 +1,62 @@
+[
+  {
+    "image": "https://i.ibb.co/VY4CMV6/Landscape-Photography.png",
+    "name": "Introduction to Landscape Photography",
+    "instructor": "John Smith",
+    "instructorEmail": "john.smith@example.com",
+    "availableSeats": 7,
+    "enrolledStudents": 23,
+    "price": 150,
+    "status": "approved"
+  },
+  {
+    "image": "https://i.ibb.co/9wzPmCq/Portrait-Photography.png",
+    "name": "Portrait Photography Masterclass",
+    "instructor": "Emily Johnson",
+    "instructorEmail": "emily.johnson@example.com",
+    "availableSeats": 15,
+    "enrolledStudents": 15,
+    "price": 200,
+    "status": "approved"
+  },
+  {
+    "image": "https://i.ibb.co/M9yxHCR/Wildlife-Photography-Safari.png",
+    "name": "Wildlife Photography Safari",
+    "instructor": "David Thompson",
+    "instructorEmail": "david.thompson@example.com",
+    "availableSeats": 11,
+    "enrolledStudents": 19,
+    "price": 250,
+    "status": "approved"
+  },
+  {
+    "image": "https://i.ibb.co/TqcfvSN/Street-Photography.png",
+    "name": "Street Photography Workshop",
+    "instructor": "Sarah Adams",
+    "instructorEmail": "sarah.adams@example.com",
+    "availableSeats": 5,
+    "enrolledStudents": 25,
+    "price": 100,
+    "status": "approved"
+  },
+  {
+    "image": "https://i.ibb.co/whfJbTK/Documentary-Photography-Seminar.png",
+    "name": "Documentary Photography Seminar",
+    "instructor": "Michael Brown",
+    "instructorEmail": "michael.brown@example.com",
+    "availableSeats": 9,
+    "enrolledStudents": 21,
+    "price": 180,
+    "status": "approved"
+  },
+  {
+    "image": "https://i.ibb.co/9GRLrd9/Night-Photography-Techniques.png",
+    "name": "Night Photography Techniques",
+    "instructor": "Jessica Lee",
+    "instructorEmail": "jessica.lee@example.com",
+    "availableSeats": 13,
+    "enrolledStudents": 17,
+    "price": 120,
+    "status": "approved"
+  }
+]
