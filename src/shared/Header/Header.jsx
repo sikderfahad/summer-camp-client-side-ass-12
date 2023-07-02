@@ -1,0 +1,192 @@
+// import React from 'react';
+import "./Header.css";
+import Nav from "../Nav/Nav";
+import avatar from "../../assets/img/Avatar.png";
+import logo from "../../assets/img/nota_logo.png";
+import ModeBtn from "../ModeBtn/ModeBtn";
+import { useState } from "react";
+import { faL } from "@fortawesome/free-solid-svg-icons";
+
+export const LoginInfo = ({
+  user,
+  handleMouseEnter,
+  handleMouseLeave,
+  isHover,
+  handledLogout,
+}) => {
+  return (
+    <ul
+      style={{ margin: "0" }}
+      className={`flex flex-col lg:flex-row items-start lg:items-center gap-4 ${
+        user && "mx-auto"
+      }`}
+    >
+      <li
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        className="lg:w-[150px] lg:h-[80px] flex lg:items-center lg:justify-center duration-200"
+      >
+        {isHover ? (
+          <div className=" duration-200">
+            {user?.photoURL ? (
+              <img
+                className="w-[75px] h-[75px] duration-200 rounded-full"
+                src={user?.photoURL}
+                alt=""
+              />
+            ) : (
+              <img
+                className="w-[75px] h-[75px] duration-200"
+                src={avatar}
+                alt=""
+              />
+            )}
+          </div>
+        ) : (
+          <h1 className="gradient-title duration-200 lg:text-xl text-lg text-green-500 font-semibold">
+            {user?.displayName && user.displayName}
+          </h1>
+        )}
+      </li>
+      <li>
+        <button onClick={handledLogout} title="Click to Logout">
+          {/* <VscSignOut className="lg:text-5xl text-3xl text-red-600" /> */}
+        </button>
+      </li>
+    </ul>
+  );
+};
+
+const Header = () => {
+  const selectMode = localStorage.getItem("theme");
+  const [theme, setTheme] = useState(selectMode ? selectMode : "light");
+  console.log(theme);
+
+  const changeTheme = () => {
+    localStorage.setItem("theme", theme);
+    const localTheme = localStorage.getItem("theme");
+    document.querySelector("html").setAttribute("data-theme", localTheme);
+  };
+
+  const handleToggle = (e) => {
+    console.log(e.target.checked);
+    if (e.target.checked) {
+      setTheme("night");
+      changeTheme();
+    } else {
+      setTheme("light");
+      changeTheme();
+    }
+  };
+  changeTheme();
+
+  //   const { user, loading, logOut } = useAuth();
+  //   const [isHover, setIsHover] = useState(false);
+
+  //   const handledLogout = () => {
+  //     logOut()
+  //       .then(() => {})
+  //       .catch((err) => {
+  //         console.log(err);
+  //       });
+  //   };
+
+  //   const handleMouseEnter = () => {
+  //     user?.displayName && setIsHover(true);
+  //   };
+
+  //   const handleMouseLeave = () => {
+  //     setIsHover(false);
+  //   };
+
+  const user = false;
+  const defaultNav = [
+    { path: "/", label: "Home" },
+    { path: "/classes", label: "classes" },
+    { path: "/instructor", label: "instructor" },
+    { path: "/dashboard", label: "dashboard" },
+  ];
+
+  if (!user) {
+    defaultNav.pop();
+  }
+
+  return (
+    <div
+      style={{ backdropFilter: "blur(10px)" }}
+      className="fixed top-0 left-0 w-full z-[999] bg-[#00000059]"
+    >
+      <div className="navbar  max-w-screen-xl mx-auto">
+        <div className="navbar-start">
+          <div className="logo transform scale-[0.80] flex flex-col ">
+            <img src={logo} alt="" />
+          </div>
+        </div>
+        <div className="navbar-center hidden lg:flex">
+          <ul className="menu uppercase items-center menu-horizontal px-1">
+            {defaultNav.map((item, idx) => (
+              <Nav key={idx} item={item}></Nav>
+            ))}
+          </ul>
+        </div>
+        <div className="navbar-end">
+          <ul className="menu uppercase hidden items-center lg:flex menu-horizontal px-1">
+            {!user ? (
+              <Nav item={{ path: "/login", label: "login" }}></Nav>
+            ) : (
+              <li className="">
+                <img
+                  src={avatar}
+                  className="w-[90px] h-[75px] rounded-full"
+                  alt=""
+                />
+              </li>
+            )}
+            <ModeBtn handleToggle={handleToggle} theme={theme}></ModeBtn>
+          </ul>
+          <div className="dropdown">
+            <label tabIndex={0} className="btn btn-ghost lg:hidden">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h8m-8 6h16"
+                />
+              </svg>
+            </label>
+            <ul
+              style={{ transform: "translate(-110px, 10px)" }}
+              tabIndex={0}
+              className="menu uppercase menu-sm transform translate-x-[-110] dropdown-content mt-3 z-[1] p-2 shadow bg-black rounded-box w-52"
+            >
+              {defaultNav.map((item, idx) => (
+                <Nav key={idx} item={item}></Nav>
+              ))}
+              {/* {!user ? (
+                userNav.map((item, idx) => <Nav key={idx} item={item}></Nav>)
+              ) : (
+                <LoginInfo
+                  user={user}
+                  loading={loading}
+                  handleMouseEnter={handleMouseEnter}
+                  handleMouseLeave={handleMouseLeave}
+                  isHover={isHover}
+                  handledLogout={handledLogout}
+                ></LoginInfo>
+              )} */}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Header;
