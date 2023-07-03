@@ -2246,9 +2246,9 @@ supports-preserve-symlinks-flag@^1.0.0:
   integrity sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==
 
 swiper@^10.0.1:
-  version "10.0.1"
-  resolved "https://registry.yarnpkg.com/swiper/-/swiper-10.0.1.tgz#42dc98cd8ea1ad192a7d3f4daa51438d6dfbfea9"
-  integrity sha512-PDVnFNAIbYS4J5ZirOtpsVyo5ajEA/kEJH/nkzWzbanq5fhCZ9AkkH5z8Q2zIy/V8fSlr8T+fzGDM/Y/K7vxxQ==
+  version "10.0.2"
+  resolved "https://registry.yarnpkg.com/swiper/-/swiper-10.0.2.tgz#4444494c6dd7502a0b54e646360119de1f89e790"
+  integrity sha512-b/3L+Z+88vWXt4d32tup9w+otQEHCwW/qas+C7WKimv5GGGMi3HHeLNp2fPt8BeaP9Th17itujmjKXONben6AA==
 
 tailwindcss@^3, tailwindcss@^3.3.2:
   version "3.3.2"

@@ -1,9 +1,9 @@
-// import React from 'react';
+import TeacherCard from "../../shared/TeacherCard/TeacherCard";
 
 const Test = () => {
   return (
-    <div>
-      <h1>THis is test page</h1>
+    <div className="mt-[200px]">
+      <TeacherCard></TeacherCard>
     </div>
   );
 };
