@@ -1,10 +1,8 @@
-// import React from 'react';
-import bg from "../../../assets/img/notes.png";
 const Notes = () => {
   return (
     <div
       className="p-[100px] max-w-screen-xl mx-auto rounded-lg bg-center bg-no-repeat bg-[#efcf4f]"
-      style={{ backgroundImage: `url(${bg})` }}
+      style={{ backgroundImage: `url('https://i.ibb.co/mRb70NJ/notes.png')` }}
     >
       <div className="text-center font-extrabold flex flex-col gap-5 w-9/12 mx-auto">
         <h3 className="text-[#c25934] text-2xl  capitalize">opening offer</h3>

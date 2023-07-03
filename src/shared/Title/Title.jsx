@@ -3,7 +3,7 @@
 const Title = ({ title, subtitle, desc }) => {
   return (
     <div>
-      <div className="w-1/2 mx-auto flex flex-col text-center gap-5">
+      <div className="w-4/6 mx-auto flex flex-col text-center gap-5">
         <h3 className="text-[#c25934] text-2xl font-extrabold  capitalize">
           {title}
         </h3>

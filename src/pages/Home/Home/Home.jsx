@@ -1,9 +1,9 @@
 // import React from 'react';
 
-import Title from "../../../shared/Title/Title";
 import BannerCarousel from "../Carousel/Carousel";
 import Notes from "../Notes/Notes";
 import PopularClasses from "../PopularClasses/PopularClasses";
+import PopularTeacher from "../PopularTeacher/PopularTeacher";
 // bg-[#f7f5ef]
 const Home = () => {
   return (
@@ -20,15 +20,13 @@ const Home = () => {
         </div>
 
         <div>
-          <div className="mt-[550px]">
-            <Title
-              title={"our classes"}
-              subtitle={"Most Popular Classes"}
-            ></Title>
-          </div>
-
-          <div className="mt-8 max-w-screen-xl mx-auto">
-            <PopularClasses></PopularClasses>
+          <div className=" max-w-screen-xl mx-auto">
+            <div className="mt-[550px]">
+              <PopularClasses></PopularClasses>
+            </div>
+            <div className="mt-12">
+              <PopularTeacher></PopularTeacher>
+            </div>
           </div>
 
           <div className="text-4xl font-bold text-center mt-24">

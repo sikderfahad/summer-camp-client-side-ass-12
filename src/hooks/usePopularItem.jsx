@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 
-const usePopularClasses = () => {
+const usePopularItem = (api) => {
   const [popularClass, setPopularClass] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:3000/popular-classes")
+    fetch(`http://localhost:3000/${api}`)
       .then((res) => res.json())
       .then((data) => setPopularClass(data));
-  }, []);
-  return [popularClass];
+  }, [api]);
+  return popularClass;
 };
 
-export default usePopularClasses;
+export default usePopularItem;

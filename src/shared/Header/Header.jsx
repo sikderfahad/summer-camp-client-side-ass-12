@@ -1,11 +1,9 @@
 // import React from 'react';
 import "./Header.css";
 import Nav from "../Nav/Nav";
-import avatar from "../../assets/img/Avatar.png";
-import logo from "../../assets/img/nota_logo.png";
 import ModeBtn from "../ModeBtn/ModeBtn";
 import { useState } from "react";
-import { faL } from "@fortawesome/free-solid-svg-icons";
+// import { faL } from "@fortawesome/free-solid-svg-icons";
 
 export const LoginInfo = ({
   user,
@@ -37,7 +35,7 @@ export const LoginInfo = ({
             ) : (
               <img
                 className="w-[75px] h-[75px] duration-200"
-                src={avatar}
+                src={"https://i.ibb.co/7gkKYRy/Avatar.png"}
                 alt=""
               />
             )}
@@ -119,7 +117,7 @@ const Header = () => {
       <div className="navbar  max-w-screen-xl mx-auto">
         <div className="navbar-start">
           <div className="logo transform scale-[0.80] flex flex-col ">
-            <img src={logo} alt="" />
+            <img src={"https://i.ibb.co/rfK9GSn/nota-logo.png"} alt="" />
           </div>
         </div>
         <div className="navbar-center hidden lg:flex">
@@ -136,7 +134,7 @@ const Header = () => {
             ) : (
               <li className="">
                 <img
-                  src={avatar}
+                  src={"https://i.ibb.co/7gkKYRy/Avatar.png"}
                   className="w-[90px] h-[75px] rounded-full"
                   alt=""
                 />

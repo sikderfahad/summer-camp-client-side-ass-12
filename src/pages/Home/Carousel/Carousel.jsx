@@ -2,11 +2,11 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "./Carousel.css";
 
-import slider1 from "../../../assets/img/SLIDE1.jpg";
-import slider2 from "../../../assets/img/SLIDE2.jpg";
-import slider3 from "../../../assets/img/SLIDE3.jpg";
-import slider4 from "../../../assets/img/SLIDE4.jpg";
-import slider5 from "../../../assets/img/SLIDE5.jpg";
+const slider1 = "https://i.ibb.co/dk7pcFh/SLIDE1.jpg";
+const slider2 = "https://i.ibb.co/dDmQtPg/SLIDE2.jpg";
+const slider3 = "https://i.ibb.co/K6qqwW2/SLIDE3.jpg";
+const slider4 = "https://i.ibb.co/1bzYXsc/SLIDE4.jpg";
+const slider5 = "https://i.ibb.co/HgYkk9Z/SLIDE5.jpg";
 
 const BannerCarousel = () => {
   const sliderImgBox = [slider1, slider2, slider3, slider4, slider5];
