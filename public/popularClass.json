@@ -1,7 +1,16 @@
+/*
+https://i.ibb.co/3rZstb8/guiter-class.jpg
+https://i.ibb.co/mDMY2SR/piano-class.jpg
+https://i.ibb.co/5nhmgZp/violine-class.jpg
+https://i.ibb.co/tXmVbR0/vocal-class.jpg
+https://i.ibb.co/G98d21R/winds-class.jpg
+https://i.ibb.co/TcQhCSF/drum-class.jpg
+*/
+
 [
   {
-    "image": "https://i.ibb.co/VY4CMV6/Landscape-Photography.png",
-    "name": "Introduction to Landscape Photography",
+    "image": "https://i.ibb.co/3rZstb8/guiter-class.jpg",
+    "name": "Guitar Class",
     "instructor": "John Smith",
     "instructorEmail": "john.smith@example.com",
     "availableSeats": 7,
@@ -10,8 +19,8 @@
     "status": "approved"
   },
   {
-    "image": "https://i.ibb.co/9wzPmCq/Portrait-Photography.png",
-    "name": "Portrait Photography Masterclass",
+    "image": "https://i.ibb.co/mDMY2SR/piano-class.jpg",
+    "name": "Piano class",
     "instructor": "Emily Johnson",
     "instructorEmail": "emily.johnson@example.com",
     "availableSeats": 15,
@@ -20,8 +29,8 @@
     "status": "approved"
   },
   {
-    "image": "https://i.ibb.co/M9yxHCR/Wildlife-Photography-Safari.png",
-    "name": "Wildlife Photography Safari",
+    "image": "https://i.ibb.co/5nhmgZp/violine-class.jpg",
+    "name": "violine class",
     "instructor": "David Thompson",
     "instructorEmail": "david.thompson@example.com",
     "availableSeats": 11,
@@ -30,8 +39,8 @@
     "status": "approved"
   },
   {
-    "image": "https://i.ibb.co/TqcfvSN/Street-Photography.png",
-    "name": "Street Photography Workshop",
+    "image": "https://i.ibb.co/tXmVbR0/vocal-class.jpg",
+    "name": "vocal class",
     "instructor": "Sarah Adams",
     "instructorEmail": "sarah.adams@example.com",
     "availableSeats": 5,
@@ -40,8 +49,8 @@
     "status": "approved"
   },
   {
-    "image": "https://i.ibb.co/whfJbTK/Documentary-Photography-Seminar.png",
-    "name": "Documentary Photography Seminar",
+    "image": "https://i.ibb.co/G98d21R/winds-class.jpg",
+    "name": "wind class",
     "instructor": "Michael Brown",
     "instructorEmail": "michael.brown@example.com",
     "availableSeats": 9,
@@ -50,8 +59,8 @@
     "status": "approved"
   },
   {
-    "image": "https://i.ibb.co/9GRLrd9/Night-Photography-Techniques.png",
-    "name": "Night Photography Techniques",
+    "image": "https://i.ibb.co/TcQhCSF/drum-class.jpg",
+    "name": "drum class",
     "instructor": "Jessica Lee",
     "instructorEmail": "jessica.lee@example.com",
     "availableSeats": 13,
