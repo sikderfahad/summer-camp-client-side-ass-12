@@ -5,7 +5,6 @@ import ModeBtn from "../ModeBtn/ModeBtn";
 ("../../provider/AuthProvider");
 import useAuth from "../../hooks/useAuth";
 import { useState } from "react";
-// import { faL } from "@fortawesome/free-solid-svg-icons";
 
 export const LoginInfo = ({
   user,
