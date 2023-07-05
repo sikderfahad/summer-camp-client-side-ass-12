@@ -1,6 +1,7 @@
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "./Carousel.css";
+import ButtonAwesome from "../../../shared/ButtonAwesome/ButtonAwesome";
 
 const slider1 = "https://i.ibb.co/dk7pcFh/SLIDE1.jpg";
 const slider2 = "https://i.ibb.co/dDmQtPg/SLIDE2.jpg";
@@ -47,9 +48,12 @@ const BannerCarousel = () => {
             euismod. In id tempus metus. Donec eu volutpat nibh, in maximus
             ligula.
           </p>
-          <button className="bg-[#c25934] py-4 px-8 hover:bg-white hover:text-gray-900 duration-200 mt-8 text-xl font-bold rounded-lg text-white uppercase">
+          {/* <button className="bg-[#c25934] py-4 px-8 hover:bg-white hover:text-gray-900 duration-200 mt-8 text-xl font-bold rounded-lg text-white uppercase">
             Read More
-          </button>
+          </button> */}
+          <div className="mt-8">
+            <ButtonAwesome type={"danger"}></ButtonAwesome>
+          </div>
         </div>
       </div>
     </div>

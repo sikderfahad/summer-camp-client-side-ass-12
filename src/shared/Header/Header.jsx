@@ -100,6 +100,7 @@ const Header = () => {
   const user = false;
   const defaultNav = [
     { path: "/", label: "Home" },
+    { path: "/test", label: "Test" },
     { path: "/classes", label: "classes" },
     { path: "/instructor", label: "instructor" },
     { path: "/dashboard", label: "dashboard" },

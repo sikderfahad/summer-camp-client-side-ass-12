@@ -4,6 +4,27 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Spicy+Rice&display=swap");
 
+:root {
+  --primary: #efcf4f;
+  --secondary: #c25934;
+  --accent: #0c4b65;
+  --white: #fff;
+}
+
+[data-theme="night"] {
+  --primary: #efcf4f;
+  --secondary: #c25934;
+  --accent: #000;
+  --white: #c8cad0;
+}
+html {
+  transition: 0.3s ease-in-out;
+}
+
 .spicy-title {
   font-family: "Spicy Rice", cursive;
+}
+
+body {
+  user-select: none;
 }

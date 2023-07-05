@@ -15,19 +15,19 @@ const TeacherCard = ({ item }) => {
       <div className="card max-w-sm ">
         <div className=" avatar w-[250px] mx-auto h-[250px] text-center rounded-full">
           <img
-            src={item.image}
+            src={item?.image}
             className=" border hover:border-8 hover:p-[5px] duration-200 rounded-full border-yellow-400  p-3"
             alt=""
           />
         </div>
         <div className="card-body text-center">
           <h1 className="text-[#0c4b65] text-2xl font-extrabold">
-            {item.instructor}
+            {item?.instructor}
           </h1>
           <p className="text-[#c25934] font-bold">
-            {item.name.split(" ")[0]} teacher
+            {item?.name.split(" ")[0]} teacher
           </p>
-          <p className="font-bold">{item.enrolledStudents} Students</p>
+          <p className="font-bold">{item?.enrolledStudents} Students</p>
           <div className=" mt-6 text-xl flex mx-auto items-center gap-4 ">
             <Link to={"http://www.facebook.com"}>
               <FaFacebookF className={socialLinkTeacher}></FaFacebookF>
