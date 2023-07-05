@@ -9,6 +9,7 @@
   --secondary: #c25934;
   --accent: #0c4b65;
   --white: #fff;
+  --registerBtnBg: #0c4b65;
 }
 
 [data-theme="night"] {
@@ -16,6 +17,7 @@
   --secondary: #c25934;
   --accent: #000;
   --white: #c8cad0;
+  --registerBtnBg: #efcf4f;
 }
 html {
   transition: 0.3s ease-in-out;

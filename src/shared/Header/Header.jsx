@@ -107,6 +107,7 @@ const Header = () => {
     { path: "/test", label: "Test" },
     { path: "/classes", label: "classes" },
     { path: "/instructor", label: "instructor" },
+    { path: "/register", label: "register" },
     { path: "/dashboard", label: "dashboard" },
   ];
 

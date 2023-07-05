@@ -3,6 +3,7 @@ import Root from "../layout/Root/Root";
 import Home from "../pages/Home/Home/Home";
 import Test from "../pages/Test/Test";
 import ErrorPage from "../components/ErrorPage/ErrorPage";
+import Register from "../pages/Register/Register";
 
 export const router = createBrowserRouter([
   {
@@ -16,6 +17,10 @@ export const router = createBrowserRouter([
       {
         path: "/test",
         element: <Test></Test>,
+      },
+      {
+        path: "/register",
+        element: <Register></Register>,
       },
       {
         path: "*",

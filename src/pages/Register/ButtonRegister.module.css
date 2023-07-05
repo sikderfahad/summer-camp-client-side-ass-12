@@ -1,0 +1,9 @@
+.signUpBtn {
+  --button-primary-height: 50px;
+  --button-primary-font-size: 18px;
+  --button-primary-border-radius: 6px;
+  --button-horizontal-padding: 50px;
+  --button-raise-level: 6px;
+  --button-hover-pressure: 2;
+  --transform-speed: 0.225s;
+}
