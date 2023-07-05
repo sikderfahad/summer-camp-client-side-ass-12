@@ -10,7 +10,3 @@ export default {
 
   plugins: [require("daisyui")],
 };
-
-// color1: "#efcf4f", // yellow color
-// color2: "#c25934", // red color
-// accent: "#0c4b65", // blue color
