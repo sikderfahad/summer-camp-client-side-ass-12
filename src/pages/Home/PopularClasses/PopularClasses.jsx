@@ -4,7 +4,7 @@ import Title from "../../../shared/Title/Title";
 
 const PopularClasses = () => {
   const popularClass = usePopularItem("popular-classes");
-  console.log(popularClass);
+  // console.log(popularClass);
   return (
     <div>
       <div className="">

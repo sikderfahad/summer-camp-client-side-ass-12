@@ -2,6 +2,8 @@
 import "./Header.css";
 import Nav from "../Nav/Nav";
 import ModeBtn from "../ModeBtn/ModeBtn";
+("../../provider/AuthProvider");
+import useAuth from "../../hooks/useAuth";
 import { useState } from "react";
 // import { faL } from "@fortawesome/free-solid-svg-icons";
 
@@ -56,6 +58,9 @@ export const LoginInfo = ({
 };
 
 const Header = () => {
+  const { user } = useAuth();
+  // console.log(user);
+
   const selectMode = localStorage.getItem("theme");
   const [theme, setTheme] = useState(selectMode ? selectMode : "light");
   console.log(theme);
@@ -97,7 +102,7 @@ const Header = () => {
   //     setIsHover(false);
   //   };
 
-  const user = false;
+  // const user = false;
   const defaultNav = [
     { path: "/", label: "Home" },
     { path: "/test", label: "Test" },
