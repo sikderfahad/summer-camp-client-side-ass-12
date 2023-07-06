@@ -17,6 +17,7 @@
   --navColor: #fff;
   --navBg: #000000ab;
   --fieldBg: #e8f0fe;
+  --dbLink: rgba(0, 0, 0, 0.784);
 }
 
 [data-theme="night"] {
@@ -28,6 +29,7 @@
   --navColor: #fff;
   --navBg: #00000059;
   --fieldBg: transparent;
+  --dbLink: #fff;
 }
 html {
   transition: 0.3s ease-in-out;

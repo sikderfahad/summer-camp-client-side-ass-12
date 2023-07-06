@@ -106,7 +106,7 @@ const Header = () => {
     { path: "/test", label: "Test" },
     { path: "/classes", label: "classes" },
     { path: "/instructor", label: "instructor" },
-    { path: "/dashboard", label: "dashboard" },
+    { path: "/dashboard/admin/manage-class", label: "dashboard" },
   ];
 
   if (!user) {

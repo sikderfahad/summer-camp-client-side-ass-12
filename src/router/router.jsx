@@ -7,6 +7,10 @@ import Register from "../pages/Register/Register";
 import Login from "../pages/Login/Login";
 import Classes from "../pages/Classes/Classes";
 import ConsRoute from "./ConsRoute";
+import Instractors from "../pages/Instractors/Instractors";
+import Dashboard from "../layout/Dashboard/Dashboard/Dashboard";
+import ManageClass from "../pages/Dashboard/Admin/Classes/ManageClass";
+import AllUsers from "../pages/Dashboard/Admin/AllUsers/AllUsers/AllUsers";
 
 export const router = createBrowserRouter([
   {
@@ -24,6 +28,10 @@ export const router = createBrowserRouter([
       {
         path: "/classes",
         element: <Classes></Classes>,
+      },
+      {
+        path: "/instractors",
+        element: <Instractors></Instractors>,
       },
       {
         path: "/register",
@@ -44,6 +52,22 @@ export const router = createBrowserRouter([
       {
         path: "*",
         element: <ErrorPage></ErrorPage>,
+      },
+    ],
+  },
+
+  // Dashboard
+  {
+    path: "dashboard",
+    element: <Dashboard></Dashboard>,
+    children: [
+      {
+        path: "admin/manage-class",
+        element: <ManageClass></ManageClass>,
+      },
+      {
+        path: "admin/manage-users",
+        element: <AllUsers></AllUsers>,
       },
     ],
   },
