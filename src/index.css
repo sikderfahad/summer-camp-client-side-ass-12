@@ -10,6 +10,8 @@
   --accent: #0c4b65;
   --white: #fff;
   --registerBtnBg: #0c4b65;
+  --navColor: #fff;
+  --navBg: #000000ab;
 }
 
 [data-theme="night"] {
@@ -18,6 +20,8 @@
   --accent: #000;
   --white: #c8cad0;
   --registerBtnBg: #efcf4f;
+  --navColor: #fff;
+  --navBg: #00000059;
 }
 html {
   transition: 0.3s ease-in-out;

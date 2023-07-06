@@ -4,18 +4,18 @@
 import { TiWarningOutline } from "react-icons/ti";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { BsFillHouseCheckFill } from "react-icons/bs";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../provider/AuthProvider";
 import { ToastMsgSuc } from "../../components/Toast/ToastMsg";
 import useTitle from "../../hooks/useTitle";
 import { AwesomeButtonProgress } from "react-awesome-button";
 import { MailIcon } from "@primer/octicons-react";
+import useAuth from "../../hooks/useAuth";
 // import ReactBtnStyles from "./ButtonRegister.module.css";
 
 const Register = () => {
   useTitle("Sign up");
-  const { signInWithEmailPass, userProfile } = useContext(AuthContext);
+  const { createUser, profileName, loading } = useAuth();
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [show, setShow] = useState(false);
@@ -29,16 +29,21 @@ const Register = () => {
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
+    const confPassword = form.confPassword.value;
     const photo = form.photo.value;
 
     setError("");
     setSuccess("");
 
-    signInWithEmailPass(email, password)
+    if (password !== confPassword) {
+      return setError("Confirm password does't matched");
+    }
+
+    createUser(email, password)
       .then((res) => {
         const newUser = res.user;
 
-        userProfile(newUser, {
+        profileName(newUser, {
           displayName: name,
           photoURL: photo && photo,
         })
@@ -79,10 +84,10 @@ const Register = () => {
   const inputStyle = "border w-full p-3 rounded-lg bg-transparent";
   return (
     <div className="py-[200px] max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-      <div>
-        <img src="https://i.ibb.co/n3d0PFZ/login-side-image.png" alt="" />
+      <div className="order-2">
+        <img src="https://i.ibb.co/sKG9M7t/sign-up-side-image.png" alt="" />
       </div>
-      <div className="flex flex-col gap-7  top-[100px] ">
+      <div className="order-1 flex flex-col gap-7  top-[100px] ">
         <h1 className="text-center spicy-title text-5xl font-medium ">
           Create Nota Corda Account{" "}
         </h1>
@@ -170,6 +175,8 @@ const Register = () => {
                 Email
               </button> */}
               <AwesomeButtonProgress
+                loadingLabel="Please wait..."
+                disabled={loading}
                 before={<MailIcon></MailIcon>}
                 type="primary"
                 onPress={async (element, next) => {

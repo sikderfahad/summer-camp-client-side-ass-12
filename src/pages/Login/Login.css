@@ -1,0 +1,6 @@
+.btn-other-signup-option {
+  border-bottom: 1px solid transparent;
+}
+.btn-other-signup-option:hover {
+  border-bottom: 1px solid #3291ff;
+}

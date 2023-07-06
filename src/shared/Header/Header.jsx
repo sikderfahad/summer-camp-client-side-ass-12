@@ -5,6 +5,7 @@ import ModeBtn from "../ModeBtn/ModeBtn";
 ("../../provider/AuthProvider");
 import useAuth from "../../hooks/useAuth";
 import { useState } from "react";
+import { FaSignOutAlt } from "react-icons/fa";
 
 export const LoginInfo = ({
   user,
@@ -57,7 +58,7 @@ export const LoginInfo = ({
 };
 
 const Header = () => {
-  const { user } = useAuth();
+  const { user, loading, logOut } = useAuth();
   // console.log(user);
 
   const selectMode = localStorage.getItem("theme");
@@ -82,17 +83,15 @@ const Header = () => {
   };
   changeTheme();
 
-  //   const { user, loading, logOut } = useAuth();
-  //   const [isHover, setIsHover] = useState(false);
+  const handledLogout = () => {
+    logOut()
+      .then(() => {})
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
-  //   const handledLogout = () => {
-  //     logOut()
-  //       .then(() => {})
-  //       .catch((err) => {
-  //         console.log(err);
-  //       });
-  //   };
-
+  // const [isHover, setIsHover] = useState(false);
   //   const handleMouseEnter = () => {
   //     user?.displayName && setIsHover(true);
   //   };
@@ -118,7 +117,7 @@ const Header = () => {
   return (
     <div
       style={{ backdropFilter: "blur(10px)" }}
-      className="fixed top-0 left-0 w-full z-[999] bg-[#00000059]"
+      className="fixed top-0 left-0 w-full z-[999] bg-[--navBg]"
     >
       <div className="navbar  max-w-screen-xl mx-auto">
         <div className="navbar-start">
@@ -134,16 +133,23 @@ const Header = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <ul className="menu uppercase hidden items-center lg:flex menu-horizontal px-1">
+          <ul className="menu uppercase hidden items-center lg:flex gap-4 menu-horizontal px-1">
             {!user ? (
               <Nav item={{ path: "/login", label: "login" }}></Nav>
             ) : (
-              <li className="">
+              <li className="flex flex-row gap-3 items-center">
                 <img
-                  src={"https://i.ibb.co/7gkKYRy/Avatar.png"}
+                  src={
+                    user?.photoURL
+                      ? user.photoURL
+                      : "https://i.ibb.co/7gkKYRy/Avatar.png"
+                  }
                   className="w-[90px] h-[75px] rounded-full"
                   alt=""
                 />
+                <button onClick={handledLogout}>
+                  <FaSignOutAlt className="text-3xl"></FaSignOutAlt>
+                </button>
               </li>
             )}
             <ModeBtn handleToggle={handleToggle} theme={theme}></ModeBtn>

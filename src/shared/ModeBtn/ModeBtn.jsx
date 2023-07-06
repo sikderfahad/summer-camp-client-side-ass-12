@@ -2,7 +2,7 @@
 
 const ModeBtn = ({ handleToggle, theme }) => {
   return (
-    <label className="swap swap-rotate text-white">
+    <label className="swap swap-rotate text-[--navColor]">
       {/* this hidden checkbox controls the state */}
       <input
         type="checkbox"
