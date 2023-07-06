@@ -73,10 +73,16 @@ const Register = () => {
       });
   };
 
+  // https://i.ibb.co/n3d0PFZ/login-side-image.png
+  // https://i.ibb.co/sKG9M7t/sign-up-side-image.png
+
   const inputStyle = "border w-full p-3 rounded-lg bg-transparent";
   return (
-    <div className="py-[200px] ">
-      <div className="md:w-4/12 w-10/12 mx-auto flex flex-col gap-7  top-[100px] ">
+    <div className="py-[200px] max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      <div>
+        <img src="https://i.ibb.co/n3d0PFZ/login-side-image.png" alt="" />
+      </div>
+      <div className="flex flex-col gap-7  top-[100px] ">
         <h1 className="text-center spicy-title text-5xl font-medium ">
           Create Nota Corda Account{" "}
         </h1>
@@ -189,8 +195,13 @@ const Register = () => {
 
           <p className="text-center  mt-8">
             By joining, you agree to our{" "}
-            <Link className=" hover:border-b">Terms of Service</Link> and{" "}
-            <Link className=" hover:border-b">Privacy Policy</Link>
+            <Link className="hover:underline text-[#3291ff]">
+              Terms of Service
+            </Link>{" "}
+            and{" "}
+            <Link className="hover:underline text-[#3291ff]">
+              Privacy Policy
+            </Link>
           </p>
         </div>
       </div>
