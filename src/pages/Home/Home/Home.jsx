@@ -1,6 +1,5 @@
 // import React from 'react';
 
-import Footer from "../../../shared/Footer/Footer";
 import AboutSchool from "../AboutSchool/AboutSchool";
 import BannerCarousel from "../Carousel/Carousel";
 import Notes from "../Notes/Notes";
@@ -35,11 +34,6 @@ const Home = () => {
             <PopularTeacher></PopularTeacher>
           </div>
         </div>
-      </div>
-
-      {/* Footer */}
-      <div className="mt-12">
-        <Footer></Footer>
       </div>
     </div>
   );

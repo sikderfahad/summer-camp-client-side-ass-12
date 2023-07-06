@@ -5,6 +5,8 @@ import Test from "../pages/Test/Test";
 import ErrorPage from "../components/ErrorPage/ErrorPage";
 import Register from "../pages/Register/Register";
 import Login from "../pages/Login/Login";
+import Classes from "../pages/Classes/Classes";
+import ConsRoute from "./ConsRoute";
 
 export const router = createBrowserRouter([
   {
@@ -20,12 +22,24 @@ export const router = createBrowserRouter([
         element: <Test></Test>,
       },
       {
+        path: "/classes",
+        element: <Classes></Classes>,
+      },
+      {
         path: "/register",
-        element: <Register></Register>,
+        element: (
+          <ConsRoute>
+            <Register></Register>,
+          </ConsRoute>
+        ),
       },
       {
         path: "/login",
-        element: <Login></Login>,
+        element: (
+          <ConsRoute>
+            <Login></Login>,
+          </ConsRoute>
+        ),
       },
       {
         path: "*",

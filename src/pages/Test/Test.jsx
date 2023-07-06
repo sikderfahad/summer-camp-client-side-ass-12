@@ -1,11 +1,13 @@
+import { AwesomeButtonSocial } from "react-awesome-button";
 import ButtonDanger from "../../shared/ButtonAwesome/ButtonAwesome";
 import TeacherCard from "../../shared/TeacherCard/TeacherCard";
+import Spinner from "../../components/Spinner/Spinner";
+// import { AwesomeButtonShare } from "react-awesome-button";
 
 const Test = () => {
   return (
-    <div className="mt-[200px]">
-      <TeacherCard></TeacherCard>
-      <ButtonDanger></ButtonDanger>
+    <div className="">
+      <Spinner hFull={true} wFull={true}></Spinner>
     </div>
   );
 };

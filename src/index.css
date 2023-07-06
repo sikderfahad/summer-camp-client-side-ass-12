@@ -1,6 +1,10 @@
-@tailwind base;
+/* @tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities; */
+
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
 @import url("https://fonts.googleapis.com/css2?family=Spicy+Rice&display=swap");
 
@@ -12,6 +16,7 @@
   --registerBtnBg: #0c4b65;
   --navColor: #fff;
   --navBg: #000000ab;
+  --fieldBg: #e8f0fe;
 }
 
 [data-theme="night"] {
@@ -22,6 +27,7 @@
   --registerBtnBg: #efcf4f;
   --navColor: #fff;
   --navBg: #00000059;
+  --fieldBg: transparent;
 }
 html {
   transition: 0.3s ease-in-out;
@@ -33,4 +39,5 @@ html {
 
 body {
   user-select: none;
+  overflow-x: hidden;
 }

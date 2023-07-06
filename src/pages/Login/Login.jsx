@@ -1,16 +1,19 @@
 import { useState } from "react";
 import { TiWarningOutline } from "react-icons/ti";
-import { BsFacebook, BsFillHouseCheckFill } from "react-icons/bs";
+import { BsFillHouseCheckFill, BsGithub, BsGoogle } from "react-icons/bs";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-// import { MdOutlineMailOutline } from "react-icons/md";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import googleIcon from "../../assets/img/google.png";
+// import { MdOutlineMailOutline } from "react-icons/md";
+// import googleIcon from "../../assets/img/google.png";
 import "./Login.css";
 import { ToastMsgError, ToastMsgSuc } from "../../components/Toast/ToastMsg";
 import useTitle from "../../hooks/useTitle";
 import useAuth from "../../hooks/useAuth";
-import { AwesomeButtonProgress } from "react-awesome-button";
+import { AwesomeButton, AwesomeButtonProgress } from "react-awesome-button";
 import { MailIcon } from "@primer/octicons-react";
+import styles from "./Button.module.css";
+import {} from "@primer/octicons-react"; // custom icons
+import { useForm } from "react-hook-form";
 
 const Login = () => {
   useTitle("Login");
@@ -20,7 +23,7 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-  const { googleUser, githubUser, loginWithEmailPass } = useAuth();
+  const { googleUser, gitHubUser, loginWithEmailPass } = useAuth();
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
@@ -36,30 +39,37 @@ const Login = () => {
       .then((res) => {
         const signedUser = res.user;
         console.log(signedUser);
-        navigate(from);
+        navigate(from || "/");
       })
       .catch((error) => {
         console.log(error.message);
       });
   };
 
-  const handledGithubSignIn = () => {
-    githubUser()
+  const handledGitHubSignIn = () => {
+    gitHubUser()
       .then((res) => {
         const signedUser = res.user;
         console.log(signedUser);
-        navigate(from);
+        navigate(from || "/");
       })
       .catch((err) => {
         console.log(err.message);
       });
   };
 
-  const handledLogin = (event) => {
-    event.preventDefault();
-    const form = event.target;
-    const email = form.email.value;
-    const password = form.password.value;
+  // React Hook From
+
+  const {
+    register,
+    handleSubmit,
+    // watch,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => {
+    console.log(data);
+    const { email, password } = data;
 
     setError("");
     setSuccess("");
@@ -72,7 +82,7 @@ const Login = () => {
 
         signedUser && setSuccess("You login successful!");
         console.log(signedUser);
-        navigate(from);
+        navigate(from || "/");
       })
       .catch((error) => {
         console.log(error.message);
@@ -99,6 +109,11 @@ const Login = () => {
         networkFaild && ToastMsgError("No Internet!");
       });
   };
+
+  // console.log(watch("email", "password"));
+  console.log(errors);
+
+  // React Hook From
 
   return (
     <div className="py-[200px] max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
@@ -127,26 +142,32 @@ const Login = () => {
         )}
 
         {!login && (
-          <div className="text-center w-7/12 flex flex-col items-center justify-center mx-auto gap-2">
-            <button
-              onClick={handledGithubSignIn}
-              className="relative w-full flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-lg font-medium text-white rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 dark:text-white focus:ring-2 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800"
-            >
-              <span className="flex w-full items-center justify-between gap-4 relative px-5 py-2.5 transition-all ease-in duration-75 bg-gray-900 dark:bg-gray-900 rounded-md group-hover:bg-black">
-                <BsFacebook className="text-3xl" />
-                Countinue Facebook
-              </span>
-            </button>
+          <div className="text-center w-7/12 flex flex-col items-center justify-center mx-auto gap-4">
+            <span onClick={handledGoogleSignIn} className="w-full">
+              <AwesomeButton
+                type="primary"
+                ripple={true}
+                className={`${styles.loginBtn} w-full`}
+              >
+                <span className="flex items-center gap-4">
+                  <BsGoogle className="text-2xl"></BsGoogle> Continue With
+                  Google
+                </span>
+              </AwesomeButton>
+            </span>
 
-            <button
-              onClick={handledGoogleSignIn}
-              className="relative w-full flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-lg font-medium text-white rounded-lg group bg-gradient-to-br from-pink-600 to-orange-500 group-hover:from-pink-600 group-hover:to-orange-500 dark:text-white focus:ring-2 focus:outline-none focus:ring-pink-300 dark:focus:ring-orange-800"
-            >
-              <span className="flex w-full items-center justify-between gap-4 relative px-5 py-2.5 transition-all ease-in duration-75 bg-gray-900 dark:bg-gray-900 rounded-md group-hover:bg-black">
-                <img className="w-[30px]" src={googleIcon} alt="" />
-                Countinue Google
-              </span>
-            </button>
+            <span onClick={handledGitHubSignIn} className="w-full">
+              <AwesomeButton
+                type="danger"
+                ripple={true}
+                className={`${styles.loginBtn} w-full`}
+              >
+                <span className="flex items-center gap-4">
+                  <BsGithub className="text-2xl"></BsGithub> Continue With
+                  GitHub
+                </span>
+              </AwesomeButton>
+            </span>
 
             <button
               onClick={loginToggle}
@@ -160,13 +181,15 @@ const Login = () => {
         {login && (
           <div className="w-100% w-[320px] mx-auto">
             <form
-              onSubmit={handledLogin}
+              onSubmit={handleSubmit(onSubmit)}
+              // onSubmit={handledLogin}
               className="flex flex-col gap-4"
               action=""
             >
               <div className="flex items-center max-w-[320px] login-box">
                 <input
-                  className="w-full p-3 border border-gray-300 rounded-lg bg-transparent "
+                  {...register("email")}
+                  className="w-full p-3 border border-gray-300 rounded-lg bg-[--fieldBg] "
                   type="email"
                   name="email"
                   placeholder="Email Address"
@@ -175,7 +198,8 @@ const Login = () => {
               </div>
               <div className="flex items-center max-w-[320px] login-box relative">
                 <input
-                  className="w-full p-3 border border-gray-300  rounded-lg bg-transparent "
+                  {...register("password")}
+                  className="w-full p-3 border border-gray-300  rounded-lg bg-[--fieldBg] "
                   type={`${!show ? "password" : "text"}`}
                   name="password"
                   placeholder="Password"
@@ -189,10 +213,7 @@ const Login = () => {
                 </span>
               </div>
 
-              {/* <button className="bg-white text-base font-semibold w-full grid grid-cols-[2fr,5fr] text-left items-center text-black p-3 rounded-lg hover:bg-transparent hover:text-white border">
-                <MdOutlineMailOutline className="text-2xl" /> Login with Email
-              </button> */}
-
+              {/* Login Button */}
               <AwesomeButtonProgress
                 before={<MailIcon></MailIcon>}
                 type="primary"
@@ -205,7 +226,7 @@ const Login = () => {
 
               <button
                 onClick={loginToggle}
-                className="text-[#3291ff] btn-other-signup-option w-fit mx-auto "
+                className="text-[#3291ff] font-semibold btn-other-signup-option w-fit mx-auto "
               >
                 ← Other Sign Up Options
               </button>

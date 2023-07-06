@@ -58,8 +58,8 @@ export const LoginInfo = ({
 };
 
 const Header = () => {
-  const { user, loading, logOut } = useAuth();
-  // console.log(user);
+  const { user, logOut } = useAuth();
+  console.log(user);
 
   const selectMode = localStorage.getItem("theme");
   const [theme, setTheme] = useState(selectMode ? selectMode : "light");
@@ -106,7 +106,6 @@ const Header = () => {
     { path: "/test", label: "Test" },
     { path: "/classes", label: "classes" },
     { path: "/instructor", label: "instructor" },
-    { path: "/register", label: "register" },
     { path: "/dashboard", label: "dashboard" },
   ];
 
@@ -139,6 +138,7 @@ const Header = () => {
             ) : (
               <li className="flex flex-row gap-3 items-center">
                 <img
+                  title={user?.displayName && user.displayName}
                   src={
                     user?.photoURL
                       ? user.photoURL
@@ -148,7 +148,7 @@ const Header = () => {
                   alt=""
                 />
                 <button onClick={handledLogout}>
-                  <FaSignOutAlt className="text-3xl"></FaSignOutAlt>
+                  <FaSignOutAlt className="text-3xl text-[--navColor]"></FaSignOutAlt>
                 </button>
               </li>
             )}
@@ -179,18 +179,27 @@ const Header = () => {
               {defaultNav.map((item, idx) => (
                 <Nav key={idx} item={item}></Nav>
               ))}
-              {/* {!user ? (
-                userNav.map((item, idx) => <Nav key={idx} item={item}></Nav>)
+
+              {!user ? (
+                <Nav item={{ path: "/login", label: "login" }}></Nav>
               ) : (
-                <LoginInfo
-                  user={user}
-                  loading={loading}
-                  handleMouseEnter={handleMouseEnter}
-                  handleMouseLeave={handleMouseLeave}
-                  isHover={isHover}
-                  handledLogout={handledLogout}
-                ></LoginInfo>
-              )} */}
+                <li className="flex flex-col gap-3 items-start">
+                  <img
+                    title={user?.displayName && user.displayName}
+                    src={
+                      user?.photoURL
+                        ? user.photoURL
+                        : "https://i.ibb.co/7gkKYRy/Avatar.png"
+                    }
+                    className="w-[90px] h-[75px] rounded-full"
+                    alt=""
+                  />
+                  <button onClick={handledLogout}>
+                    <FaSignOutAlt className="text-3xl text-[--navColor]"></FaSignOutAlt>
+                  </button>
+                </li>
+              )}
+              <ModeBtn handleToggle={handleToggle} theme={theme}></ModeBtn>
             </ul>
           </div>
         </div>

@@ -9,7 +9,7 @@ import {
 
 const Footer = () => {
   return (
-    <div className=" p-10 bg-[--accent]">
+    <div className=" p-10 bg-[--accent] mt-12">
       <footer className="footer grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 justify-center max-w-screen-xl mx-auto p-10  text-[--white]">
         <div>
           <img src="https://i.ibb.co/rfK9GSn/nota-logo.png" alt="" />

@@ -1,0 +1,12 @@
+.loginBtn {
+  --button-default-height: 55px;
+  --button-default-font-size: 18px;
+  --button-default-border-radius: 6px;
+  --button-horizontal-padding: 16px;
+  --button-raise-level: 7px;
+  --button-hover-pressure: 2;
+  --button-danger-color: #25292e;
+  --button-danger-color-dark: #030304;
+  --button-danger-color-hover: #25292e;
+  --button-danger-color-active: #25292e;
+}
