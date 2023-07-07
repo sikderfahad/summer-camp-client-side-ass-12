@@ -1,3 +1,4 @@
+import useManageUsers from "../../../../../hooks/useManageUsers";
 import UserTable from "../UserTable/UserTable";
 // import { useQuery } from "@tanstack/react-query";
 
@@ -25,18 +26,17 @@ const AllUsers = () => {
   // const userInfo = [users, refetch, isLoading];
   // console.log(users);
 
-  const users = [];
-  const userInfo = [users];
+  const [users, refetch] = useManageUsers();
+  // const userInfo = [users];
   return (
-    <div className="w-10/12 mx-auto">
+    <div className="w-11/12 mx-auto">
       <div className="mt-20">
         <h1 className="text-3xl font-bold uppercase">
-          Total users:
-          <span className="text-green-500">{users?.length}</span>
+          Total users: → <span className="text-green-500">{users?.length}</span>
         </h1>
 
         <div className="mt-8">
-          <UserTable userInfo={userInfo}></UserTable>
+          <UserTable users={users} refetch={refetch}></UserTable>
         </div>
       </div>
     </div>

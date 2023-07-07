@@ -4,84 +4,10 @@ import Nav from "../Nav/Nav";
 import ModeBtn from "../ModeBtn/ModeBtn";
 ("../../provider/AuthProvider");
 import useAuth from "../../hooks/useAuth";
-import { useState } from "react";
 import { FaSignOutAlt } from "react-icons/fa";
-
-export const LoginInfo = ({
-  user,
-  handleMouseEnter,
-  handleMouseLeave,
-  isHover,
-  handledLogout,
-}) => {
-  return (
-    <ul
-      style={{ margin: "0" }}
-      className={`flex flex-col lg:flex-row items-start lg:items-center gap-4 ${
-        user && "mx-auto"
-      }`}
-    >
-      <li
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        className="lg:w-[150px] lg:h-[80px] flex lg:items-center lg:justify-center duration-200"
-      >
-        {isHover ? (
-          <div className=" duration-200">
-            {user?.photoURL ? (
-              <img
-                className="w-[75px] h-[75px] duration-200 rounded-full"
-                src={user?.photoURL}
-                alt=""
-              />
-            ) : (
-              <img
-                className="w-[75px] h-[75px] duration-200"
-                src={"https://i.ibb.co/7gkKYRy/Avatar.png"}
-                alt=""
-              />
-            )}
-          </div>
-        ) : (
-          <h1 className="gradient-title duration-200 lg:text-xl text-lg text-green-500 font-semibold">
-            {user?.displayName && user.displayName}
-          </h1>
-        )}
-      </li>
-      <li>
-        <button onClick={handledLogout} title="Click to Logout">
-          {/* <VscSignOut className="lg:text-5xl text-3xl text-red-600" /> */}
-        </button>
-      </li>
-    </ul>
-  );
-};
 
 const Header = () => {
   const { user, logOut } = useAuth();
-  // console.log(user);
-
-  const selectMode = localStorage.getItem("theme");
-  const [theme, setTheme] = useState(selectMode ? selectMode : "light");
-  // console.log(theme);
-
-  const changeTheme = () => {
-    localStorage.setItem("theme", theme);
-    const localTheme = localStorage.getItem("theme");
-    document.querySelector("html").setAttribute("data-theme", localTheme);
-  };
-
-  const handleToggle = (e) => {
-    console.log(e.target.checked);
-    if (e.target.checked) {
-      setTheme("night");
-      changeTheme();
-    } else {
-      setTheme("light");
-      changeTheme();
-    }
-  };
-  changeTheme();
 
   const handledLogout = () => {
     logOut()
@@ -91,16 +17,6 @@ const Header = () => {
       });
   };
 
-  // const [isHover, setIsHover] = useState(false);
-  //   const handleMouseEnter = () => {
-  //     user?.displayName && setIsHover(true);
-  //   };
-
-  //   const handleMouseLeave = () => {
-  //     setIsHover(false);
-  //   };
-
-  // const user = false;
   const defaultNav = [
     { path: "/", label: "Home" },
     { path: "/test", label: "Test" },
@@ -152,7 +68,8 @@ const Header = () => {
                 </button>
               </li>
             )}
-            <ModeBtn handleToggle={handleToggle} theme={theme}></ModeBtn>
+            <ModeBtn></ModeBtn>
+            {/* handleToggle={handleToggle} theme={theme} */}
           </ul>
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -199,7 +116,7 @@ const Header = () => {
                   </button>
                 </li>
               )}
-              <ModeBtn handleToggle={handleToggle} theme={theme}></ModeBtn>
+              <ModeBtn></ModeBtn>
             </ul>
           </div>
         </div>
@@ -209,3 +126,5 @@ const Header = () => {
 };
 
 export default Header;
+
+// bg-[--modeBtnBgDb] text-[--modeBtnTextDb]

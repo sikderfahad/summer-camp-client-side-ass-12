@@ -1,15 +1,9 @@
-import { AwesomeButtonSocial } from "react-awesome-button";
-import ButtonDanger from "../../shared/ButtonAwesome/ButtonAwesome";
-import TeacherCard from "../../shared/TeacherCard/TeacherCard";
-import Spinner from "../../components/Spinner/Spinner";
-// import { AwesomeButtonShare } from "react-awesome-button";
+import useUserType from "../../hooks/useUserType";
 
 const Test = () => {
-  return (
-    <div className="">
-      <Spinner hFull={true} wFull={true}></Spinner>
-    </div>
-  );
+  const [userType] = useUserType();
+  console.log(userType);
+  return <div></div>;
 };
 
 export default Test;

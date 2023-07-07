@@ -6,7 +6,6 @@ import ErrorPage from "../components/ErrorPage/ErrorPage";
 import Register from "../pages/Register/Register";
 import Login from "../pages/Login/Login";
 import Classes from "../pages/Classes/Classes";
-import ConsRoute from "./ConsRoute";
 import Instractors from "../pages/Instractors/Instractors";
 import Dashboard from "../layout/Dashboard/Dashboard/Dashboard";
 import ManageClass from "../pages/Dashboard/Admin/Classes/ManageClass";

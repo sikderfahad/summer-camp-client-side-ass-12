@@ -12,7 +12,6 @@ import {
   signOut,
   updateProfile,
 } from "firebase/auth";
-import saveUser from "../hooks/saveUser";
 import axios from "axios";
 import { ToastMsgWarn } from "../components/Toast/ToastMsg";
 
@@ -67,19 +66,10 @@ const AuthProvider = ({ children }) => {
       setUser(currentUser);
       console.log(currentUser);
       if (currentUser) {
-        const { displayName, email, photoURL } = currentUser;
-        if (!email) {
-          return ToastMsgWarn(
-            "Coudn't find email from your login method! Please check it carefuly"
-          );
-        }
-        if (!displayName) {
-          return ToastMsgWarn(
-            "Coudn't find your name from your login method! Please check it carefuly"
-          );
-        }
+        const { displayName, email, photoURL } = currentUser && currentUser;
+
         const newUser = { displayName, email, photoURL, role: "student" };
-        console.log(newUser);
+        // console.log(newUser);
         axios.post("http://localhost:3000/users", newUser);
       }
 

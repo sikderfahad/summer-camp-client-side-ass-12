@@ -8,6 +8,8 @@ import { HiShoppingBag } from "react-icons/hi";
 import { FaBook, FaCalendarAlt, FaUsers } from "react-icons/fa";
 import "./Dashboard.css";
 import DashboardNavLink from "../DashboardNavLink/DashboardNavLink";
+import ToastBox from "../../../components/Toast/ToastBox";
+import ModeBtn from "../../../shared/ModeBtn/ModeBtn";
 
 // Admin Dashboard Menu
 const adminMenu = [
@@ -88,8 +90,9 @@ const Dashboard = () => {
             </label>
           </div>
 
-          <div className="p-4 lg:p-12">
+          <div className="p-4 lg:py-12 lg:px-8">
             <Outlet></Outlet>
+            <ToastBox></ToastBox>
           </div>
 
           {/* Page content here */}
@@ -99,7 +102,7 @@ const Dashboard = () => {
           className="drawer-side border-r-2 w-fit px-8 min-h-full "
         >
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-          <ul className="menu px-4 py-6 grid grid-cols-1 items-center  text-base-content">
+          <ul className="menu px-4 h-full py-6 grid grid-cols-1 items-center  text-base-content">
             {/* Sidebar content here */}
             <div className="flex gap-4 justify-between items-center">
               {/* Logo */}
@@ -157,6 +160,9 @@ const Dashboard = () => {
                     </NavLink>
                   </li>
                 ))}
+                <li>
+                  <ModeBtn dashboard={true}></ModeBtn>{" "}
+                </li>
               </ul>
             </div>
           </ul>

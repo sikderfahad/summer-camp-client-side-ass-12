@@ -33,6 +33,7 @@
     "react-toastify": "^9.1.2",
     "sort-by": "^1.2.0",
     "styled-components": "^6.0.2",
+    "sweetalert2": "^11.7.12",
     "swiper": "^10.0.1"
   },
   "devDependencies": {

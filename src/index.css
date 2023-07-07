@@ -18,6 +18,8 @@
   --navBg: #000000ab;
   --fieldBg: #e8f0fe;
   --dbLink: rgba(0, 0, 0, 0.784);
+  --modeBtnBgDb: #e8e9eb;
+  --modeBtnTextDb: #1f2937;
 }
 
 [data-theme="night"] {
@@ -30,6 +32,8 @@
   --navBg: #00000059;
   --fieldBg: transparent;
   --dbLink: #fff;
+  --modeBtnBgDb: #21293a;
+  --modeBtnTextDb: #c8cad0;
 }
 html {
   transition: 0.3s ease-in-out;

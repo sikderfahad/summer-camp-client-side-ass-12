@@ -1,8 +1,36 @@
 // import React from "react";
+// { handleToggle, theme }
+// bg-[--modeBtnBgDb] text-[--modeBtnTextDb]
+import { useState } from "react";
 
-const ModeBtn = ({ handleToggle, theme }) => {
+const ModeBtn = ({ dashboard }) => {
+  const selectMode = localStorage.getItem("theme");
+  const [theme, setTheme] = useState(selectMode ? selectMode : "light");
+  // console.log(theme);
+
+  const changeTheme = () => {
+    localStorage.setItem("theme", theme);
+    const localTheme = localStorage.getItem("theme");
+    document.querySelector("html").setAttribute("data-theme", localTheme);
+  };
+
+  const handleToggle = (e) => {
+    // console.log(e.target.checked);
+    if (e.target.checked) {
+      setTheme("night");
+      changeTheme();
+    } else {
+      setTheme("light");
+      changeTheme();
+    }
+  };
+  changeTheme();
   return (
-    <label className="swap swap-rotate text-[--navColor]">
+    <label
+      className={`swap swap-rotate text-[--navColor] ${
+        dashboard && "bg-[--modeBtnBgDb] text-[--modeBtnTextDb]"
+      }`}
+    >
       {/* this hidden checkbox controls the state */}
       <input
         type="checkbox"

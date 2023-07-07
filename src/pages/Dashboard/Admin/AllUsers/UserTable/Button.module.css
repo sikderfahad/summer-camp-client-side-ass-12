@@ -1,0 +1,10 @@
+.roleBtn {
+  --button-secondary-color: #25d366;
+  --button-secondary-color-dark: #1a9247;
+  --button-secondary-color-light: #fff;
+  --button-secondary-color-hover: #14c454;
+  --button-secondary-color-active: #1cad54;
+  --button-secondary-border: none;
+  --button-raise-level: 6px;
+  --button-hover-pressure: 2;
+}
