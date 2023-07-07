@@ -4,7 +4,7 @@ const usePopularItem = (api) => {
   const [popularClass, setPopularClass] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/${api}`)
+    fetch(`https://summer-camp-music-server.vercel.app/${api}`)
       .then((res) => res.json())
       .then((data) => setPopularClass(data));
   }, [api]);

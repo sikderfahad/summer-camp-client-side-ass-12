@@ -13,7 +13,6 @@ import {
   updateProfile,
 } from "firebase/auth";
 import axios from "axios";
-import { ToastMsgWarn } from "../components/Toast/ToastMsg";
 
 export const AuthContext = createContext(null);
 
@@ -66,11 +65,14 @@ const AuthProvider = ({ children }) => {
       setUser(currentUser);
       console.log(currentUser);
       if (currentUser) {
-        const { displayName, email, photoURL } = currentUser && currentUser;
+        const { displayName, email, photoURL } = currentUser;
 
         const newUser = { displayName, email, photoURL, role: "student" };
         // console.log(newUser);
-        axios.post("http://localhost:3000/users", newUser);
+        axios.post(
+          "https://summer-camp-music-server.vercel.app/users",
+          newUser
+        );
       }
 
       setLoading(false);

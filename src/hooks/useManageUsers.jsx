@@ -11,7 +11,9 @@ const useManageUsers = () => {
   } = useQuery({
     queryKey: ["users", user?.email],
     queryFn: async () => {
-      const res = await axios.get("http://localhost:3000/users");
+      const res = await axios.get(
+        "https://summer-camp-music-server.vercel.app/users"
+      );
       //   console.log("axios user: ", res.data);
       return res.data;
     },

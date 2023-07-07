@@ -8,6 +8,7 @@ import Swal from "sweetalert2";
 import { ToastMsgSuc } from "../../../../../components/Toast/ToastMsg";
 
 const UserTable = ({ users, refetch }) => {
+  // console.log(users);
   const changeUserRole = (id, role, name) => {
     const newRole = role.role;
     Swal.fire({
@@ -24,13 +25,18 @@ const UserTable = ({ users, refetch }) => {
       }!`,
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.patch(`http://localhost:3000/users/${id}`, role).then((res) => {
-          if (res.data.modifiedCount > 0) {
-            const msg = `Now ${name} is ${newRole}`;
-            ToastMsgSuc(msg);
-            refetch();
-          }
-        });
+        axios
+          .patch(
+            `https://summer-camp-music-server.vercel.app/users/${id}`,
+            role
+          )
+          .then((res) => {
+            if (res.data.modifiedCount > 0) {
+              const msg = `Now ${name} is ${newRole}`;
+              ToastMsgSuc(msg);
+              refetch();
+            }
+          });
       }
     });
   };
@@ -58,21 +64,21 @@ const UserTable = ({ users, refetch }) => {
               <td>
                 <img
                   className="w-[100px] h-[100px] rounded-lg"
-                  src={user.photoURL}
+                  src={user?.photoURL}
                   alt=""
                 />{" "}
               </td>
 
               <td>
-                <p className="text-lg">{user.displayName}</p>
+                <p className="text-lg">{user?.displayName}</p>
               </td>
 
               <td>
-                <p className="text-base">{user.email} </p>
+                <p className="text-base">{user?.email} </p>
               </td>
 
               <td>
-                <span className="text-lg font-semibold">{user.role}</span>
+                <span className="text-lg font-semibold">{user?.role}</span>
               </td>
               <td>
                 <div className="flex flex-col gap-3">
