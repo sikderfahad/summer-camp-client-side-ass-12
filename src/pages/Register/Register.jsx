@@ -91,63 +91,6 @@ const Register = () => {
       });
   };
 
-  // React Hook From
-
-  // const handledSignup = (event) => {
-  //   event.preventDefault();
-  //   const form = event.target;
-  //   const name = form.name.value;
-  //   const email = form.email.value;
-  //   const password = form.password.value;
-  //   const confPassword = form.confPassword.value;
-  //   const photo = form.photo.value;
-
-  //   setError("");
-  //   setSuccess("");
-
-  //   if (password !== confPassword) {
-  //     return setError("Confirm password does't matched");
-  //   }
-
-  //   createUser(email, password)
-  //     .then((res) => {
-  //       const newUser = res.user;
-
-  //       profileName(newUser, {
-  //         displayName: name,
-  //         photoURL: photo && photo,
-  //       })
-  //         .then(() => {
-  //           setSuccess("You successfuly create an account!");
-  //           ToastMsgSuc("Signup successful!");
-  //           form.reset();
-  //           navigate("/");
-  //         })
-  //         .catch((err) => {
-  //           console.log(err.message);
-  //         });
-
-  //       console.log(newUser);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error.message);
-  //       const weakPass = error.message.includes("weak-password");
-  //       weakPass &&
-  //         setError("Weak password! Please give at least 6 characters");
-
-  //       const userExist = error.message.includes("email-already-in-use");
-  //       userExist && setError("This email already exist! Please try another");
-
-  //       const emailMissing = error.message.includes("email-missing");
-  //       emailMissing &&
-  //         setError("Email is missing! Please enter a valid email");
-
-  //       const passMissing = error.message.includes("password-missing");
-  //       passMissing &&
-  //         setError("Password is missing! Please enter a valid Password");
-  //     });
-  // };
-
   const inputStyle = "border w-full p-3 rounded-lg input-bg";
   return (
     <div className="py-[200px] max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
@@ -174,7 +117,6 @@ const Register = () => {
         <div>
           <div className="w-100% w-[320px] mx-auto">
             <form
-              // onSubmit={handledSignup}
               onSubmit={handleSubmit(onSubmit)}
               className="flex flex-col gap-5"
               action=""

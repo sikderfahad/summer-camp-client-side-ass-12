@@ -10,6 +10,7 @@ import "./Dashboard.css";
 import DashboardNavLink from "../DashboardNavLink/DashboardNavLink";
 import ToastBox from "../../../components/Toast/ToastBox";
 import ModeBtn from "../../../shared/ModeBtn/ModeBtn";
+import useUserType from "../../../hooks/useUserType";
 
 // Admin Dashboard Menu
 const adminMenu = [
@@ -25,16 +26,30 @@ const adminMenu = [
   },
 ];
 
-// User Dashboard Menu
+// Instructor Dashboard Menu
 const instructorMenu = [
   {
     icon: <AiFillHome></AiFillHome>,
     menuName: "add a class",
-    path: "/dashboard/client-home",
+    path: "/dashboard/instructor/add-class",
   },
   {
     icon: <FaCalendarAlt></FaCalendarAlt>,
     menuName: "my classes",
+    path: "/dashboard/instructor/my-class",
+  },
+];
+
+// Student Dashboard Menu
+const studentMenu = [
+  {
+    icon: <AiFillHome></AiFillHome>,
+    menuName: "my selected classes",
+    path: "/dashboard/client-home",
+  },
+  {
+    icon: <FaCalendarAlt></FaCalendarAlt>,
+    menuName: "my enrolled classes",
     path: "/client-dashboard/reservation",
   },
 ];
@@ -59,11 +74,7 @@ const defaultMenu = [
 ];
 
 const Dashboard = () => {
-  // const [isAdmin] = useIsAdmin();
-  // const admin = isAdmin?.admin;
-  // console.log(admin);
-
-  const admin = true;
+  const [userType] = useUserType();
 
   // bg-[#0a1929]
   // bg-gradient-to-b from-blue-700 via-gray-800 to-[#0a1929]
@@ -122,19 +133,24 @@ const Dashboard = () => {
             {/* Menu Box */}
             <div className="mt-12">
               <ul className="flex flex-col justify-start gap-3">
-                {admin
-                  ? adminMenu.map((menu, idx) => (
-                      <DashboardNavLink
-                        key={idx}
-                        menu={menu}
-                      ></DashboardNavLink>
-                    ))
-                  : instructorMenu.map((menu, idx) => (
-                      <DashboardNavLink
-                        key={idx}
-                        menu={menu}
-                      ></DashboardNavLink>
-                    ))}
+                {/* ADMIN menu */}
+
+                {userType === "admin" &&
+                  adminMenu.map((menu, idx) => (
+                    <DashboardNavLink key={idx} menu={menu}></DashboardNavLink>
+                  ))}
+                {/* INSTRUCTOR menu */}
+
+                {userType === "instructor" &&
+                  instructorMenu.map((menu, idx) => (
+                    <DashboardNavLink key={idx} menu={menu}></DashboardNavLink>
+                  ))}
+                {/* STUDENTS menu */}
+
+                {userType === "student" &&
+                  studentMenu.map((menu, idx) => (
+                    <DashboardNavLink key={idx} menu={menu}></DashboardNavLink>
+                  ))}
               </ul>
             </div>
 
