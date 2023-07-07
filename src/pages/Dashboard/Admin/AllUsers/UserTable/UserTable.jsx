@@ -14,7 +14,7 @@ const UserTable = ({ userInfo }) => {
     <div className="overflow-x-auto">
       <table className="table">
         {/* head */}
-        <thead className="text-white font-semibold text-xl">
+        <thead className="text-[--registerBtnBg]  font-semibold text-xl">
           <tr className="py-6">
             <th></th>
             <th className="uppercase">Name</th>

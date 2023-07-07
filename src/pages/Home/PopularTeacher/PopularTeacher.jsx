@@ -4,6 +4,7 @@ import Title from "../../../shared/Title/Title";
 
 const PopularTeacher = () => {
   const popularTeachers = usePopularItem("popular-teachers");
+  // console.log("teacher data ", popularTeachers);
   return (
     <div>
       <div>

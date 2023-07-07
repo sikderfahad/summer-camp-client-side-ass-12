@@ -36,17 +36,17 @@ export const router = createBrowserRouter([
       {
         path: "/register",
         element: (
-          <ConsRoute>
-            <Register></Register>,
-          </ConsRoute>
+          <Register></Register>
+          // <ConsRoute>
+          // </ConsRoute>
         ),
       },
       {
         path: "/login",
         element: (
-          <ConsRoute>
-            <Login></Login>,
-          </ConsRoute>
+          <Login></Login>
+          // <ConsRoute>
+          // </ConsRoute>
         ),
       },
       {

@@ -59,11 +59,11 @@ export const LoginInfo = ({
 
 const Header = () => {
   const { user, logOut } = useAuth();
-  console.log(user);
+  // console.log(user);
 
   const selectMode = localStorage.getItem("theme");
   const [theme, setTheme] = useState(selectMode ? selectMode : "light");
-  console.log(theme);
+  // console.log(theme);
 
   const changeTheme = () => {
     localStorage.setItem("theme", theme);

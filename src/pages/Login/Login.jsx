@@ -43,6 +43,15 @@ const Login = () => {
       })
       .catch((error) => {
         console.log(error.message);
+        const emailExist = error.message.includes(
+          "account-exists-with-different-credential"
+        );
+
+        if (emailExist) {
+          ToastMsgError("Existing email found!");
+          setError("Email exist in different credential");
+          navigate("/login");
+        }
       });
   };
 
@@ -53,8 +62,16 @@ const Login = () => {
         console.log(signedUser);
         navigate(from || "/");
       })
-      .catch((err) => {
-        console.log(err.message);
+      .catch((error) => {
+        console.log(error.message);
+        const emailExist = error.message.includes(
+          "account-exists-with-different-credential"
+        );
+        if (emailExist) {
+          ToastMsgError("Existing email found!");
+          setError("Email exist in different credential");
+          navigate("/login");
+        }
       });
   };
 

@@ -12,6 +12,9 @@ import {
   signOut,
   updateProfile,
 } from "firebase/auth";
+import saveUser from "../hooks/saveUser";
+import axios from "axios";
+import { ToastMsgWarn } from "../components/Toast/ToastMsg";
 
 export const AuthContext = createContext(null);
 
@@ -60,8 +63,26 @@ const AuthProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (createUser) => {
-      setUser(createUser);
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      console.log(currentUser);
+      if (currentUser) {
+        const { displayName, email, photoURL } = currentUser;
+        if (!email) {
+          return ToastMsgWarn(
+            "Coudn't find email from your login method! Please check it carefuly"
+          );
+        }
+        if (!displayName) {
+          return ToastMsgWarn(
+            "Coudn't find your name from your login method! Please check it carefuly"
+          );
+        }
+        const newUser = { displayName, email, photoURL, role: "student" };
+        console.log(newUser);
+        axios.post("http://localhost:3000/users", newUser);
+      }
+
       setLoading(false);
     });
 
