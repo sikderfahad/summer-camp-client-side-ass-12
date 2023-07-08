@@ -25,6 +25,8 @@ const ModeBtn = ({ dashboard }) => {
     }
   };
   changeTheme();
+
+  const checkboxId = Math.ceil(Math.random() * 10);
   return (
     <label
       className={`swap swap-rotate text-[--navColor] ${
@@ -33,6 +35,7 @@ const ModeBtn = ({ dashboard }) => {
     >
       {/* this hidden checkbox controls the state */}
       <input
+        id={checkboxId}
         type="checkbox"
         onChange={handleToggle}
         checked={theme === "light" ? false : true}

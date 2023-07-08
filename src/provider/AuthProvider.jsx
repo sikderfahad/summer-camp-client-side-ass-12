@@ -12,7 +12,6 @@ import {
   signOut,
   updateProfile,
 } from "firebase/auth";
-import axios from "axios";
 
 export const AuthContext = createContext(null);
 
@@ -42,7 +41,7 @@ const AuthProvider = ({ children }) => {
 
   const profileName = (user, name) => {
     setLoading(true);
-    return updateProfile(user, name);
+    return updateProfile(auth, user, name);
   };
 
   const createUser = (email, pass) => {
@@ -64,16 +63,6 @@ const AuthProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       console.log(currentUser);
-      if (currentUser) {
-        const { displayName, email, photoURL } = currentUser;
-
-        const newUser = { displayName, email, photoURL, role: "student" };
-        // console.log(newUser);
-        axios.post(
-          "https://summer-camp-music-server.vercel.app/users",
-          newUser
-        );
-      }
 
       setLoading(false);
     });

@@ -5,9 +5,14 @@ import ModeBtn from "../ModeBtn/ModeBtn";
 ("../../provider/AuthProvider");
 import useAuth from "../../hooks/useAuth";
 import { FaSignOutAlt } from "react-icons/fa";
+import useUserType from "../../hooks/useUserType";
 
 const Header = () => {
   const { user, logOut } = useAuth();
+  const [userType] = useUserType();
+  const isAdmin = userType === "admin";
+  const isInstructor = userType === "instructor";
+  // const isStudent = userType === "student";
 
   const handledLogout = () => {
     logOut()
@@ -16,14 +21,30 @@ const Header = () => {
         console.log(err);
       });
   };
-
+  // instructor/my-class
   const defaultNav = [
     { path: "/", label: "Home" },
     { path: "/test", label: "Test" },
     { path: "/classes", label: "classes" },
     { path: "/instructor", label: "instructor" },
-    { path: "/dashboard/admin/manage-class", label: "dashboard" },
   ];
+
+  const dashboardRoute = {
+    path: `/`,
+    label: "dashboard",
+  };
+
+  if (isAdmin) {
+    dashboardRoute.path = "/dashboard/admin/manage-users";
+  }
+
+  if (isInstructor) {
+    dashboardRoute.path = "/dashboard/instructor/add-class";
+  }
+
+  if (user) {
+    defaultNav.push(dashboardRoute);
+  }
 
   if (!user) {
     defaultNav.pop();
@@ -72,7 +93,7 @@ const Header = () => {
             {/* handleToggle={handleToggle} theme={theme} */}
           </ul>
           <div className="dropdown">
-            <label tabIndex={0} className="btn btn-ghost lg:hidden">
+            <span tabIndex={0} className="btn btn-ghost lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -87,7 +108,7 @@ const Header = () => {
                   d="M4 6h16M4 12h8m-8 6h16"
                 />
               </svg>
-            </label>
+            </span>
             <ul
               style={{ transform: "translate(-110px, 10px)" }}
               tabIndex={0}

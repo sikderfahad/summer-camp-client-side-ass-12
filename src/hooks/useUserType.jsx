@@ -2,6 +2,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "./useAuth";
 import axios from "axios";
+import { baseUrl } from "../router/router";
 
 const useUserType = () => {
   const { user } = useAuth();
@@ -10,10 +11,10 @@ const useUserType = () => {
     isLoading: userLoading,
     refetch,
   } = useQuery({
-    queryKey: ["users", user?.email],
+    queryKey: ["data", user?.email],
     queryFn: async () => {
       const res = await axios.get(
-        `https://summer-camp-music-server.vercel.app/current-user?email=${user?.email}`
+        `${baseUrl}/current-user?email=${user?.email}`
       );
       return res.data;
     },
@@ -24,3 +25,4 @@ const useUserType = () => {
 export default useUserType;
 
 // https://summer-camp-music-server.vercel.app/
+// http://localhost:3000/

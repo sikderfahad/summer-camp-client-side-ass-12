@@ -6,9 +6,14 @@ import styles from "./Button.module.css";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { ToastMsgSuc } from "../../../../../components/Toast/ToastMsg";
+import { baseUrl } from "../../../../../router/router";
+import Spinner from "../../../../../components/Spinner/Spinner";
 
-const UserTable = ({ users, refetch }) => {
+const UserTable = ({ users, refetch, userLoading }) => {
   // console.log(users);
+  if (userLoading) {
+    refetch();
+  }
   const changeUserRole = (id, role, name) => {
     const newRole = role.role;
     Swal.fire({
@@ -25,18 +30,13 @@ const UserTable = ({ users, refetch }) => {
       }!`,
     }).then((result) => {
       if (result.isConfirmed) {
-        axios
-          .patch(
-            `https://summer-camp-music-server.vercel.app/users/${id}`,
-            role
-          )
-          .then((res) => {
-            if (res.data.modifiedCount > 0) {
-              const msg = `Now ${name} is ${newRole}`;
-              ToastMsgSuc(msg);
-              refetch();
-            }
-          });
+        axios.patch(`${baseUrl}/users/${id}`, role).then((res) => {
+          if (res.data.modifiedCount > 0) {
+            const msg = `Now ${name} is ${newRole}`;
+            ToastMsgSuc(msg);
+            refetch();
+          }
+        });
       }
     });
   };
@@ -54,67 +54,72 @@ const UserTable = ({ users, refetch }) => {
             <th className="uppercase text-center">ACTION</th>
           </tr>
         </thead>
-        <tbody>
-          {users?.map((user, index) => (
-            <tr key={index}>
-              <th>
-                <label>{index + 1}</label>
-              </th>
+        {!userLoading ? (
+          <tbody>
+            {users &&
+              users?.map((user, index) => (
+                <tr key={index}>
+                  <th>
+                    <span>{index + 1}</span>
+                  </th>
 
-              <td>
-                <img
-                  className="w-[100px] h-[100px] rounded-lg"
-                  src={user?.photoURL}
-                  alt=""
-                />{" "}
-              </td>
+                  <td>
+                    <img
+                      className="w-[100px] h-[100px] rounded-lg"
+                      src={user?.photoURL}
+                      alt=""
+                    />{" "}
+                  </td>
 
-              <td>
-                <p className="text-lg">{user?.displayName}</p>
-              </td>
+                  <td>
+                    <p className="text-lg">{user?.displayName}</p>
+                  </td>
 
-              <td>
-                <p className="text-base">{user?.email} </p>
-              </td>
+                  <td>
+                    <p className="text-base">{user?.email} </p>
+                  </td>
 
-              <td>
-                <span className="text-lg font-semibold">{user?.role}</span>
-              </td>
-              <td>
-                <div className="flex flex-col gap-3">
-                  <AwesomeButton
-                    disabled={user?.role === "instructor" && true}
-                    onPress={() =>
-                      changeUserRole(
-                        user._id,
-                        { role: "instructor" },
-                        user.displayName
-                      )
-                    }
-                    type="primary"
-                    className={styles.roleBtn}
-                  >
-                    Make Instructor
-                  </AwesomeButton>
-                  <AwesomeButton
-                    disabled={user?.role === "admin" && true}
-                    onPress={() =>
-                      changeUserRole(
-                        user._id,
-                        { role: "admin" },
-                        user.displayName
-                      )
-                    }
-                    type="secondary"
-                    className={styles.roleBtn}
-                  >
-                    Make Admin
-                  </AwesomeButton>
-                </div>
-              </td>
-            </tr>
-          ))}
-        </tbody>
+                  <td>
+                    <span className="text-lg font-semibold">{user?.role}</span>
+                  </td>
+                  <td>
+                    <span className="flex flex-col gap-3">
+                      <AwesomeButton
+                        disabled={user?.role === "instructor" && true}
+                        onPress={() =>
+                          changeUserRole(
+                            user._id,
+                            { role: "instructor" },
+                            user.displayName
+                          )
+                        }
+                        type="primary"
+                        className={styles.roleBtn}
+                      >
+                        Make Instructor
+                      </AwesomeButton>
+                      <AwesomeButton
+                        disabled={user?.role === "admin" && true}
+                        onPress={() =>
+                          changeUserRole(
+                            user._id,
+                            { role: "admin" },
+                            user.displayName
+                          )
+                        }
+                        type="secondary"
+                        className={styles.roleBtn}
+                      >
+                        Make Admin
+                      </AwesomeButton>
+                    </span>
+                  </td>
+                </tr>
+              ))}
+          </tbody>
+        ) : (
+          <Spinner></Spinner>
+        )}
         {/* foot */}
       </table>
     </div>

@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
+import { baseUrl } from "../router/router";
 
 const usePopularItem = (api) => {
   const [popularClass, setPopularClass] = useState([]);
 
   useEffect(() => {
-    fetch(`https://summer-camp-music-server.vercel.app/${api}`)
+    fetch(`${baseUrl}/${api}`)
       .then((res) => res.json())
       .then((data) => setPopularClass(data));
   }, [api]);

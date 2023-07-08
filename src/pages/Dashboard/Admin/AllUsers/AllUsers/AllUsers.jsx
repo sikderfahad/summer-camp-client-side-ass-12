@@ -26,7 +26,7 @@ const AllUsers = () => {
   // const userInfo = [users, refetch, isLoading];
   // console.log(users);
 
-  const [users, refetch] = useManageUsers();
+  const [users, refetch, userLoading] = useManageUsers();
   // const userInfo = [users];
   return (
     <div className="w-11/12 mx-auto">
@@ -36,7 +36,11 @@ const AllUsers = () => {
         </h1>
 
         <div className="mt-8">
-          <UserTable users={users} refetch={refetch}></UserTable>
+          <UserTable
+            users={users}
+            refetch={refetch}
+            userLoading={userLoading}
+          ></UserTable>
         </div>
       </div>
     </div>

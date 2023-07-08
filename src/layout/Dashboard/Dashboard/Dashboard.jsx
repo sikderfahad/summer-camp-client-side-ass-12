@@ -76,8 +76,11 @@ const defaultMenu = [
 const Dashboard = () => {
   const [userType] = useUserType();
 
-  // bg-[#0a1929]
-  // bg-gradient-to-b from-blue-700 via-gray-800 to-[#0a1929]
+  const isAdmin = userType === "admin";
+  const isInstructor = userType === "instructor";
+  const isStudent = userType === "student";
+  // console.log(userType, isAdmin);
+
   return (
     <div className="">
       <div className="drawer lg:drawer-open">
@@ -135,19 +138,19 @@ const Dashboard = () => {
               <ul className="flex flex-col justify-start gap-3">
                 {/* ADMIN menu */}
 
-                {userType === "admin" &&
+                {isAdmin &&
                   adminMenu.map((menu, idx) => (
                     <DashboardNavLink key={idx} menu={menu}></DashboardNavLink>
                   ))}
                 {/* INSTRUCTOR menu */}
 
-                {userType === "instructor" &&
+                {isInstructor &&
                   instructorMenu.map((menu, idx) => (
                     <DashboardNavLink key={idx} menu={menu}></DashboardNavLink>
                   ))}
                 {/* STUDENTS menu */}
 
-                {userType === "student" &&
+                {isStudent &&
                   studentMenu.map((menu, idx) => (
                     <DashboardNavLink key={idx} menu={menu}></DashboardNavLink>
                   ))}

@@ -14,11 +14,13 @@ import { MailIcon } from "@primer/octicons-react";
 import useAuth from "../../hooks/useAuth";
 import { useForm } from "react-hook-form";
 import Alart from "../../shared/Alart/Alart";
+import { getAuth, updateProfile } from "firebase/auth";
+import saveNewUser from "../../hooks/saveNewUser";
 // import ReactBtnStyles from "./ButtonRegister.module.css";
 
 const Register = () => {
   useTitle("Sign up");
-  const { createUser, profileName, loading, logOut } = useAuth();
+  const { createUser, loading, logOut } = useAuth();
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [show, setShow] = useState(false);
@@ -27,6 +29,10 @@ const Register = () => {
   const navigate = useNavigate();
 
   // React Hook From
+
+  //
+
+  //
 
   const {
     register,
@@ -48,14 +54,17 @@ const Register = () => {
     createUser(email, password)
       .then((res) => {
         const newUser = res.user;
+        console.log(newUser);
 
-        profileName(newUser, {
+        const auth = getAuth();
+        updateProfile(auth.currentUser, {
           displayName: name,
-          photoURL: photo && photo,
+          photoURL: photo,
         })
           .then(() => {
             setSuccess("You successfuly create an account!");
             ToastMsgSuc("Signup successful! Please login to continue...");
+            saveNewUser(email, name, photo);
 
             // Logout after successfully Registration
             logOut()
@@ -65,10 +74,32 @@ const Register = () => {
               .catch((err) => {
                 console.log(err);
               });
+            console.log("user updated");
           })
-          .catch((err) => {
-            console.log(err.message);
+          .catch((error) => {
+            console.log(error);
           });
+
+        // profileName(newUser, {
+        //   displayName: name,
+        //   photoURL: photo && photo,
+        // })
+        //   .then(() => {
+        //     setSuccess("You successfuly create an account!");
+        //     ToastMsgSuc("Signup successful! Please login to continue...");
+
+        //     // Logout after successfully Registration
+        //     logOut()
+        //       .then(() => {
+        //         navigate("/login");
+        //       })
+        //       .catch((err) => {
+        //         console.log(err);
+        //       });
+        //   })
+        //   .catch((err) => {
+        //     console.log(err.message);
+        //   });
 
         console.log(newUser);
       })

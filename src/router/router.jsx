@@ -13,6 +13,8 @@ import AllUsers from "../pages/Dashboard/Admin/AllUsers/AllUsers/AllUsers";
 import AddClass from "../pages/Dashboard/Instructor/AddClass/AddClass";
 import MyClasses from "../pages/Dashboard/Instructor/MyClasses/MyClasses";
 
+export const baseUrl = "https://summer-camp-music-server.vercel.app";
+
 export const router = createBrowserRouter([
   {
     path: "/",

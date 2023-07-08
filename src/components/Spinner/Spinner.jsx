@@ -2,7 +2,7 @@ import { BallTriangle } from "react-loader-spinner";
 
 const Spinner = ({ hFull, wFull }) => {
   return (
-    <div
+    <span
       className={` flex spinner items-center mx-auto my-6 ${
         hFull && "h-screen transform translate-x-[45%]"
       } ${wFull && "w-full"}`}
@@ -17,7 +17,7 @@ const Spinner = ({ hFull, wFull }) => {
         wrapperStyle=""
         visible={true}
       />
-    </div>
+    </span>
   );
 };
 

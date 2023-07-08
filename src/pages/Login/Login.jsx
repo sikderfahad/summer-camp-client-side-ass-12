@@ -14,6 +14,7 @@ import { MailIcon } from "@primer/octicons-react";
 import styles from "./Button.module.css";
 import {} from "@primer/octicons-react"; // custom icons
 import { useForm } from "react-hook-form";
+import saveNewUser from "../../hooks/saveNewUser";
 
 const Login = () => {
   useTitle("Login");
@@ -40,6 +41,10 @@ const Login = () => {
         const signedUser = res.user;
         console.log(signedUser);
         navigate(from || "/");
+        if (signedUser) {
+          const { email, displayName, photoURL } = signedUser;
+          saveNewUser(email, displayName, photoURL);
+        }
       })
       .catch((error) => {
         console.log(error.message);
@@ -61,6 +66,10 @@ const Login = () => {
         const signedUser = res.user;
         console.log(signedUser);
         navigate(from || "/");
+        if (signedUser) {
+          const { email, displayName, photoURL } = signedUser;
+          saveNewUser(email, displayName, photoURL);
+        }
       })
       .catch((error) => {
         console.log(error.message);

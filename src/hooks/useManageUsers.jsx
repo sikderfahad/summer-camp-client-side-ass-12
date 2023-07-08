@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import useAuth from "./useAuth";
+import { baseUrl } from "../router/router";
 
 const useManageUsers = () => {
   const { user } = useAuth();
@@ -11,14 +12,10 @@ const useManageUsers = () => {
   } = useQuery({
     queryKey: ["users", user?.email],
     queryFn: async () => {
-      const res = await axios.get(
-        "https://summer-camp-music-server.vercel.app/users"
-      );
-      //   console.log("axios user: ", res.data);
+      const res = await axios.get(`${baseUrl}/users`);
       return res.data;
     },
   });
-  //   console.log("tanstack user: ", users);
   return [users, refetch, userLoading];
 };
 
