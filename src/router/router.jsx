@@ -6,14 +6,15 @@ import ErrorPage from "../components/ErrorPage/ErrorPage";
 import Register from "../pages/Register/Register";
 import Login from "../pages/Login/Login";
 import Classes from "../pages/Classes/Classes";
-import Instractors from "../pages/Instractors/Instractors";
 import Dashboard from "../layout/Dashboard/Dashboard/Dashboard";
 import ManageClass from "../pages/Dashboard/Admin/Classes/ManageClass";
 import AllUsers from "../pages/Dashboard/Admin/AllUsers/AllUsers/AllUsers";
 import AddClass from "../pages/Dashboard/Instructor/AddClass/AddClass";
 import MyClasses from "../pages/Dashboard/Instructor/MyClasses/MyClasses";
+import Instructors from "../pages/Instructors/Instructors";
 
-export const baseUrl = "https://summer-camp-music-server.vercel.app";
+// export const baseUrl = "https://summer-camp-music-server.vercel.app";
+export const baseUrl = "http://localhost:3000";
 
 export const router = createBrowserRouter([
   {
@@ -33,8 +34,8 @@ export const router = createBrowserRouter([
         element: <Classes></Classes>,
       },
       {
-        path: "/instractors",
-        element: <Instractors></Instractors>,
+        path: "/instructors",
+        element: <Instructors></Instructors>,
       },
       {
         path: "/register",

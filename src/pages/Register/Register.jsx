@@ -28,16 +28,11 @@ const Register = () => {
 
   const navigate = useNavigate();
 
-  // React Hook From
-
-  //
-
-  //
-
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
   const onSubmit = (data) => {
     console.log(data);
@@ -65,6 +60,7 @@ const Register = () => {
             setSuccess("You successfuly create an account!");
             ToastMsgSuc("Signup successful! Please login to continue...");
             saveNewUser(email, name, photo);
+            reset();
 
             // Logout after successfully Registration
             logOut()

@@ -3,8 +3,6 @@ import { TiWarningOutline } from "react-icons/ti";
 import { BsFillHouseCheckFill, BsGithub, BsGoogle } from "react-icons/bs";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-// import { MdOutlineMailOutline } from "react-icons/md";
-// import googleIcon from "../../assets/img/google.png";
 import "./Login.css";
 import { ToastMsgError, ToastMsgSuc } from "../../components/Toast/ToastMsg";
 import useTitle from "../../hooks/useTitle";
@@ -12,7 +10,6 @@ import useAuth from "../../hooks/useAuth";
 import { AwesomeButton, AwesomeButtonProgress } from "react-awesome-button";
 import { MailIcon } from "@primer/octicons-react";
 import styles from "./Button.module.css";
-import {} from "@primer/octicons-react"; // custom icons
 import { useForm } from "react-hook-form";
 import saveNewUser from "../../hooks/saveNewUser";
 
@@ -91,6 +88,7 @@ const Login = () => {
     handleSubmit,
     // watch,
     formState: { errors },
+    reset,
   } = useForm();
 
   const onSubmit = (data) => {
@@ -107,7 +105,8 @@ const Login = () => {
         signedUser && ToastMsgSuc("Your login successful!");
 
         signedUser && setSuccess("You login successful!");
-        console.log(signedUser);
+        // console.log(signedUser);
+        reset();
         navigate(from || "/");
       })
       .catch((error) => {

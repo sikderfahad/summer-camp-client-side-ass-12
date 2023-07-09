@@ -2,17 +2,84 @@ import { AwesomeButton } from "react-awesome-button";
 import { useForm } from "react-hook-form";
 import Alart from "../../../../shared/Alart/Alart";
 import useAuth from "../../../../hooks/useAuth";
+import axios from "axios";
+import { baseUrl } from "../../../../router/router";
+import Swal from "sweetalert2";
+import { ToastMsgSuc } from "../../../../components/Toast/ToastMsg";
 
 const AddClass = () => {
   const { user } = useAuth();
 
+  /**
+   * 
+image
+
+name
+"Guitar Class"
+instructor
+
+instructorEmail
+
+availableSeats
+7
+enrolledStudents
+23
+price
+150
+status
+"approved"
+   */
+
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-    console.log(data);
+    //
+    const {
+      email,
+      instructor_name,
+      class_name,
+      class_image,
+      available_seats,
+      price,
+    } = data;
+
+    const classData = {
+      image: class_image,
+      name: class_name,
+      instructor: instructor_name,
+      instructorEmail: email,
+      availableSeats: parseInt(available_seats),
+      price: parseFloat(price),
+      enrolledStudents: 0,
+      status: "pending",
+    };
+
+    Swal.fire({
+      title: "Are you sure?",
+      text: `You want to be add a new class!`,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#000",
+      cancelButtonColor: "#d33",
+      confirmButtonText: `Add a class!`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios.post(`${baseUrl}/add-classes`, classData).then((res) => {
+          console.log(res.data);
+          if (res.data.insertedId) {
+            reset();
+            ToastMsgSuc("You successfully add a class");
+          }
+        });
+      }
+    });
+
+    // const res = axios.post(`${baseUrl}/add-clesses`, classData);
+    // console.log(res.data);
   };
 
   return (
@@ -20,17 +87,17 @@ const AddClass = () => {
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6">
         <div className="relative z-0 w-full mb-6 group">
           <input
-            {...register("email", { required: "Email is required!" })}
+            {...register("email")}
+            value={user?.email}
             type="email"
             name="email"
-            value={user?.email}
             readOnly={true}
             id="email"
-            className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+            className="block py-2.5 px-0 w-full text-sm  bg-transparent border-0 border-b-2 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
             placeholder=" "
             required
           />
-          {errors.email && <Alart msg={errors.email?.message}></Alart>}
+          {/* {errors.email && <Alart msg={errors.email?.message}></Alart>} */}
           <label
             htmlFor="email"
             className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
@@ -41,21 +108,19 @@ const AddClass = () => {
 
         <div className="relative z-0 w-full mb-6 group">
           <input
-            {...register("instructor_name", {
-              required: "Instruntor name is required!",
-            })}
+            {...register("instructor_name")}
             type="text"
             name="instructor_name"
             readOnly={true}
             value={user?.displayName}
             id="instructor_name"
-            className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+            className="block py-2.5 px-0 w-full text-sm  bg-transparent border-0 border-b-2 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
             placeholder=" "
             required
           />
-          {errors.instructor_name && (
+          {/* {errors.instructor_name && (
             <Alart msg={errors.instructor_name?.message}></Alart>
-          )}
+          )} */}
           <label
             htmlFor="instructor_name"
             className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
@@ -71,7 +136,7 @@ const AddClass = () => {
               type="text"
               name="class_name"
               id="class_name"
-              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              className="block py-2.5 px-0 w-full text-sm  bg-transparent border-0 border-b-2 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
               placeholder=" "
               required
             />
@@ -92,7 +157,7 @@ const AddClass = () => {
               type="text"
               name="class_image"
               id="class_image"
-              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              className="block py-2.5 px-0 w-full text-sm  bg-transparent border-0 border-b-2 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
               placeholder=" "
               required
             />
@@ -117,7 +182,7 @@ const AddClass = () => {
               type="number"
               name="available_seats"
               id="available_seats"
-              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              className="block py-2.5 px-0 w-full text-sm  bg-transparent border-0 border-b-2 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
               placeholder=" "
               required
             />
@@ -138,7 +203,7 @@ const AddClass = () => {
               type="number"
               name="price"
               id="price"
-              className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              className="block py-2.5 px-0 w-full text-sm  bg-transparent border-0 border-b-2 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
               placeholder=" "
               required
             />

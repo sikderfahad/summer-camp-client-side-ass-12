@@ -26,7 +26,7 @@ const Header = () => {
     { path: "/", label: "Home" },
     { path: "/test", label: "Test" },
     { path: "/classes", label: "classes" },
-    { path: "/instructor", label: "instructor" },
+    { path: "/instructors", label: "instructors" },
   ];
 
   const dashboardRoute = {
@@ -46,7 +46,9 @@ const Header = () => {
     defaultNav.push(dashboardRoute);
   }
 
-  if (!user) {
+  const isDashboard = defaultNav[4]?.label === "dashboard";
+
+  if (!user && isDashboard) {
     defaultNav.pop();
   }
 

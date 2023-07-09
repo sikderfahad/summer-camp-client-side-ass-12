@@ -2,8 +2,26 @@
 import { AwesomeButton } from "react-awesome-button";
 import { FaBookReader, FaUserGraduate } from "react-icons/fa";
 import { ImPriceTags } from "react-icons/im";
+import { MdPendingActions } from "react-icons/md";
+import { PiWheelchair } from "react-icons/pi";
 
-const Card = ({ item }) => {
+/**
+ 
+
+_id
+image
+name
+instructor
+instructorEmail
+availableSeats
+price
+enrolledStudents
+status
+
+ 
+ */
+
+const Card = ({ item, teacher }) => {
   return (
     <div className="border bg-white dark:bg-transparent shadow transform hover:scale-95 hover:shadow-xl duration-200 rounded-2xl">
       <div className="card overflow-hidden">
@@ -41,11 +59,33 @@ const Card = ({ item }) => {
             </span>{" "}
             {item.price}
           </h1>
-          <div className="card-actions">
-            <AwesomeButton ripple={true} type="primary">
-              SHOW MORE
-            </AwesomeButton>{" "}
-          </div>
+
+          {teacher && (
+            <>
+              <h1 className="text-lg font-bold flex items-center gap-2">
+                <span className="flex items-center gap-2 ">
+                  <PiWheelchair className="text-xl text-[#0c4b65]"></PiWheelchair>{" "}
+                  Available Seat:
+                </span>{" "}
+                {item.availableSeats}
+              </h1>
+              <h1 className="text-lg font-bold flex items-center gap-2">
+                <span className="flex items-center gap-2 ">
+                  <MdPendingActions className="text-xl text-[#0c4b65]"></MdPendingActions>{" "}
+                  Status:
+                </span>{" "}
+                {item.status}
+              </h1>
+            </>
+          )}
+
+          {!teacher && (
+            <div className="card-actions">
+              <AwesomeButton ripple={true} type="primary">
+                SHOW MORE
+              </AwesomeButton>{" "}
+            </div>
+          )}
         </div>
       </div>
     </div>
