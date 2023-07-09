@@ -23,6 +23,3 @@ const useUserType = () => {
   return [userType, userLoading, refetch];
 };
 export default useUserType;
-
-// https://summer-camp-music-server.vercel.app/
-// http://localhost:3000/

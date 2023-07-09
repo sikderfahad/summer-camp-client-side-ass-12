@@ -17,7 +17,7 @@ const useAddClasses = () => {
       return res.data;
     },
   });
-  return [myClasses, refetch, isLoading];
+  return [myClasses, isLoading, refetch];
 };
 
 export default useAddClasses;
