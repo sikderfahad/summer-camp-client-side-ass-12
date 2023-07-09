@@ -13,8 +13,8 @@ import AddClass from "../pages/Dashboard/Instructor/AddClass/AddClass";
 import MyClasses from "../pages/Dashboard/Instructor/MyClasses/MyClasses";
 import Instructors from "../pages/Instructors/Instructors";
 
-// export const baseUrl = "https://summer-camp-music-server.vercel.app";
-export const baseUrl = "http://localhost:3000";
+export const baseUrl = "https://summer-camp-music-server.vercel.app";
+// export const baseUrl = "http://localhost:3000";
 
 export const router = createBrowserRouter([
   {

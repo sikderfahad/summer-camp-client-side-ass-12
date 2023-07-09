@@ -4,24 +4,15 @@ import { FaBookReader, FaUserGraduate } from "react-icons/fa";
 import { ImPriceTags } from "react-icons/im";
 import { MdPendingActions } from "react-icons/md";
 import { PiWheelchair } from "react-icons/pi";
+import { useNavigate } from "react-router-dom";
 
-/**
- 
-
-_id
-image
-name
-instructor
-instructorEmail
-availableSeats
-price
-enrolledStudents
-status
-
- 
- */
-
-const Card = ({ item, teacher }) => {
+const Card = ({ item, teacher, classPage, homePage }) => {
+  const navigate = useNavigate();
+  const handleJoin = () => {
+    if (homePage) {
+      navigate("/classes");
+    }
+  };
   return (
     <div className="border bg-white dark:bg-transparent shadow transform hover:scale-95 hover:shadow-xl duration-200 rounded-2xl">
       <div className="card overflow-hidden">
@@ -59,6 +50,15 @@ const Card = ({ item, teacher }) => {
             </span>{" "}
             {item.price}
           </h1>
+          {classPage && (
+            <h1 className="text-lg font-bold flex items-center gap-2">
+              <span className="flex items-center gap-2 ">
+                <PiWheelchair className="text-xl text-[#0c4b65]"></PiWheelchair>{" "}
+                Available Seat:
+              </span>{" "}
+              {item.availableSeats}
+            </h1>
+          )}
 
           {teacher && (
             <>
@@ -81,8 +81,8 @@ const Card = ({ item, teacher }) => {
 
           {!teacher && (
             <div className="card-actions">
-              <AwesomeButton ripple={true} type="primary">
-                SHOW MORE
+              <AwesomeButton onPress={handleJoin} ripple={true} type="primary">
+                JOIN NOW!
               </AwesomeButton>{" "}
             </div>
           )}

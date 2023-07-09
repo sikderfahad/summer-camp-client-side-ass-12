@@ -1,9 +1,12 @@
-import useAddClasses from "../../hooks/useAddClasses";
+import Skeleton from "../../shared/Skeleton/Skeleton";
 
 const Test = () => {
-  const [myClasses] = useAddClasses();
   // console.log(myClasses);
-  return <div></div>;
+  return (
+    <div>
+      <Skeleton></Skeleton>
+    </div>
+  );
 };
 
 export default Test;

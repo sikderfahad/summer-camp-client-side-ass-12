@@ -12,7 +12,7 @@ const PopularClasses = () => {
       </div>
       <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {popularClass?.map((item) => (
-          <Card key={item._id} item={item}></Card>
+          <Card key={item._id} item={item} homePage={true}></Card>
         ))}
       </div>
     </div>
