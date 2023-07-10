@@ -7,13 +7,12 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { ToastMsgSuc } from "../../../../../components/Toast/ToastMsg";
 import { baseUrl } from "../../../../../router/router";
-import Spinner from "../../../../../components/Spinner/Spinner";
 
-const UserTable = ({ users, refetch, userLoading }) => {
+const UserTable = ({ users, refetch }) => {
   // console.log(users);
-  if (userLoading) {
-    refetch();
-  }
+  // if (userLoading) {
+  //   refetch();
+  // }
   const changeUserRole = (id, role, name) => {
     const newRole = role.role;
     Swal.fire({
@@ -54,72 +53,69 @@ const UserTable = ({ users, refetch, userLoading }) => {
             <th className="uppercase text-center">ACTION</th>
           </tr>
         </thead>
-        {!userLoading ? (
-          <tbody>
-            {users &&
-              users?.map((user, index) => (
-                <tr key={index}>
-                  <th>
-                    <span>{index + 1}</span>
-                  </th>
 
-                  <td>
-                    <img
-                      className="w-[100px] h-[100px] rounded-lg"
-                      src={user?.photoURL}
-                      alt=""
-                    />{" "}
-                  </td>
+        <tbody>
+          {users &&
+            users?.map((user, index) => (
+              <tr key={index}>
+                <th>
+                  <span>{index + 1}</span>
+                </th>
 
-                  <td>
-                    <p className="text-lg">{user?.displayName}</p>
-                  </td>
+                <td>
+                  <img
+                    className="w-[100px] h-[100px] rounded-lg"
+                    src={user?.photoURL}
+                    alt=""
+                  />{" "}
+                </td>
 
-                  <td>
-                    <p className="text-base">{user?.email} </p>
-                  </td>
+                <td>
+                  <p className="text-lg">{user?.displayName}</p>
+                </td>
 
-                  <td>
-                    <span className="text-lg font-semibold">{user?.role}</span>
-                  </td>
-                  <td>
-                    <span className="flex flex-col gap-3">
-                      <AwesomeButton
-                        disabled={user?.role === "instructor" && true}
-                        onPress={() =>
-                          changeUserRole(
-                            user._id,
-                            { role: "instructor" },
-                            user.displayName
-                          )
-                        }
-                        type="primary"
-                        className={styles.roleBtn}
-                      >
-                        Make Instructor
-                      </AwesomeButton>
-                      <AwesomeButton
-                        disabled={user?.role === "admin" && true}
-                        onPress={() =>
-                          changeUserRole(
-                            user._id,
-                            { role: "admin" },
-                            user.displayName
-                          )
-                        }
-                        type="secondary"
-                        className={styles.roleBtn}
-                      >
-                        Make Admin
-                      </AwesomeButton>
-                    </span>
-                  </td>
-                </tr>
-              ))}
-          </tbody>
-        ) : (
-          <Spinner></Spinner>
-        )}
+                <td>
+                  <p className="text-base">{user?.email} </p>
+                </td>
+
+                <td>
+                  <span className="text-lg font-semibold">{user?.role}</span>
+                </td>
+                <td>
+                  <span className="flex flex-col gap-3">
+                    <AwesomeButton
+                      disabled={user?.role === "instructor" && true}
+                      onPress={() =>
+                        changeUserRole(
+                          user._id,
+                          { role: "instructor" },
+                          user.displayName
+                        )
+                      }
+                      type="primary"
+                      className={styles.roleBtn}
+                    >
+                      Make Instructor
+                    </AwesomeButton>
+                    <AwesomeButton
+                      disabled={user?.role === "admin" && true}
+                      onPress={() =>
+                        changeUserRole(
+                          user._id,
+                          { role: "admin" },
+                          user.displayName
+                        )
+                      }
+                      type="secondary"
+                      className={styles.roleBtn}
+                    >
+                      Make Admin
+                    </AwesomeButton>
+                  </span>
+                </td>
+              </tr>
+            ))}
+        </tbody>
         {/* foot */}
       </table>
     </div>

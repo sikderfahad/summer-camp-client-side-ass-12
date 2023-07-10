@@ -29,7 +29,7 @@ const ModeBtn = ({ dashboard }) => {
   const checkboxId = Math.ceil(Math.random() * 10);
   return (
     <label
-      className={`swap swap-rotate text-[--navColor] ${
+      className={`swap swap-rotate  ${!dashboard && "text-[--navColor]"} ${
         dashboard && "bg-[--modeBtnBgDb] text-[--modeBtnTextDb]"
       }`}
     >

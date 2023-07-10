@@ -1,4 +1,5 @@
 import useManageUsers from "../../../../../hooks/useManageUsers";
+import FadingLoader from "../../../../../shared/Loader/Loader";
 import UserTable from "../UserTable/UserTable";
 // import { useQuery } from "@tanstack/react-query";
 
@@ -36,11 +37,15 @@ const AllUsers = () => {
         </h1>
 
         <div className="mt-8">
-          <UserTable
-            users={users}
-            refetch={refetch}
-            userLoading={userLoading}
-          ></UserTable>
+          {!userLoading ? (
+            <UserTable users={users} refetch={refetch}></UserTable>
+          ) : (
+            <div>
+              <FadingLoader></FadingLoader>
+              <FadingLoader></FadingLoader>
+              <FadingLoader></FadingLoader>
+            </div>
+          )}
         </div>
       </div>
     </div>

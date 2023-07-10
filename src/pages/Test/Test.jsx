@@ -1,10 +1,11 @@
-import Skeleton from "../../shared/Skeleton/Skeleton";
+import FadingLoader from "../../shared/Loader/Loader";
+// import Skeleton from "../../shared/Skeleton/Skeleton";
 
 const Test = () => {
   // console.log(myClasses);
   return (
-    <div>
-      <Skeleton></Skeleton>
+    <div className="mt-40">
+      <FadingLoader></FadingLoader>
     </div>
   );
 };
