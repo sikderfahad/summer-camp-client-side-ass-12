@@ -135,7 +135,7 @@ const ClassTable = ({ allClass, refetch }) => {
                   </td>
                   <td>
                     <span className="flex flex-col gap-3">
-                      <button
+                      {/* <button
                         className="btn btn-ghost"
                         onClick={() =>
                           changeClassStatus(
@@ -146,7 +146,7 @@ const ClassTable = ({ allClass, refetch }) => {
                         }
                       >
                         Change
-                      </button>
+                      </button> */}
                       <AwesomeButton
                         disabled={
                           userClass?.status === "approved" ||
