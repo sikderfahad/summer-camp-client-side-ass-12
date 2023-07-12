@@ -1,9 +1,11 @@
 import useManageUsers from "../../../../../hooks/useManageUsers";
+import useTitle from "../../../../../hooks/useTitle";
 import FadingLoader from "../../../../../shared/Loader/Loader";
 import UserTable from "../UserTable/UserTable";
 // import { useQuery } from "@tanstack/react-query";
 
 const AllUsers = () => {
+  useTitle("Manage Users");
   // const {
   //   data: users = [],
   //   refetch,

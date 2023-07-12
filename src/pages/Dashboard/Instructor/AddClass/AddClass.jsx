@@ -6,29 +6,11 @@ import axios from "axios";
 import { baseUrl } from "../../../../router/router";
 import Swal from "sweetalert2";
 import { ToastMsgSuc } from "../../../../components/Toast/ToastMsg";
+import useTitle from "../../../../hooks/useTitle";
 
 const AddClass = () => {
+  useTitle("Create Class");
   const { user } = useAuth();
-
-  /**
-   * 
-image
-
-name
-"Guitar Class"
-instructor
-
-instructorEmail
-
-availableSeats
-7
-enrolledStudents
-23
-price
-150
-status
-"approved"
-   */
 
   const {
     register,

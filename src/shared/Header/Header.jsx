@@ -24,7 +24,6 @@ const Header = () => {
   // instructor/my-class
   const defaultNav = [
     { path: "/", label: "Home" },
-    { path: "/test", label: "Test" },
     { path: "/classes", label: "classes" },
     { path: "/instructors", label: "instructors" },
   ];

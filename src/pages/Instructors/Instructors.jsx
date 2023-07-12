@@ -1,9 +1,11 @@
 import useInstructors from "../../hooks/useInstructors";
+import useTitle from "../../hooks/useTitle";
 import Skeleton from "../../shared/Skeleton/Skeleton";
 import TeacherCard from "../../shared/TeacherCard/TeacherCard";
 import Title from "../../shared/Title/Title";
 
 const Instructors = () => {
+  useTitle("Instructors");
   const [teachers, isLoading] = useInstructors();
   console.log(teachers);
   return (

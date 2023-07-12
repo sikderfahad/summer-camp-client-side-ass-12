@@ -5,6 +5,7 @@ import { ImPriceTags } from "react-icons/im";
 import { MdPendingActions } from "react-icons/md";
 import { PiWheelchair } from "react-icons/pi";
 import { useNavigate } from "react-router-dom";
+import useUserType from "../../hooks/useUserType";
 
 const Card = ({ item, teacher, classPage, homePage }) => {
   const navigate = useNavigate();
@@ -13,8 +14,19 @@ const Card = ({ item, teacher, classPage, homePage }) => {
       navigate("/classes");
     }
   };
+
+  const [userType] = useUserType();
+  const isAdmin = userType === "admin";
+  const isInstructor = userType === "instructor";
+
+  const noSeat = classPage && item.availableSeats === 0;
+
   return (
-    <div className="border bg-white dark:bg-transparent shadow transform hover:scale-95 hover:shadow-xl duration-200 rounded-2xl">
+    <div
+      className={`border ${
+        noSeat && "bg-red-600"
+      } shadow transform hover:scale-95 hover:shadow-xl duration-200 rounded-2xl`}
+    >
       <div className="card overflow-hidden">
         <figure>
           <img
@@ -26,7 +38,9 @@ const Card = ({ item, teacher, classPage, homePage }) => {
         </figure>
         <div className="card-body text-start">
           <h2 className="card-title text-2xl font-extrabold capitalize">
-            <span className="text-[#c25934]">{item.name.split(" ")[0]}</span>
+            <span className={`${noSeat ? "text-white" : "text-[#c25934]"} `}>
+              {item.name.split(" ")[0]}
+            </span>
             <span className="text-[#0c4b65]">{item.name.split(" ")[1]}</span>
           </h2>
           <h1 className="text-lg font-bold flex items-center gap-2">
@@ -81,7 +95,12 @@ const Card = ({ item, teacher, classPage, homePage }) => {
 
           {!teacher && (
             <div className="card-actions">
-              <AwesomeButton onPress={handleJoin} ripple={true} type="primary">
+              <AwesomeButton
+                disabled={(classPage && (isAdmin || isInstructor)) || noSeat}
+                onPress={handleJoin}
+                ripple={true}
+                type="primary"
+              >
                 JOIN NOW!
               </AwesomeButton>{" "}
             </div>

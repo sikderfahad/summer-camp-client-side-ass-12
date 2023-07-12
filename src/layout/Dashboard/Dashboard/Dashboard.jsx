@@ -68,8 +68,8 @@ const defaultMenu = [
   },
   {
     icon: <HiShoppingBag></HiShoppingBag>,
-    menuName: "instractors",
-    path: "/instractors",
+    menuName: "instructors",
+    path: "/instructors",
   },
 ];
 

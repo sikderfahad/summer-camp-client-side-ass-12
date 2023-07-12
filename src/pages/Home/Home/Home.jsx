@@ -1,5 +1,6 @@
 // import React from 'react';
 
+import useTitle from "../../../hooks/useTitle";
 import AboutSchool from "../AboutSchool/AboutSchool";
 import BannerCarousel from "../Carousel/Carousel";
 import Notes from "../Notes/Notes";
@@ -7,6 +8,7 @@ import PopularClasses from "../PopularClasses/PopularClasses";
 import PopularTeacher from "../PopularTeacher/PopularTeacher";
 // bg-[#f7f5ef]
 const Home = () => {
+  useTitle("Home");
   return (
     <div className="">
       <div className="relative">

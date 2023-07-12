@@ -19,12 +19,6 @@ const Notes = () => {
           doing music or singing
         </p>
         <div className="flex items-center justify-center font-extrabold gap-8 mt-8">
-          {/* <button className="bg-[#0c4b65] rounded-lg  py-5 px-12 text-lg uppercase text-white hover:text-[#0c4b65] duration-200 hover:bg-white">
-            get started
-          </button> */}
-          {/* <button className="bg-[#c25934] rounded-lg  py-5 px-12 text-lg uppercase text-white hover:text-[#0c4b65] duration-200 hover:bg-white">
-            choose class
-          </button> */}
           <ButtonAwesome text={"GET STARTED"}></ButtonAwesome>
           <ButtonAwesome text={"CHOOSE CLASS"} type={"danger"}></ButtonAwesome>
         </div>

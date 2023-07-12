@@ -1,9 +1,11 @@
 import useAddClasses from "../../../../hooks/useAddClasses";
+import useTitle from "../../../../hooks/useTitle";
 import Card from "../../../../shared/Card/Card";
 import Skeleton from "../../../../shared/Skeleton/Skeleton";
 import Title from "../../../../shared/Title/Title";
 
 const MyClasses = () => {
+  useTitle("Instructor Class");
   const [myClasses, isLoading] = useAddClasses();
   console.log(myClasses);
   return (

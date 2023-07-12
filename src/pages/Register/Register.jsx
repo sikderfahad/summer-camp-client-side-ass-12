@@ -35,7 +35,7 @@ const Register = () => {
     reset,
   } = useForm();
   const onSubmit = (data) => {
-    console.log(data);
+    // console.log(data);
 
     const { name, email, password, confPassword, photo } = data;
 
@@ -70,32 +70,11 @@ const Register = () => {
               .catch((err) => {
                 console.log(err);
               });
-            console.log("user updated");
+            // console.log("user updated");
           })
           .catch((error) => {
             console.log(error);
           });
-
-        // profileName(newUser, {
-        //   displayName: name,
-        //   photoURL: photo && photo,
-        // })
-        //   .then(() => {
-        //     setSuccess("You successfuly create an account!");
-        //     ToastMsgSuc("Signup successful! Please login to continue...");
-
-        //     // Logout after successfully Registration
-        //     logOut()
-        //       .then(() => {
-        //         navigate("/login");
-        //       })
-        //       .catch((err) => {
-        //         console.log(err);
-        //       });
-        //   })
-        //   .catch((err) => {
-        //     console.log(err.message);
-        //   });
 
         console.log(newUser);
       })

@@ -92,7 +92,7 @@ const Login = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
+    // console.log(data);
     const { email, password } = data;
 
     setError("");
@@ -129,7 +129,7 @@ const Login = () => {
         wrongPassword && setError("Wrong Password! Please try again");
         wrongPassword && ToastMsgError("Wrong Password!");
 
-        const networkFaild = error.message.includes("network-request-faild");
+        const networkFaild = error.message.includes("network-request-failed");
         networkFaild && setError("No Internet! Please check your connectivity");
         networkFaild && ToastMsgError("No Internet!");
       });

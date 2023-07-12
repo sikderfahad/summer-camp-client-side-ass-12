@@ -8,7 +8,7 @@ const saveNewUser = (email, name, photo) => {
     photoURL: photo,
     role: "student",
   };
-  console.log(newUser);
+  // console.log(newUser);
   axios.post(`${baseUrl}/users`, newUser);
 };
 

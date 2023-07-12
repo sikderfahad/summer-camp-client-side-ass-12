@@ -12,6 +12,7 @@ import AllUsers from "../pages/Dashboard/Admin/AllUsers/AllUsers/AllUsers";
 import AddClass from "../pages/Dashboard/Instructor/AddClass/AddClass";
 import MyClasses from "../pages/Dashboard/Instructor/MyClasses/MyClasses";
 import Instructors from "../pages/Instructors/Instructors";
+import NotFound from "../layout/NotFound/NotFound";
 
 // export const baseUrl = "https://summer-camp-music-server.vercel.app";
 export const baseUrl = "http://localhost:3000";
@@ -53,10 +54,6 @@ export const router = createBrowserRouter([
           // </ConsRoute>
         ),
       },
-      {
-        path: "*",
-        element: <ErrorPage></ErrorPage>,
-      },
     ],
   },
 
@@ -80,6 +77,18 @@ export const router = createBrowserRouter([
       {
         path: "instructor/my-class",
         element: <MyClasses></MyClasses>,
+      },
+    ],
+  },
+
+  // 4O4 Not Found page
+  {
+    path: "/",
+    element: <NotFound></NotFound>,
+    children: [
+      {
+        path: "*",
+        element: <ErrorPage></ErrorPage>,
       },
     ],
   },
