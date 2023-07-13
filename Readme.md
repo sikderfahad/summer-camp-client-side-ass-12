@@ -1,6 +1,10 @@
-- My react app name ' Nota Corda ' → ![Logo](https://i.ibb.co/rfK9GSn/nota-logo.png)
+![Logo](https://i.ibb.co/rfK9GSn/nota-logo.png)
 
-## :writing_hand: **Five Major Featurs**
+<br/>
+
+- My react app name ' Nota Corda '
+
+## :🎯: **Five Major Featurs**
 
 1. Expert Music Instructors:
 
