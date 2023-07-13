@@ -4,7 +4,7 @@
 
 - My react app name ' Nota Corda '
 
-## :🎯: **Five Major Featurs**
+## 🎯 **Five Major Featurs**
 
 1. Expert Music Instructors:
 
