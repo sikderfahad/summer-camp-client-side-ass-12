@@ -6,10 +6,14 @@ import Title from "../../../../shared/Title/Title";
 import ClassForm from "../../../../shared/ClassForm/ClassForm";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
-import { ToastMsgSuc } from "../../../../components/Toast/ToastMsg";
+import {
+  ToastMsgSuc,
+  ToastMsgWarn,
+} from "../../../../components/Toast/ToastMsg";
 import axios from "axios";
 import { baseUrl } from "../../../../router/router";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const MyClasses = () => {
   useTitle("Instructor Class");
@@ -17,6 +21,8 @@ const MyClasses = () => {
   const [feedback, setFeedback] = useState("");
 
   const [classInfo, setClassInfo] = useState("");
+
+  const navigate = useNavigate();
 
   const showFeedbackModal = (feedback) => {
     window.show_feedback_modal.showModal();
@@ -42,15 +48,14 @@ const MyClasses = () => {
     const { image, name, availableSeats, price } = data;
     if (image != classInfo.image) {
       ToastMsgSuc("You changes class image");
-    }
-    if (name != classInfo.name) {
+    } else if (name != classInfo.name) {
       ToastMsgSuc("You changes class name");
-    }
-    if (availableSeats != classInfo.availableSeats) {
+    } else if (availableSeats != classInfo.availableSeats) {
       ToastMsgSuc("You changes class available seats");
-    }
-    if (price != classInfo.price) {
+    } else if (price != classInfo.price) {
       ToastMsgSuc("You changes class booking price");
+    } else {
+      ToastMsgWarn("There was no changes to update!");
     }
 
     const updateData = {
@@ -71,6 +76,7 @@ const MyClasses = () => {
             showConfirmButton: false,
             timer: 3000,
           });
+          navigate("/dashboard/instructor/my-class");
           refetch();
         }
       });

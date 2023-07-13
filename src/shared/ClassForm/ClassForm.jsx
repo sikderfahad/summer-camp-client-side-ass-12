@@ -12,7 +12,7 @@ const ClassForm = ({ register, classInfo, errors }) => {
           <input
             type="text"
             {...register("name", { required: "Class name is required!" })}
-            value={name}
+            defaultValue={name}
             name="name"
             id="name"
             className="block py-2.5 px-0 w-full text-sm  bg-transparent border-0 border-b-2 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
@@ -34,7 +34,7 @@ const ClassForm = ({ register, classInfo, errors }) => {
             {...register("image", {
               required: "Class image is required!",
             })}
-            value={image}
+            defaultValue={image}
             type="text"
             name="image"
             id="image"
@@ -58,7 +58,7 @@ const ClassForm = ({ register, classInfo, errors }) => {
             {...register("availableSeats", {
               required: "Available seats is required!",
             })}
-            value={availableSeats}
+            defaultValue={availableSeats}
             type="number"
             name="availableSeats"
             id="availableSeats"
@@ -80,7 +80,7 @@ const ClassForm = ({ register, classInfo, errors }) => {
         <div className="relative z-0 w-full mb-6 group">
           <input
             {...register("price", { required: "Price is required!" })}
-            value={price}
+            defaultValue={price}
             type="number"
             name="price"
             id="price"

@@ -2,13 +2,13 @@
 
 <br/>
 
-- My react app name ' Nota Corda '
+- My react app name ' [Nota Corda](https://summer-camp-music.web.app/) '
 
 ## 🎯 **Five Major Featurs**
 
 1. Expert Music Instructors:
 
-   > Our summer camp music school boasts a team of experienced and skilled music instructors who are passionate about teaching. They have expertise in various musical instruments and genres, ensuring students receive top-notch guidance and mentorship.
+   > Our summer camp music school boasts a team of experienced and skilled music instructors who are passionate about teaching. They have expertise in various musical inMarkdown Previewstruments and genres, ensuring students receive top-notch guidance and mentorship.
 
 2. Diverse Instrument Selection:
 
@@ -25,3 +25,33 @@
 5. Fun and Engaging Activities:
 
    > While focused on musical development, our summer camp music school also ensures a fun and enjoyable experience for all participants. Alongside the lessons and practice sessions, students can enjoy engaging activities such as music games, jam sessions, themed workshops, and performances, fostering a vibrant and enthusiastic musical community.
+
+<br/>
+
+## ** Use packages **
+
+- "@fortawesome/react-fontawesome"
+- "@primer/octicons-react"
+- "@tanstack/react-query"
+- "axios"
+- "dotenv"
+- "firebase"
+- "react-awesome-button"
+- "react-awesome-slider"
+- "react-content-loader"
+- "react-hook-form"
+- "react-icons"
+- "react-loader-spinner"
+- "react-parallax"
+- "react-responsive-carousel"
+- "react-router-dom"
+- "react-toastify"
+- "styled-components"
+- "sweetalert2"
+- "swiper"
+
+<br/>
+
+## 🔗 ** Live website link **
+
+- https://summer-camp-music.web.app/
