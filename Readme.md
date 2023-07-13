@@ -28,7 +28,7 @@
 
 <br/>
 
-## ** Use packages **
+## ✅ **Use packages**
 
 - "@fortawesome/react-fontawesome"
 - "@primer/octicons-react"
@@ -52,6 +52,6 @@
 
 <br/>
 
-## 🔗 ** Live website link **
+## 🔗 **Live website link**
 
 - https://summer-camp-music.web.app/
