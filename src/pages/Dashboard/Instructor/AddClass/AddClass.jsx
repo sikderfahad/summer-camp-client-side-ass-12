@@ -114,7 +114,9 @@ const AddClass = () => {
         <div className="grid md:grid-cols-2 md:gap-6">
           <div className="relative z-0 w-full mb-6 group">
             <input
-              {...register("class_name", { required: "Email is required!" })}
+              {...register("class_name", {
+                required: "Class name is required!",
+              })}
               type="text"
               name="class_name"
               id="class_name"
@@ -135,7 +137,9 @@ const AddClass = () => {
 
           <div className="relative z-0 w-full mb-6 group">
             <input
-              {...register("class_image", { required: "Email is required!" })}
+              {...register("class_image", {
+                required: "Class image is required!",
+              })}
               type="text"
               name="class_image"
               id="class_image"
@@ -159,7 +163,7 @@ const AddClass = () => {
           <div className="relative z-0 w-full mb-6 group">
             <input
               {...register("available_seats", {
-                required: "Email is required!",
+                required: "Available seat is required!",
               })}
               type="number"
               name="available_seats"
@@ -181,7 +185,7 @@ const AddClass = () => {
 
           <div className="relative z-0 w-full mb-6 group">
             <input
-              {...register("price", { required: "Email is required!" })}
+              {...register("price", { required: "Price is required!" })}
               type="number"
               name="price"
               id="price"
