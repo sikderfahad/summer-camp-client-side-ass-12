@@ -12,7 +12,7 @@ const slider5 = "https://i.ibb.co/HgYkk9Z/SLIDE5.jpg";
 const BannerCarousel = () => {
   const sliderImgBox = [slider1, slider2, slider3, slider4, slider5];
   return (
-    <div className="relative min-h-screen">
+    <div className="relative min-h-screen mt-16 md:mt-0">
       <Carousel
         autoPlay="true"
         infiniteLoop="true"
@@ -22,6 +22,7 @@ const BannerCarousel = () => {
         showArrows={false}
         showIndicators={false}
         swipeable={true}
+        showStatus={false}
       >
         {sliderImgBox.map((item, idx) => (
           <div className="carousel-container" key={idx}>
@@ -30,8 +31,8 @@ const BannerCarousel = () => {
         ))}
       </Carousel>
       <div className="slider-content absolute w-full h-full top-0 flex items-center justify-center bg-[#00000047] left-0">
-        <div className="text-center w-full lg:max-w-screen-md mx-auto">
-          <h3 className="text-[#efcf4f] spicy-title text-[48px] ">
+        <div className="text-center w-11/12 md:w-full lg:max-w-screen-md mx-auto">
+          <h3 className="text-[#efcf4f] spicy-title text-3xl md:text-[48px] ">
             Playing Guitar —
           </h3>
           <h1
@@ -39,18 +40,16 @@ const BannerCarousel = () => {
               letterSpacing: "5px",
               textShadow: "6px 8px 0px rgba(0,0,0,.15)",
             }}
-            className="text-[120px] -mt-8 spicy-title text-white"
+            className="text-5xl md:text-[120px] md:mt-4 spicy-title text-white"
           >
             Realy Easy
           </h1>
-          <p className="mt-4 text-xl font-semibold text-white">
+          <p className="mt-4 text-base md:text-xl text-justify md:text-center font-semibold text-white">
             Pellentesque mattis mauris ac tortor volutpat, eu fermentum sapien
             euismod. In id tempus metus. Donec eu volutpat nibh, in maximus
             ligula.
           </p>
-          {/* <button className="bg-[#c25934] py-4 px-8 hover:bg-white hover:text-gray-900 duration-200 mt-8 text-xl font-bold rounded-lg text-white uppercase">
-            Read More
-          </button> */}
+
           <div className="mt-8">
             <ButtonAwesome type={"danger"}></ButtonAwesome>
           </div>

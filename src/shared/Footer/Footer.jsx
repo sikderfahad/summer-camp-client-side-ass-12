@@ -9,11 +9,15 @@ import {
 
 const Footer = () => {
   return (
-    <div className=" p-10 bg-[--accent] mt-12">
-      <footer className="footer grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 justify-center max-w-screen-xl mx-auto p-10  text-[--white]">
+    <div className="p-5 md:p-10 bg-[--accent] mt-12">
+      <footer className="footer grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 justify-center max-w-screen-xl mx-auto md:p-10 text-[--white]">
         <div>
-          <img src="https://i.ibb.co/rfK9GSn/nota-logo.png" alt="" />
-          <p className="mt-6  leading-[2] text-lg">
+          <img
+            className="w-2/3"
+            src="https://i.ibb.co/rfK9GSn/nota-logo.png"
+            alt=""
+          />
+          <p className="mt-6 leading-[2] text-justify md:text-center text-base md:text-lg">
             Quisque quis dignissim elit. Aliquam et augue aliquet orci maximus
             convallis id vitae augue. Phasellus elementum commodo aliquet.
           </p>

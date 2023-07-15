@@ -3,9 +3,10 @@
 import { NavLink, Outlet } from "react-router-dom";
 import { GrClose, GrMenu } from "react-icons/gr";
 import { AiFillHome } from "react-icons/ai";
-import { GiHamburgerMenu } from "react-icons/gi";
-import { HiShoppingBag } from "react-icons/hi";
-import { FaBook, FaCalendarAlt, FaUsers } from "react-icons/fa";
+import { GiTeacher } from "react-icons/gi";
+import { BiSolidBookAdd } from "react-icons/bi";
+import { HiUserGroup } from "react-icons/hi";
+import { FaBook, FaCalendarAlt, FaUsersCog } from "react-icons/fa";
 import "./Dashboard.css";
 import DashboardNavLink from "../DashboardNavLink/DashboardNavLink";
 import ToastBox from "../../../components/Toast/ToastBox";
@@ -20,7 +21,7 @@ const adminMenu = [
     path: "/dashboard/admin/manage-class",
   },
   {
-    icon: <FaUsers></FaUsers>,
+    icon: <FaUsersCog></FaUsersCog>,
     menuName: "manage users",
     path: "/dashboard/admin/manage-users",
   },
@@ -29,7 +30,7 @@ const adminMenu = [
 // Instructor Dashboard Menu
 const instructorMenu = [
   {
-    icon: <AiFillHome></AiFillHome>,
+    icon: <BiSolidBookAdd></BiSolidBookAdd>,
     menuName: "add a class",
     path: "/dashboard/instructor/add-class",
   },
@@ -62,12 +63,12 @@ const defaultMenu = [
     path: "/",
   },
   {
-    icon: <GiHamburgerMenu></GiHamburgerMenu>,
+    icon: <GiTeacher></GiTeacher>,
     menuName: "classes",
     path: "/classes",
   },
   {
-    icon: <HiShoppingBag></HiShoppingBag>,
+    icon: <HiUserGroup></HiUserGroup>,
     menuName: "instructors",
     path: "/instructors",
   },

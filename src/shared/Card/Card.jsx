@@ -58,21 +58,21 @@ const Card = ({
               </span>
               <span className="text-[#0c4b65]">{item.name.split(" ")[1]}</span>
             </h2>
-            <h1 className="text-lg font-bold flex items-center gap-2">
+            <h1 className="text-base md:text-lg font-bold flex items-center gap-2">
               <span className="flex items-center gap-2 ">
                 <FaUserGraduate className="text-xl text-[#0c4b65]"></FaUserGraduate>{" "}
                 Instructor:
               </span>{" "}
               {item.instructor}
             </h1>
-            <h1 className="text-lg font-bold flex items-center gap-2">
+            <h1 className="text-base md:text-lg font-bold flex items-center gap-2">
               <span className="flex items-center gap-2 ">
                 <FaBookReader className="text-xl text-[#0c4b65]"></FaBookReader>{" "}
                 Students:
               </span>{" "}
               {item.enrolledStudents}
             </h1>
-            <h1 className="text-lg font-bold flex items-center gap-2">
+            <h1 className="text-base md:text-lg font-bold flex items-center gap-2">
               <span className="flex items-center gap-2 ">
                 <ImPriceTags className="text-xl text-[#0c4b65]"></ImPriceTags>{" "}
                 Price:
@@ -80,7 +80,7 @@ const Card = ({
               {item.price}
             </h1>
             {classPage && (
-              <h1 className="text-lg font-bold flex items-center gap-2">
+              <h1 className="text-base md:text-lg font-bold flex items-center gap-2">
                 <span className="flex items-center gap-2 ">
                   <PiWheelchair className="text-xl text-[#0c4b65]"></PiWheelchair>{" "}
                   Available Seat:
@@ -91,29 +91,21 @@ const Card = ({
 
             {teacher && (
               <>
-                <h1 className="text-lg font-bold flex items-center gap-2">
+                <h1 className="text-base md:text-lg font-bold flex items-center gap-2">
                   <span className="flex items-center gap-2 ">
                     <PiWheelchair className="text-xl text-[#0c4b65]"></PiWheelchair>{" "}
                     Available Seat:
                   </span>{" "}
                   {item.availableSeats}
                 </h1>
-                <h1 className="text-lg font-bold flex items-center gap-2">
+                <h1 className="text-base md:text-lg font-bold flex items-center gap-2">
                   <span className="flex items-center gap-2 ">
                     <MdPendingActions className="text-xl text-[#0c4b65]"></MdPendingActions>{" "}
                     Status:
                   </span>{" "}
                   {item.status}
                 </h1>
-                {/* {item.feedback && (
-                <h1 className="text-lg font-bold flex flex-col gap-2">
-                  <span className="flex items-center gap-2 ">
-                    <MdFeedback className="text-xl text-[#0c4b65]"></MdFeedback>{" "}
-                    Feedback:
-                  </span>{" "}
-                  <span className="text-base">{item?.feedback}</span>
-                </h1>
-              )} */}
+
                 <div className="flex item-center justify-between mt-2">
                   {item?.feedback && (
                     <button
