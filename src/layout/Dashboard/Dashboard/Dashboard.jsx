@@ -45,13 +45,13 @@ const instructorMenu = [
 const studentMenu = [
   {
     icon: <AiFillHome></AiFillHome>,
-    menuName: "my selected classes",
-    path: "/dashboard/client-home",
+    menuName: "selected classes",
+    path: "/dashboard/student/selected-class",
   },
   {
     icon: <FaCalendarAlt></FaCalendarAlt>,
-    menuName: "my enrolled classes",
-    path: "/client-dashboard/reservation",
+    menuName: "enrolled classes",
+    path: "/dashboard/student/enrolled-class",
   },
 ];
 

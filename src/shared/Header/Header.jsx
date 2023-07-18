@@ -12,6 +12,7 @@ const Header = () => {
   const [userType] = useUserType();
   const isAdmin = userType === "admin";
   const isInstructor = userType === "instructor";
+  const isStudent = userType === "student";
   // const isStudent = userType === "student";
 
   const handledLogout = () => {
@@ -39,6 +40,10 @@ const Header = () => {
 
   if (isInstructor) {
     dashboardRoute.path = "/dashboard/instructor/add-class";
+  }
+
+  if (isStudent) {
+    dashboardRoute.path = "/dashboard/student/selected-class";
   }
 
   if (user) {

@@ -13,6 +13,8 @@ import AddClass from "../pages/Dashboard/Instructor/AddClass/AddClass";
 import MyClasses from "../pages/Dashboard/Instructor/MyClasses/MyClasses";
 import Instructors from "../pages/Instructors/Instructors";
 import NotFound from "../layout/NotFound/NotFound";
+import SelectedClass from "../pages/Dashboard/Student/SelectedClass/SelectedClass/SelectedClass";
+import EnrolledClass from "../pages/Dashboard/Student/EnrolledClass/EnrolledClass";
 
 // export const baseUrl = "https://summer-camp-music-server.vercel.app";
 export const baseUrl = "http://localhost:3000";
@@ -77,6 +79,14 @@ export const router = createBrowserRouter([
       {
         path: "instructor/my-class",
         element: <MyClasses></MyClasses>,
+      },
+      {
+        path: "student/selected-class",
+        element: <SelectedClass></SelectedClass>,
+      },
+      {
+        path: "student/enrolled-class",
+        element: <EnrolledClass></EnrolledClass>,
       },
     ],
   },

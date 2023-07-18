@@ -41,12 +41,3 @@ const Classes = () => {
 };
 
 export default Classes;
-
-/**
-image
-name
-price
-instructor
-availableSeats
-Select Button.
- */

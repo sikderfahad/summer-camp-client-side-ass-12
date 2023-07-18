@@ -6,6 +6,11 @@ import { MdPendingActions } from "react-icons/md";
 import { PiWheelchair } from "react-icons/pi";
 import { useNavigate } from "react-router-dom";
 import useUserType from "../../hooks/useUserType";
+import useAuth from "../../hooks/useAuth";
+import axios from "axios";
+import { baseUrl } from "../../router/router";
+import Swal from "sweetalert2";
+import { useState } from "react";
 
 const Card = ({
   item,
@@ -15,6 +20,10 @@ const Card = ({
   showFeedbackModal,
   showClassUpdateModal,
 }) => {
+  const { user } = useAuth();
+
+  const [isDisabled, setIsDisabled] = useState(false);
+
   const handledFeedbackModal = (feedback) => {
     showFeedbackModal(feedback);
   };
@@ -22,10 +31,47 @@ const Card = ({
   const handledClassUpdateModal = () => {
     showClassUpdateModal(item);
   };
+
   const navigate = useNavigate();
+
   const handleJoin = () => {
     if (homePage) {
       navigate("/classes");
+    }
+    if (classPage) {
+      const { image, name, instructor, instructorEmail, price } = item;
+      const bookingClass = {
+        image,
+        name,
+        instructor,
+        instructorEmail,
+        price,
+        studentEmail: user.email,
+      };
+
+      Swal.fire({
+        title: "Are you sure?",
+        text: `You want to booking ${name}!`,
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, select it!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          axios.post(`${baseUrl}/booking-class`, bookingClass).then((res) => {
+            if (res.data.insertedId) {
+              Swal.fire(
+                "Selected!",
+                `${name} save to your account.`,
+                "success"
+              );
+              setIsDisabled(true);
+            }
+            console.log(res.data);
+          });
+        }
+      });
     }
   };
 
@@ -126,7 +172,11 @@ const Card = ({
             {!teacher && (
               <div className="card-actions">
                 <AwesomeButton
-                  disabled={(classPage && (isAdmin || isInstructor)) || noSeat}
+                  disabled={
+                    (classPage && (isAdmin || isInstructor)) ||
+                    noSeat ||
+                    isDisabled
+                  }
                   onPress={handleJoin}
                   ripple={true}
                   type="primary"
