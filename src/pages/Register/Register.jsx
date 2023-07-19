@@ -34,66 +34,84 @@ const Register = () => {
     formState: { errors },
     reset,
   } = useForm();
+
+  const img_key = import.meta.env.VITE_imageBB_api_token;
+  const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_key}`;
+
   const onSubmit = (data) => {
     // console.log(data);
 
-    const { name, email, password, confPassword, photo } = data;
+    const formData = new FormData();
+    formData.append("image", data.image[0]);
 
-    setError("");
-    setSuccess("");
+    const { name, email, password, confPassword } = data;
 
-    if (password !== confPassword) {
-      return setError("Confirm password does't matched");
-    }
+    fetch(img_hosting_url, {
+      method: "POST",
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((imgData) => {
+        if (imgData.success) {
+          setError("");
+          setSuccess("");
 
-    createUser(email, password)
-      .then((res) => {
-        const newUser = res.user;
-        console.log(newUser);
+          if (password !== confPassword) {
+            return setError("Confirm password does't matched");
+          }
 
-        const auth = getAuth();
-        updateProfile(auth.currentUser, {
-          displayName: name,
-          photoURL: photo,
-        })
-          .then(() => {
-            setSuccess("You successfuly create an account!");
-            ToastMsgSuc("Signup successful! Please login to continue...");
-            saveNewUser(email, name, photo);
-            reset();
+          createUser(email, password)
+            .then((res) => {
+              const newUser = res.user;
+              console.log(newUser);
 
-            // Logout after successfully Registration
-            logOut()
-              .then(() => {
-                navigate("/login");
+              const auth = getAuth();
+              updateProfile(auth.currentUser, {
+                displayName: name,
+                photoURL: imgData.data.display_url,
               })
-              .catch((err) => {
-                console.log(err);
-              });
-            // console.log("user updated");
-          })
-          .catch((error) => {
-            console.log(error);
-          });
+                .then(() => {
+                  setSuccess("You successfuly create an account!");
+                  ToastMsgSuc("Signup successful! Please login to continue...");
+                  const photo = imgData.data.display_url;
+                  saveNewUser(email, name, photo);
+                  reset();
 
-        console.log(newUser);
-      })
-      .catch((error) => {
-        console.log(error.message);
-        const weakPass = error.message.includes("weak-password");
-        weakPass &&
-          setError("Weak password! Please give at least 6 characters");
+                  // Logout after successfully Registration
+                  logOut()
+                    .then(() => {
+                      navigate("/login");
+                    })
+                    .catch((err) => {
+                      console.log(err);
+                    });
+                  // console.log("user updated");
+                })
+                .catch((error) => {
+                  console.log(error);
+                });
 
-        const userExist = error.message.includes("email-already-in-use");
-        userExist && setError("This email already exist! Please try another");
+              console.log(newUser);
+            })
+            .catch((error) => {
+              console.log(error.message);
+              const weakPass = error.message.includes("weak-password");
+              weakPass &&
+                setError("Weak password! Please give at least 6 characters");
 
-        const emailMissing = error.message.includes("email-missing");
-        emailMissing &&
-          setError("Email is missing! Please enter a valid email");
+              const userExist = error.message.includes("email-already-in-use");
+              userExist &&
+                setError("This email already exist! Please try another");
 
-        const passMissing = error.message.includes("password-missing");
-        passMissing &&
-          setError("Password is missing! Please enter a valid Password");
+              const emailMissing = error.message.includes("email-missing");
+              emailMissing &&
+                setError("Email is missing! Please enter a valid email");
+
+              const passMissing = error.message.includes("password-missing");
+              passMissing &&
+                setError("Password is missing! Please enter a valid Password");
+            });
+        }
       });
   };
 
@@ -142,7 +160,7 @@ const Register = () => {
                     type="text"
                     name="name"
                     placeholder="Name"
-                    // required
+                    required
                   />
                 </div>
                 {errors.name && <Alart msg={errors.name?.message}></Alart>}
@@ -225,7 +243,7 @@ const Register = () => {
 
               {/* PROFILE PHOTO FIELD */}
               <div>
-                <div className="flex items-center max-w-[320px] login-box">
+                {/* <div className="flex items-center max-w-[320px] login-box">
                   <input
                     {...register("photo", {
                       required: "User photo URL is required!",
@@ -235,8 +253,18 @@ const Register = () => {
                     name="photo"
                     placeholder="Photo url"
                   />
-                </div>
-                {errors.photo && <Alart msg={errors.photo?.message}></Alart>}
+                </div> */}
+                <input
+                  {...register("image", {
+                    required: "User photo URL is required!",
+                  })}
+                  name="image"
+                  id="image"
+                  type="file"
+                  placeholder="Photo url"
+                  className="file-input file-input-bordered file-input-info w-full"
+                />
+                {errors.image && <Alart msg={errors.image?.message}></Alart>}
               </div>
 
               <AwesomeButtonProgress

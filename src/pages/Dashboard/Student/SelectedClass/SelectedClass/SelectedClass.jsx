@@ -6,7 +6,7 @@ import SelectClassTable from "../SelectClassTable/SelectClassTable";
 const SelectedClass = () => {
   useTitle("Selected class");
   const [selectedClass, isLoading, refetch] = useSelectClass();
-  console.log(selectedClass);
+  // console.log(selectedClass);
   return (
     <div className="w-11/12 mx-auto">
       <div className="mt-20">

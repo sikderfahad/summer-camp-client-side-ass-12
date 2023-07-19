@@ -68,7 +68,7 @@ const Card = ({
               );
               setIsDisabled(true);
             }
-            console.log(res.data);
+            // console.log(res.data);
           });
         }
       });

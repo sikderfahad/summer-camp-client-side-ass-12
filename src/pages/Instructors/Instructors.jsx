@@ -7,7 +7,7 @@ import Title from "../../shared/Title/Title";
 const Instructors = () => {
   useTitle("Instructors");
   const [teachers, isLoading] = useInstructors();
-  console.log(teachers);
+  // console.log(teachers);
   return (
     <div className="max-w-screen-xl mx-auto mt-40">
       <div>

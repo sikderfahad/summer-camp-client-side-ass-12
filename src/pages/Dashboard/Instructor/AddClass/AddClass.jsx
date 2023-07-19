@@ -18,47 +18,60 @@ const AddClass = () => {
     reset,
     formState: { errors },
   } = useForm();
+
+  const img_key = import.meta.env.VITE_imageBB_api_token;
+  const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_key}`;
+
   const onSubmit = (data) => {
-    //
-    const {
-      email,
-      instructor_name,
-      class_name,
-      class_image,
-      available_seats,
-      price,
-    } = data;
+    // console.log(data.image[0]);
+    const formData = new FormData();
+    formData.append("image", data.image[0]);
 
-    const classData = {
-      image: class_image,
-      name: class_name,
-      instructor: instructor_name,
-      instructorEmail: email,
-      availableSeats: parseInt(available_seats),
-      price: parseFloat(price),
-      enrolledStudents: 0,
-      status: "pending",
-    };
+    fetch(img_hosting_url, {
+      method: "POST",
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((imgData) => {
+        if (imgData.success) {
+          const { email, instructor_name, class_name, available_seats, price } =
+            data;
 
-    Swal.fire({
-      title: "Are you sure?",
-      text: `You want to be add a new class!`,
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#000",
-      cancelButtonColor: "#d33",
-      confirmButtonText: `Add a class!`,
-    }).then((result) => {
-      if (result.isConfirmed) {
-        axios.post(`${baseUrl}/add-classes`, classData).then((res) => {
-          console.log(res.data);
-          if (res.data.insertedId) {
-            reset();
-            ToastMsgSuc("You successfully add a class");
-          }
-        });
-      }
-    });
+          console.log(data);
+
+          const classData = {
+            image: imgData?.data?.display_url,
+            name: class_name,
+            instructor: instructor_name,
+            instructorEmail: email,
+            availableSeats: parseInt(available_seats),
+            price: parseFloat(price),
+            enrolledStudents: 0,
+            status: "pending",
+          };
+
+          console.log(classData);
+          Swal.fire({
+            title: "Are you sure?",
+            text: `You want to be add a new class!`,
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#000",
+            cancelButtonColor: "#d33",
+            confirmButtonText: `Add a class!`,
+          }).then((result) => {
+            if (result.isConfirmed) {
+              axios.post(`${baseUrl}/add-classes`, classData).then((res) => {
+                console.log(res.data);
+                if (res.data.insertedId) {
+                  reset();
+                  ToastMsgSuc("You successfully add a class");
+                }
+              });
+            }
+          });
+        }
+      });
 
     // const res = axios.post(`${baseUrl}/add-clesses`, classData);
     // console.log(res.data);
@@ -70,9 +83,9 @@ const AddClass = () => {
         <div className="relative z-0 w-full mb-6 group">
           <input
             {...register("email")}
-            value={user?.email}
             type="email"
             name="email"
+            defaultValue={user?.email}
             readOnly={true}
             id="email"
             className="block py-2.5 px-0 w-full text-sm  bg-transparent border-0 border-b-2 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
@@ -93,8 +106,8 @@ const AddClass = () => {
             {...register("instructor_name")}
             type="text"
             name="instructor_name"
-            readOnly={true}
             value={user?.displayName}
+            // readOnly={true}
             id="instructor_name"
             className="block py-2.5 px-0 w-full text-sm  bg-transparent border-0 border-b-2 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
             placeholder=" "
@@ -109,54 +122,6 @@ const AddClass = () => {
           >
             Instructor Name
           </label>
-        </div>
-
-        <div className="grid md:grid-cols-2 md:gap-6">
-          <div className="relative z-0 w-full mb-6 group">
-            <input
-              {...register("class_name", {
-                required: "Class name is required!",
-              })}
-              type="text"
-              name="class_name"
-              id="class_name"
-              className="block py-2.5 px-0 w-full text-sm  bg-transparent border-0 border-b-2 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-              placeholder=" "
-              required
-            />
-            {errors.class_name && (
-              <Alart msg={errors.class_name?.message}></Alart>
-            )}
-            <label
-              htmlFor="class_name"
-              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-            >
-              Class Name
-            </label>
-          </div>
-
-          <div className="relative z-0 w-full mb-6 group">
-            <input
-              {...register("class_image", {
-                required: "Class image is required!",
-              })}
-              type="text"
-              name="class_image"
-              id="class_image"
-              className="block py-2.5 px-0 w-full text-sm  bg-transparent border-0 border-b-2 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-              placeholder=" "
-              required
-            />
-            {errors.class_image && (
-              <Alart msg={errors.class_image?.message}></Alart>
-            )}
-            <label
-              htmlFor="class_image"
-              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-            >
-              Class Image
-            </label>
-          </div>
         </div>
 
         <div className="grid md:grid-cols-2 md:gap-6">
@@ -201,6 +166,67 @@ const AddClass = () => {
               Price
             </label>
           </div>
+        </div>
+
+        <div className="grid md:grid-cols-2 md:gap-6">
+          <div className="relative z-0 w-full mb-6 group">
+            <input
+              {...register("class_name", {
+                required: "Class name is required!",
+              })}
+              type="text"
+              name="class_name"
+              id="class_name"
+              className="block py-2.5 px-0 w-full text-sm  bg-transparent border-0 border-b-2 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              placeholder=" "
+              required
+            />
+            {errors.class_name && (
+              <Alart msg={errors.class_name?.message}></Alart>
+            )}
+            <label
+              htmlFor="class_name"
+              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+            >
+              Class Name
+            </label>
+          </div>
+
+          <div className="relative z-0 w-full mb-6 group">
+            <input
+              {...register("image", {
+                required: "Class image is required!",
+              })}
+              name="image"
+              id="image"
+              type="file"
+              className="file-input file-input-bordered file-input-info w-full"
+            />
+            {errors.image && <Alart msg={errors.image?.message}></Alart>}
+          </div>
+
+          {/* <div className="relative z-0 w-full mb-6 group">
+            <input
+              {...register("class_image", {
+                required: "Class image is required!",
+              })}
+              type="text"
+              name="class_image"
+              id="class_image"
+              className="block py-2.5 px-0 w-full text-sm  bg-transparent border-0 border-b-2 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              placeholder=" "
+              required
+            />
+            {errors.class_image && (
+              <Alart msg={errors.class_image?.message}></Alart>
+            )}
+            <label
+              htmlFor="class_image"
+              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+            >
+              Class Image
+            </label>
+          </div> */}
         </div>
 
         <AwesomeButton type="primary">SUBMIT</AwesomeButton>
