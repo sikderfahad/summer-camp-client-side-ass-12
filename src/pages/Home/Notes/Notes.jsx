@@ -21,7 +21,10 @@ const Notes = () => {
           Bring your children to a trial lesson to find out how much they enjoy
           doing music or singing
         </p>
-        <div className="flex flex-col md:flex-row md:items-center justify-center font-extrabold gap-8 mt-8">
+        <div
+          data-aos="zoom-in-up"
+          className="flex flex-col md:flex-row md:items-center justify-center font-extrabold gap-8 mt-8"
+        >
           <ButtonAwesome text={"GET STARTED"}></ButtonAwesome>
           <ButtonAwesome text={"CHOOSE CLASS"} type={"danger"}></ButtonAwesome>
         </div>

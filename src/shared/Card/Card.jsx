@@ -82,7 +82,7 @@ const Card = ({
   const noSeat = classPage && item.availableSeats === 0;
 
   return (
-    <div>
+    <div data-aos="fade-up" data-aos-anchor-placement="center-bottom">
       <div
         className={`border ${
           noSeat && "bg-red-600"

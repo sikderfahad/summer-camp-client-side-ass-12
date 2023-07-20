@@ -16,8 +16,8 @@ import NotFound from "../layout/NotFound/NotFound";
 import SelectedClass from "../pages/Dashboard/Student/SelectedClass/SelectedClass/SelectedClass";
 import EnrolledClass from "../pages/Dashboard/Student/EnrolledClass/EnrolledClass";
 
-// export const baseUrl = "https://summer-camp-music-server.vercel.app";
-export const baseUrl = "http://localhost:3000";
+export const baseUrl = "https://summer-camp-music-server.vercel.app";
+// export const baseUrl = "http://localhost:3000";
 
 export const router = createBrowserRouter([
   {

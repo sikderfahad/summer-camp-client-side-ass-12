@@ -2,7 +2,7 @@
 
 const Title = ({ title, subtitle, desc, noDesc }) => {
   return (
-    <div>
+    <div data-aos="zoom-out-down">
       <div className="w-11/12 md:w-4/6 mx-auto flex flex-col text-center gap-5">
         <h3 className="text-[#c25934] text-2xl font-extrabold  capitalize">
           {title}

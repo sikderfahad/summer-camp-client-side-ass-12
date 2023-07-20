@@ -12,7 +12,7 @@ const TeacherCard = ({ item, teacherPage }) => {
   const socialLinkTeacher =
     " text-opacity-50 hover:scale-110 duration-200 hover:text-opacity-100";
   return (
-    <div>
+    <div data-aos="fade-up" data-aos-anchor-placement="bottom-bottom">
       <div className="card max-w-sm ">
         {teacherPage ? (
           <div className="flex flex-col items-center justify-center">
