@@ -17,7 +17,7 @@ const Footer = () => {
             src="https://i.ibb.co/rfK9GSn/nota-logo.png"
             alt=""
           />
-          <p className="mt-6 leading-[2] text-justify md:text-center text-base md:text-lg">
+          <p className="mt-6 leading-[2] text-justify md:text-left text-base md:text-lg">
             Quisque quis dignissim elit. Aliquam et augue aliquet orci maximus
             convallis id vitae augue. Phasellus elementum commodo aliquet.
           </p>

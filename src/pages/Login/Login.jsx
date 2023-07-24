@@ -142,14 +142,17 @@ const Login = () => {
 
   return (
     <div className="py-[200px] max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-      <div>
+      <div data-aos="zoom-in-right">
         <img
           src="https://i.ibb.co/n3d0PFZ/login-side-image.png"
           className="w-10/12"
           alt=""
         />
       </div>
-      <div className="mx-auto flex flex-col gap-7 relative ">
+      <div
+        data-aos="zoom-in-left"
+        className="mx-auto flex flex-col gap-7 relative "
+      >
         <h1 className="text-center text-5xl spicy-title font-medium ">
           Let{"'"}s connect our universe{" "}
         </h1>

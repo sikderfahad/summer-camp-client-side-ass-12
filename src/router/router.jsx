@@ -15,9 +15,10 @@ import Instructors from "../pages/Instructors/Instructors";
 import NotFound from "../layout/NotFound/NotFound";
 import SelectedClass from "../pages/Dashboard/Student/SelectedClass/SelectedClass/SelectedClass";
 import EnrolledClass from "../pages/Dashboard/Student/EnrolledClass/EnrolledClass";
+import Payment from "../pages/Dashboard/Payment/Payment/Payment";
 
-export const baseUrl = "https://summer-camp-music-server.vercel.app";
-// export const baseUrl = "http://localhost:3000";
+// export const baseUrl = "https://summer-camp-music-server.vercel.app";
+export const baseUrl = "http://localhost:3000";
 
 export const router = createBrowserRouter([
   {
@@ -87,6 +88,11 @@ export const router = createBrowserRouter([
       {
         path: "student/enrolled-class",
         element: <EnrolledClass></EnrolledClass>,
+      },
+
+      {
+        path: "student/payment/:id",
+        element: <Payment></Payment>,
       },
     ],
   },

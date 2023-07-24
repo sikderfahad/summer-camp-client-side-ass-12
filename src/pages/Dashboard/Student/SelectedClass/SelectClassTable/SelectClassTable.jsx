@@ -3,8 +3,11 @@ import axios from "axios";
 import { AwesomeButton } from "react-awesome-button";
 import { baseUrl } from "../../../../../router/router";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const SelectClassTable = ({ selectClass, refetch }) => {
+  const navigate = useNavigate();
+
   const handleDeleteClass = (id) => {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
@@ -39,6 +42,10 @@ const SelectClassTable = ({ selectClass, refetch }) => {
           });
         }
       });
+  };
+
+  const goPayment = (id) => {
+    navigate(`/dashboard/student/payment/${id}`);
   };
   return (
     <div>
@@ -103,6 +110,7 @@ const SelectClassTable = ({ selectClass, refetch }) => {
                       <AwesomeButton
                         type="primary"
                         ripple={true}
+                        onPress={() => goPayment(item?._id)}
                         after={<CreditCardIcon size={20} />}
                       >
                         Pay Now

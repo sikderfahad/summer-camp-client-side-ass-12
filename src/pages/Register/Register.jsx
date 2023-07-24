@@ -118,10 +118,13 @@ const Register = () => {
   const inputStyle = "border w-full p-3 rounded-lg input-bg";
   return (
     <div className="py-[200px] max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-      <div className="order-2">
+      <div data-aos="zoom-in-down" className="order-2">
         <img src="https://i.ibb.co/sKG9M7t/sign-up-side-image.png" alt="" />
       </div>
-      <div className="order-1 flex flex-col gap-7  top-[100px] ">
+      <div
+        data-aos="zoom-in-up"
+        className="order-1 flex flex-col gap-7  top-[100px] "
+      >
         <h1 className="text-center spicy-title text-5xl font-medium ">
           Create Nota Corda Account{" "}
         </h1>
