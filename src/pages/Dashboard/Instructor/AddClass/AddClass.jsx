@@ -37,7 +37,7 @@ const AddClass = () => {
           const { email, instructor_name, class_name, available_seats, price } =
             data;
 
-          console.log(data);
+          // console.log(data);
 
           const classData = {
             image: imgData?.data?.display_url,
@@ -50,7 +50,7 @@ const AddClass = () => {
             status: "pending",
           };
 
-          console.log(classData);
+          // console.log(classData);
           Swal.fire({
             title: "Are you sure?",
             text: `You want to be add a new class!`,
@@ -62,7 +62,7 @@ const AddClass = () => {
           }).then((result) => {
             if (result.isConfirmed) {
               axios.post(`${baseUrl}/add-classes`, classData).then((res) => {
-                console.log(res.data);
+                // console.log(res.data);
                 if (res.data.insertedId) {
                   reset();
                   ToastMsgSuc("You successfully add a class");
@@ -72,9 +72,6 @@ const AddClass = () => {
           });
         }
       });
-
-    // const res = axios.post(`${baseUrl}/add-clesses`, classData);
-    // console.log(res.data);
   };
 
   return (
@@ -92,7 +89,6 @@ const AddClass = () => {
             placeholder=" "
             required
           />
-          {/* {errors.email && <Alart msg={errors.email?.message}></Alart>} */}
           <label
             htmlFor="email"
             className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
@@ -113,9 +109,7 @@ const AddClass = () => {
             placeholder=" "
             required
           />
-          {/* {errors.instructor_name && (
-            <Alart msg={errors.instructor_name?.message}></Alart>
-          )} */}
+
           <label
             htmlFor="instructor_name"
             className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
@@ -204,29 +198,6 @@ const AddClass = () => {
             />
             {errors.image && <Alart msg={errors.image?.message}></Alart>}
           </div>
-
-          {/* <div className="relative z-0 w-full mb-6 group">
-            <input
-              {...register("class_image", {
-                required: "Class image is required!",
-              })}
-              type="text"
-              name="class_image"
-              id="class_image"
-              className="block py-2.5 px-0 w-full text-sm  bg-transparent border-0 border-b-2 border-gray-300 appearance-none  dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-              placeholder=" "
-              required
-            />
-            {errors.class_image && (
-              <Alart msg={errors.class_image?.message}></Alart>
-            )}
-            <label
-              htmlFor="class_image"
-              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-            >
-              Class Image
-            </label>
-          </div> */}
         </div>
 
         <AwesomeButton type="primary">SUBMIT</AwesomeButton>

@@ -8,7 +8,8 @@ import moment from "moment-timezone";
 import { useNavigate } from "react-router-dom";
 
 const CheckoutForm = ({ selectClass }) => {
-  const { name, price, _id, instructor, instructorEmail, image } = selectClass;
+  const { name, price, _id, classId, instructor, instructorEmail, image } =
+    selectClass;
   // console.log(price);
 
   const { user } = useAuth();
@@ -87,8 +88,9 @@ const CheckoutForm = ({ selectClass }) => {
         image,
         instructor,
         instructorEmail,
-        className: name,
-        classId: _id,
+        name,
+        classId,
+        bookingClassId: _id,
         studentEmail: user?.email,
         price,
         date: localDateTime,
@@ -101,6 +103,11 @@ const CheckoutForm = ({ selectClass }) => {
           ToastMsgSuc("Your payment details has been saved!");
           axios.delete(`${baseUrl}/booking-class/${_id}`).then((res) => {
             if (res.data.deletedCount > 0) {
+              axios
+                .patch(`${baseUrl}/reduce-class-seat/${classId}`)
+                .then((res) => {
+                  console.log("success reduced seat", res.data);
+                });
               navigate("/dashboard/student/selected-class");
             }
           });

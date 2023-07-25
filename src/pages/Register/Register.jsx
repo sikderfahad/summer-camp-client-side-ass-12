@@ -91,7 +91,7 @@ const Register = () => {
                   console.log(error);
                 });
 
-              console.log(newUser);
+              // console.log(newUser);
             })
             .catch((error) => {
               console.log(error.message);
@@ -246,17 +246,6 @@ const Register = () => {
 
               {/* PROFILE PHOTO FIELD */}
               <div>
-                {/* <div className="flex items-center max-w-[320px] login-box">
-                  <input
-                    {...register("photo", {
-                      required: "User photo URL is required!",
-                    })}
-                    className={inputStyle}
-                    type="text"
-                    name="photo"
-                    placeholder="Photo url"
-                  />
-                </div> */}
                 <input
                   {...register("image", {
                     required: "User photo URL is required!",

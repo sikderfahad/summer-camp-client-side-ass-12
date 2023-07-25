@@ -43,7 +43,7 @@ const Header = () => {
   }
 
   if (isStudent) {
-    dashboardRoute.path = "/dashboard/student/selected-class";
+    dashboardRoute.path = "/dashboard/student/enrolled-class";
   }
 
   if (user) {

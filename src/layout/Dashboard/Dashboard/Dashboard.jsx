@@ -6,7 +6,7 @@ import { AiFillHome } from "react-icons/ai";
 import { GiTeacher } from "react-icons/gi";
 import { BiSolidBookAdd } from "react-icons/bi";
 import { HiUserGroup } from "react-icons/hi";
-import { FaBook, FaCalendarAlt, FaUsersCog } from "react-icons/fa";
+import { FaBook, FaCalendarAlt, FaHistory, FaUsersCog } from "react-icons/fa";
 import "./Dashboard.css";
 import DashboardNavLink from "../DashboardNavLink/DashboardNavLink";
 import ToastBox from "../../../components/Toast/ToastBox";
@@ -52,6 +52,11 @@ const studentMenu = [
     icon: <FaCalendarAlt></FaCalendarAlt>,
     menuName: "enrolled classes",
     path: "/dashboard/student/enrolled-class",
+  },
+  {
+    icon: <FaHistory></FaHistory>,
+    menuName: "payment history",
+    path: "/dashboard/student/payment-history",
   },
 ];
 

@@ -1,8 +1,8 @@
 // import React from 'react';
 import { AwesomeButton } from "react-awesome-button";
-import { FaBookReader, FaUserGraduate } from "react-icons/fa";
+import { FaBookReader, FaCalendarCheck, FaUserGraduate } from "react-icons/fa";
 import { ImPriceTags } from "react-icons/im";
-import { MdPendingActions } from "react-icons/md";
+import { MdMail, MdPendingActions } from "react-icons/md";
 import { PiWheelchair } from "react-icons/pi";
 import { useNavigate } from "react-router-dom";
 import useUserType from "../../hooks/useUserType";
@@ -10,7 +10,10 @@ import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 import { baseUrl } from "../../router/router";
 import Swal from "sweetalert2";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import DateDisplay from "../../components/DateDisplay/DateDisplay";
+import useEnrolledClass from "../../hooks/useEnrolledClass";
+import { ToastMsgWarn } from "../../components/Toast/ToastMsg";
 
 const Card = ({
   item,
@@ -19,8 +22,10 @@ const Card = ({
   homePage,
   showFeedbackModal,
   showClassUpdateModal,
+  paidClass,
 }) => {
   const { user } = useAuth();
+  const [enrolledClass] = useEnrolledClass();
 
   const [isDisabled, setIsDisabled] = useState(false);
 
@@ -34,12 +39,30 @@ const Card = ({
 
   const navigate = useNavigate();
 
+  useEffect(() => {
+    setIsDisabled(false);
+    if (classPage) {
+      const isIdMatched = enrolledClass?.find(
+        (paidClass) => paidClass.classId === item?._id
+      );
+
+      if (isIdMatched) {
+        setIsDisabled(true);
+        // console.log("check id matched ", isIdMatched);
+      }
+    }
+  }, [classPage, item._id, enrolledClass]);
+
   const handleJoin = () => {
     if (homePage) {
       navigate("/classes");
     }
     if (classPage) {
-      const { image, name, instructor, instructorEmail, price } = item;
+      if (!user) {
+        ToastMsgWarn("Please login to continue!");
+        return navigate("/login");
+      }
+      const { _id, image, name, instructor, instructorEmail, price } = item;
       const bookingClass = {
         image,
         name,
@@ -47,6 +70,7 @@ const Card = ({
         instructorEmail,
         price,
         studentEmail: user.email,
+        classId: _id,
       };
 
       Swal.fire({
@@ -111,19 +135,42 @@ const Card = ({
               </span>{" "}
               {item.instructor}
             </h1>
-            <h1 className="text-base md:text-lg font-bold flex items-center gap-2">
-              <span className="flex items-center gap-2 ">
-                <FaBookReader className="text-xl text-[#0c4b65]"></FaBookReader>{" "}
-                Students:
-              </span>{" "}
-              {item.enrolledStudents}
-            </h1>
+
+            {!paidClass && (
+              <h1 className="text-base md:text-lg font-bold flex items-center gap-2">
+                <span className="flex items-center gap-2 ">
+                  <FaBookReader className="text-xl text-[#0c4b65]"></FaBookReader>{" "}
+                  Students:
+                </span>{" "}
+                {item.enrolledStudents}
+              </h1>
+            )}
+
+            {paidClass && (
+              <>
+                <h1 className="text-base md:text-lg font-bold flex items-center gap-2">
+                  <span className="flex items-center gap-2 ">
+                    <MdMail className="text-xl text-[#0c4b65]"></MdMail> Ins.
+                    Email:
+                  </span>{" "}
+                  {item.instructorEmail}
+                </h1>
+                <h1 className="text-base md:text-lg font-bold flex items-center gap-2">
+                  <span className="flex items-center gap-2 ">
+                    <FaCalendarCheck className="text-xl text-[#0c4b65]"></FaCalendarCheck>{" "}
+                    Joining date:
+                  </span>
+                  <DateDisplay date={item.date.split(" ")[0]}></DateDisplay>
+                </h1>
+              </>
+            )}
+
             <h1 className="text-base md:text-lg font-bold flex items-center gap-2">
               <span className="flex items-center gap-2 ">
                 <ImPriceTags className="text-xl text-[#0c4b65]"></ImPriceTags>{" "}
                 Price:
               </span>{" "}
-              {item.price}
+              ${item.price}
             </h1>
             {classPage && (
               <h1 className="text-base md:text-lg font-bold flex items-center gap-2">
@@ -169,7 +216,7 @@ const Card = ({
               </>
             )}
 
-            {!teacher && (
+            {!teacher && !paidClass && (
               <div className="card-actions">
                 <AwesomeButton
                   disabled={
