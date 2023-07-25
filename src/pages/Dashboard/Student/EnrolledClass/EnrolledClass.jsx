@@ -2,8 +2,10 @@ import Title from "../../../../shared/Title/Title";
 import Card from "../../../../shared/Card/Card";
 import Skeleton from "../../../../shared/Skeleton/Skeleton";
 import useEnrolledClass from "../../../../hooks/useEnrolledClass";
+import useTitle from "../../../../hooks/useTitle";
 
 const EnrolledClass = () => {
+  useTitle("Enrolled Class");
   const [enrolledClass, enrolledClassLoading] = useEnrolledClass();
 
   console.log(enrolledClass);

@@ -1,9 +1,11 @@
 import useEnrolledClass from "../../../../../hooks/useEnrolledClass";
+import useTitle from "../../../../../hooks/useTitle";
 import FadingLoader from "../../../../../shared/Loader/Loader";
 import Title from "../../../../../shared/Title/Title";
 import HistoryTable from "../HistoryTable/HistoryTable";
 
 const PaymentHistory = () => {
+  useTitle("Payment History");
   const [enrolledClass, enrolledClassLoading] = useEnrolledClass();
   return (
     <div>

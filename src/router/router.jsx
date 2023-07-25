@@ -18,8 +18,8 @@ import EnrolledClass from "../pages/Dashboard/Student/EnrolledClass/EnrolledClas
 import Payment from "../pages/Dashboard/Payment/Payment/Payment";
 import PaymentHistory from "../pages/Dashboard/Student/PaymentHistory/PaymentHistory/PaymentHistory";
 
-// export const baseUrl = "https://summer-camp-music-server.vercel.app";
-export const baseUrl = "http://localhost:3000";
+export const baseUrl = "https://summer-camp-music-server.vercel.app";
+// export const baseUrl = "http://localhost:3000";
 
 export const router = createBrowserRouter([
   {
