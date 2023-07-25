@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { baseUrl } from "../../../../router/router";
+import Title from "../../../../shared/Title/Title";
 
 const Payment = () => {
   useTitle("Payment");
@@ -23,8 +24,14 @@ const Payment = () => {
 
   return (
     <div>
-      <h1>This is payment page!</h1>
-      <div className="w-1/2 border rounded-lg p-6 mt-12">
+      <div>
+        <Title
+          title={"payment"}
+          subtitle={"payment proccess"}
+          noDesc={true}
+        ></Title>
+      </div>
+      <div className="w-1/2 border hover:shadow-lg duration-200 rounded-lg p-6 mt-20">
         <Elements stripe={stripePromise}>
           <CheckoutForm selectClass={selectClass} />
         </Elements>
