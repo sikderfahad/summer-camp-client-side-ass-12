@@ -1,9 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
 import useAuth from "./useAuth";
-import { baseUrl } from "../router/router";
+import useAxiosSecure from "./useAxiosSecure";
+
 const useSelectClass = () => {
   const { user } = useAuth();
+  const [axiosSecure] = useAxiosSecure();
+
   const {
     data: selectedClass,
     refetch,
@@ -11,9 +13,12 @@ const useSelectClass = () => {
   } = useQuery({
     queryKey: ["selectedClass", user?.email],
     queryFn: async () => {
-      const res = await axios.get(
-        `${baseUrl}/booking-class?email=${user?.email}`
-      );
+      // const res = await axios.get(
+      //   `${baseUrl}/booking-class?email=${user?.email}`
+      // );
+
+      const res = await axiosSecure(`/booking-class?email=${user?.email}`);
+      // console.log("booking class res from axios", res);
       return res.data;
     },
   });

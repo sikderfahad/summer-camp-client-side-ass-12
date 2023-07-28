@@ -25,11 +25,7 @@ const Home = () => {
     <div className="">
       <div className="relative">
         <BannerCarousel></BannerCarousel>
-        <div
-          // data-aos="zoom-in-up"
-          className="md:absolute block md:transform md:translate-x-[10%] md:translate-y-[-25%]"
-          // style={{ transform: "translate(10%, -25%)" }}
-        >
+        <div className="md:absolute block md:transform md:translate-x-[10%] md:translate-y-[-25%]">
           <Notes></Notes>
         </div>
       </div>

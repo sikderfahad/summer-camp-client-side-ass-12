@@ -17,6 +17,7 @@ import SelectedClass from "../pages/Dashboard/Student/SelectedClass/SelectedClas
 import EnrolledClass from "../pages/Dashboard/Student/EnrolledClass/EnrolledClass";
 import Payment from "../pages/Dashboard/Payment/Payment/Payment";
 import PaymentHistory from "../pages/Dashboard/Student/PaymentHistory/PaymentHistory/PaymentHistory";
+import PrivateRoute from "./PrivateRoute";
 
 export const baseUrl = "https://summer-camp-music-server.vercel.app";
 // export const baseUrl = "http://localhost:3000";
@@ -44,19 +45,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/register",
-        element: (
-          <Register></Register>
-          // <ConsRoute>
-          // </ConsRoute>
-        ),
+        element: <Register></Register>,
       },
       {
         path: "/login",
-        element: (
-          <Login></Login>
-          // <ConsRoute>
-          // </ConsRoute>
-        ),
+        element: <Login></Login>,
       },
     ],
   },
@@ -84,20 +77,36 @@ export const router = createBrowserRouter([
       },
       {
         path: "student/selected-class",
-        element: <SelectedClass></SelectedClass>,
+        element: (
+          <PrivateRoute>
+            <SelectedClass></SelectedClass>
+          </PrivateRoute>
+        ),
       },
       {
         path: "student/enrolled-class",
-        element: <EnrolledClass></EnrolledClass>,
+        element: (
+          <PrivateRoute>
+            <EnrolledClass></EnrolledClass>
+          </PrivateRoute>
+        ),
       },
       {
         path: "student/payment-history",
-        element: <PaymentHistory></PaymentHistory>,
+        element: (
+          <PrivateRoute>
+            <PaymentHistory></PaymentHistory>,
+          </PrivateRoute>
+        ),
       },
 
       {
         path: "student/payment/:id",
-        element: <Payment></Payment>,
+        element: (
+          <PrivateRoute>
+            <Payment></Payment>,
+          </PrivateRoute>
+        ),
       },
     ],
   },

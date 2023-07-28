@@ -1,4 +1,5 @@
 import useAllClasses from "../../hooks/useAllClasses";
+import useEnrolledClass from "../../hooks/useEnrolledClass";
 import useTitle from "../../hooks/useTitle";
 import Card from "../../shared/Card/Card";
 import Skeleton from "../../shared/Skeleton/Skeleton";
@@ -7,6 +8,8 @@ import Title from "../../shared/Title/Title";
 const Classes = () => {
   useTitle("Classes");
   const [allClass, isLoading] = useAllClasses();
+  const [enrolledClass] = useEnrolledClass();
+
   // console.log(allClass);
   return (
     <div className="max-w-screen-xl mx-auto mt-40">
@@ -23,7 +26,11 @@ const Classes = () => {
             {allClass?.map((item) => (
               <div key={item._id}>
                 {item?.status === "approved" && (
-                  <Card item={item} classPage={true}></Card>
+                  <Card
+                    item={item}
+                    classPage={true}
+                    enrolledClass={enrolledClass}
+                  ></Card>
                 )}
               </div>
             ))}

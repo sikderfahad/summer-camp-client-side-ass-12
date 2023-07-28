@@ -8,7 +8,7 @@ const EnrolledClass = () => {
   useTitle("Enrolled Class");
   const [enrolledClass, enrolledClassLoading] = useEnrolledClass();
 
-  console.log(enrolledClass);
+  // console.log(enrolledClass, enrolledClassLoading);
 
   return (
     <div>
@@ -21,7 +21,7 @@ const EnrolledClass = () => {
       <div>
         {!enrolledClassLoading ? (
           <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {enrolledClass.map((item) => (
+            {enrolledClass?.map((item) => (
               <Card key={item._id} item={item} paidClass={true}></Card>
             ))}
           </div>

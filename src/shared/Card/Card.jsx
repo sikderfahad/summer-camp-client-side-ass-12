@@ -4,7 +4,7 @@ import { FaBookReader, FaCalendarCheck, FaUserGraduate } from "react-icons/fa";
 import { ImPriceTags } from "react-icons/im";
 import { MdMail, MdPendingActions } from "react-icons/md";
 import { PiWheelchair } from "react-icons/pi";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import useUserType from "../../hooks/useUserType";
 import useAuth from "../../hooks/useAuth";
 import axios from "axios";
@@ -12,8 +12,8 @@ import { baseUrl } from "../../router/router";
 import Swal from "sweetalert2";
 import { useEffect, useState } from "react";
 import DateDisplay from "../../components/DateDisplay/DateDisplay";
-import useEnrolledClass from "../../hooks/useEnrolledClass";
 import { ToastMsgWarn } from "../../components/Toast/ToastMsg";
+// import useEnrolledClass from "../../hooks/useEnrolledClass";
 
 const Card = ({
   item,
@@ -23,9 +23,12 @@ const Card = ({
   showFeedbackModal,
   showClassUpdateModal,
   paidClass,
+  enrolledClass,
 }) => {
   const { user } = useAuth();
-  const [enrolledClass] = useEnrolledClass();
+  const location = useLocation();
+
+  // const [enrolledClass] = useEnrolledClass();
 
   const [isDisabled, setIsDisabled] = useState(false);
 
@@ -59,43 +62,58 @@ const Card = ({
     }
     if (classPage) {
       if (!user) {
-        ToastMsgWarn("Please login to continue!");
-        return navigate("/login");
+        Swal.fire({
+          title: "Agree for login?",
+          text: "You must login to join a class!",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Yes, join now!",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            ToastMsgWarn("Please login to continue!");
+            return navigate("/login", { state: { from: location.pathname } });
+          }
+        });
       }
-      const { _id, image, name, instructor, instructorEmail, price } = item;
-      const bookingClass = {
-        image,
-        name,
-        instructor,
-        instructorEmail,
-        price,
-        studentEmail: user.email,
-        classId: _id,
-      };
 
-      Swal.fire({
-        title: "Are you sure?",
-        text: `You want to booking ${name}!`,
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, select it!",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          axios.post(`${baseUrl}/booking-class`, bookingClass).then((res) => {
-            if (res.data.insertedId) {
-              Swal.fire(
-                "Selected!",
-                `${name} save to your account.`,
-                "success"
-              );
-              setIsDisabled(true);
-            }
-            // console.log(res.data);
-          });
-        }
-      });
+      if (user) {
+        const { _id, image, name, instructor, instructorEmail, price } = item;
+        const bookingClass = {
+          image,
+          name,
+          instructor,
+          instructorEmail,
+          price,
+          studentEmail: user?.email,
+          classId: _id,
+        };
+
+        Swal.fire({
+          title: "Are you sure?",
+          text: `You want to booking ${name}!`,
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Yes, select it!",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            axios.post(`${baseUrl}/booking-class`, bookingClass).then((res) => {
+              if (res.data.insertedId) {
+                Swal.fire(
+                  "Selected!",
+                  `${name} save to your account.`,
+                  "success"
+                );
+                setIsDisabled(true);
+              }
+              // console.log(res.data);
+            });
+          }
+        });
+      }
     }
   };
 
