@@ -1,7 +1,3 @@
-/* @tailwind base;
-@tailwind components;
-@tailwind utilities; */
-
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
@@ -46,4 +42,27 @@ html {
 body {
   user-select: none;
   overflow-x: hidden;
+}
+
+/* Define scrollbar styles */
+::-webkit-scrollbar {
+  border-radius: 5px;
+  width: 10px;
+}
+
+/* Track (background) of the scrollbar */
+::-webkit-scrollbar-track {
+  border: 1px solid #bcbdbe35;
+  border-radius: 5px;
+}
+
+/* Handle (thumb) of the scrollbar */
+::-webkit-scrollbar-thumb {
+  background: #efcf4f;
+  border-radius: 5px;
+}
+
+/* Optional: Hover state of the handle */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
