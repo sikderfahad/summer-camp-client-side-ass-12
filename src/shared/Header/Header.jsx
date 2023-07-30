@@ -6,6 +6,7 @@ import ModeBtn from "../ModeBtn/ModeBtn";
 import useAuth from "../../hooks/useAuth";
 import { FaSignOutAlt } from "react-icons/fa";
 import useUserType from "../../hooks/useUserType";
+import { motion } from "framer-motion";
 
 const Header = () => {
   const { user, logOut } = useAuth();
@@ -56,6 +57,15 @@ const Header = () => {
     defaultNav.pop();
   }
 
+  const bounceAnimation = {
+    y: [-10, 10, -10],
+    transition: {
+      duration: 2,
+      repeat: Infinity,
+      ease: "easeInOut",
+    },
+  };
+
   return (
     <div
       style={{ backdropFilter: "blur(10px)" }}
@@ -63,9 +73,19 @@ const Header = () => {
     >
       <div className="navbar  max-w-screen-xl mx-auto">
         <div className="navbar-start">
-          <div className="logo transform scale-[0.80] flex flex-col ">
-            <img src={"https://i.ibb.co/rfK9GSn/nota-logo.png"} alt="" />
-          </div>
+          <motion.div
+            initial={{ scale: 0.1, opacity: 0.1 }}
+            animate={{ scale: 0.8, opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.1, ease: "easeInOut" }}
+            className="logo transform scale-[0.80] flex flex-col "
+          >
+            <motion.img
+              animate={bounceAnimation}
+              className="flex flex-row gap-3 items-center"
+              src={"https://i.ibb.co/rfK9GSn/nota-logo.png"}
+              alt=""
+            />
+          </motion.div>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu uppercase items-center menu-horizontal px-1">
@@ -79,7 +99,12 @@ const Header = () => {
             {!user ? (
               <Nav item={{ path: "/login", label: "login" }}></Nav>
             ) : (
-              <li className="flex flex-row gap-3 items-center">
+              <motion.li
+                initial={{ scale: 0.1, opacity: 0.1 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.5, delay: 0.1, ease: "easeIn" }}
+                className="flex flex-row gap-3 items-center"
+              >
                 <img
                   title={user?.displayName && user.displayName}
                   src={
@@ -93,7 +118,7 @@ const Header = () => {
                 <button onClick={handledLogout}>
                   <FaSignOutAlt className="text-3xl text-[--navColor]"></FaSignOutAlt>
                 </button>
-              </li>
+              </motion.li>
             )}
             <ModeBtn></ModeBtn>
             {/* handleToggle={handleToggle} theme={theme} */}

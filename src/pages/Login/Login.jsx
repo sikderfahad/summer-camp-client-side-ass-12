@@ -17,7 +17,7 @@ const Login = () => {
   useTitle("Login");
   const location = useLocation();
   const from = location?.state?.from;
-  console.log(from, location);
+  // console.log(from, location);
 
   const navigate = useNavigate();
 

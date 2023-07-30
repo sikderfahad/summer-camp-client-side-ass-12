@@ -1,10 +1,17 @@
-// import React from 'react';
-
 import { NavLink } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const DashboardNavLink = ({ menu }) => {
+  const bounceAnimation = {
+    x: [-100, 50, 0],
+    transition: {
+      duration: 0.8,
+      // repeat: Infinity,
+      ease: "easeInOut",
+    },
+  };
   return (
-    <li>
+    <motion.li animate={bounceAnimation}>
       <NavLink
         to={menu.path}
         className={({ isActive, isPending }) =>
@@ -18,7 +25,7 @@ const DashboardNavLink = ({ menu }) => {
         <span className="text-2xl">{menu.icon}</span>
         <span>{menu.menuName}</span>
       </NavLink>
-    </li>
+    </motion.li>
   );
 };
 

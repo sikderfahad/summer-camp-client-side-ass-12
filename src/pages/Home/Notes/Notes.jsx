@@ -1,8 +1,18 @@
 import ButtonAwesome from "../../../shared/ButtonAwesome/ButtonAwesome";
+import { motion } from "framer-motion";
 
 const Notes = () => {
+  const bounceAnimation = {
+    y: [-10, 10, -10],
+    transition: {
+      duration: 2,
+      repeat: Infinity,
+      ease: "easeInOut",
+    },
+  };
   return (
-    <div
+    <motion.div
+      animate={bounceAnimation}
       className="md:p-[100px] p-4 max-w-screen-xl mx-auto rounded-lg bg-center bg-no-repeat bg-[#efcf4f]"
       style={{ backgroundImage: `url('https://i.ibb.co/mRb70NJ/notes.png')` }}
     >
@@ -29,7 +39,7 @@ const Notes = () => {
           <ButtonAwesome text={"CHOOSE CLASS"} type={"danger"}></ButtonAwesome>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

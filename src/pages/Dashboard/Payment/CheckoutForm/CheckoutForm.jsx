@@ -103,11 +103,8 @@ const CheckoutForm = ({ selectClass }) => {
           ToastMsgSuc("Your payment details has been saved!");
           axios.delete(`${baseUrl}/booking-class/${_id}`).then((res) => {
             if (res.data.deletedCount > 0) {
-              axios
-                .patch(`${baseUrl}/reduce-class-seat/${classId}`)
-                .then((res) => {
-                  console.log("success reduced seat", res.data);
-                });
+              axios.patch(`${baseUrl}/reduce-class-seat/${classId}`);
+
               navigate("/dashboard/student/selected-class");
             }
           });

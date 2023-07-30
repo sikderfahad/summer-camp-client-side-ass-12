@@ -12,6 +12,7 @@ import DashboardNavLink from "../DashboardNavLink/DashboardNavLink";
 import ToastBox from "../../../components/Toast/ToastBox";
 import ModeBtn from "../../../shared/ModeBtn/ModeBtn";
 import useUserType from "../../../hooks/useUserType";
+import { motion } from "framer-motion";
 
 // Admin Dashboard Menu
 const adminMenu = [
@@ -87,6 +88,15 @@ const Dashboard = () => {
   const isStudent = userType === "student";
   // console.log(userType, isAdmin);
 
+  const bounceAnimation = {
+    x: [-100, 50, 0],
+    transition: {
+      duration: 0.8,
+      // repeat: Infinity,
+      ease: "easeInOut",
+    },
+  };
+
   return (
     <div className="">
       <div className="drawer lg:drawer-open">
@@ -100,7 +110,11 @@ const Dashboard = () => {
 
           <div className="lg:hidden flex w-full p-2 justify-between items-center">
             <div className="logo flex flex-col ">
-              <img src={"https://i.ibb.co/rfK9GSn/nota-logo.png"} alt="" />
+              <img
+                className=""
+                src={"https://i.ibb.co/rfK9GSn/nota-logo.png"}
+                alt=""
+              />
             </div>
             <label
               htmlFor="my-drawer-2"
@@ -127,7 +141,11 @@ const Dashboard = () => {
             <div className="flex gap-4 justify-between items-center">
               {/* Logo */}
               <div className="logo w-fit flex flex-col ">
-                <img src={"https://i.ibb.co/rfK9GSn/nota-logo.png"} alt="" />
+                <img
+                  className="scale-[0.8] animate-pulse"
+                  src={"https://i.ibb.co/rfK9GSn/nota-logo.png"}
+                  alt=""
+                />
               </div>
               <label
                 htmlFor="my-drawer-2"
@@ -169,7 +187,7 @@ const Dashboard = () => {
             <div className="">
               <ul className="flex flex-col justify-start gap-3">
                 {defaultMenu.map((menu, idx) => (
-                  <li key={idx}>
+                  <motion.li animate={bounceAnimation} key={idx}>
                     <NavLink
                       to={menu.path}
                       className={({ isActive, isPending }) =>
@@ -183,7 +201,7 @@ const Dashboard = () => {
                       <span className="text-2xl">{menu.icon}</span>
                       <span>{menu.menuName}</span>
                     </NavLink>
-                  </li>
+                  </motion.li>
                 ))}
                 <li>
                   <ModeBtn dashboard={true}></ModeBtn>{" "}

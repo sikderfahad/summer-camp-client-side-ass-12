@@ -9,6 +9,7 @@ import PopularClasses from "../PopularClasses/PopularClasses";
 import PopularTeacher from "../PopularTeacher/PopularTeacher";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import FlowtingBall from "../../../components/FlowtingBall/FlowtingBall";
 
 const Home = () => {
   useTitle("Home");
@@ -21,8 +22,10 @@ const Home = () => {
     return () => clearTimeout(timer);
   }, []);
 
+  const bugArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+
   return (
-    <div className="">
+    <div>
       <div className="relative">
         <BannerCarousel></BannerCarousel>
         <div className="md:absolute block md:transform md:translate-x-[10%] md:translate-y-[-25%]">
@@ -49,6 +52,13 @@ const Home = () => {
             <PopularTeacher></PopularTeacher>
           </div>
         </div>
+      </div>
+
+      {/* Flowting Ball */}
+      <div className="hidden lg:flex">
+        {bugArray.map((item) => (
+          <FlowtingBall key={item}></FlowtingBall>
+        ))}
       </div>
     </div>
   );
