@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import ButtonAwesome from "../../../shared/ButtonAwesome/ButtonAwesome";
 import { motion } from "framer-motion";
 
@@ -10,6 +11,8 @@ const Notes = () => {
       ease: "easeInOut",
     },
   };
+
+  const navigate = useNavigate();
   return (
     <motion.div
       animate={bounceAnimation}
@@ -35,8 +38,15 @@ const Notes = () => {
           data-aos="zoom-in-up"
           className="flex flex-col md:flex-row md:items-center justify-center font-extrabold gap-8 mt-8"
         >
-          <ButtonAwesome text={"GET STARTED"}></ButtonAwesome>
-          <ButtonAwesome text={"CHOOSE CLASS"} type={"danger"}></ButtonAwesome>
+          <ButtonAwesome
+            link={"/instructors"}
+            text={"GET STARTED"}
+          ></ButtonAwesome>
+          <ButtonAwesome
+            link={"/classes"}
+            text={"CHOOSE CLASS"}
+            type={"danger"}
+          ></ButtonAwesome>
         </div>
       </div>
     </motion.div>
