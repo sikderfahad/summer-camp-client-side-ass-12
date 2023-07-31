@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 // import { BsBug } from "react-icons/bs";
-import { BsBugFill } from "react-icons/bs";
+// import { BsBugFill } from "react-icons/bs";
+import { PiButterfly } from "react-icons/pi";
 
 const FlowtingBall = () => {
   const [x, setX] = useState(0);
@@ -37,12 +38,23 @@ const FlowtingBall = () => {
   }, []);
   // console.log("color: ", randomColor);
 
+  const moveForward = {
+    y: -200,
+    x: [-100, 100],
+    z: -100,
+    transition: {
+      duration: 3,
+      repeat: Infinity,
+      ease: "easeInOut",
+    },
+  };
+
   return (
     <motion.span
       className="cursor-grab inline-block animate-pulse"
       drag
       style={{
-        fontSize: "20px",
+        fontSize: "24px",
         color: randomColor,
         position: "absolute",
         top: y,
@@ -51,16 +63,23 @@ const FlowtingBall = () => {
       animate={{
         x: x,
         y: y,
+        z: 0,
       }}
       transition={{
-        type: "spring",
+        type: "crossfade",
         stiffness: 100,
         damping: 10,
         duration: 1,
         ease: "easeInOut",
       }}
     >
-      <BsBugFill></BsBugFill>
+      <motion.span
+        className="inline-block"
+        initial={{ y: y, x: x, z: 0 }}
+        animate={moveForward}
+      >
+        <PiButterfly></PiButterfly>
+      </motion.span>
     </motion.span>
   );
 };

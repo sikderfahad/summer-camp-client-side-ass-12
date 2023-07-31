@@ -248,7 +248,7 @@ const Register = () => {
               <div>
                 <input
                   {...register("image", {
-                    required: "User photo URL is required!",
+                    required: "User photo file is required!",
                   })}
                   name="image"
                   id="image"

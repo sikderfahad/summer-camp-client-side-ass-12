@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import ButtonAwesome from "../../../shared/ButtonAwesome/ButtonAwesome";
 import { motion } from "framer-motion";
 
@@ -12,7 +11,6 @@ const Notes = () => {
     },
   };
 
-  const navigate = useNavigate();
   return (
     <motion.div
       animate={bounceAnimation}
