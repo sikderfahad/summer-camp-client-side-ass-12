@@ -7,3 +7,19 @@
   background: var(--red);
   transform-origin: 0%;
 }
+
+.home-blog-container::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--blog-overlay);
+  opacity: 0.5;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+/* .home-blog-bg {
+  background-image: url(https://i.ibb.co/607tsLM/blog-BG-1.png);
+} */
