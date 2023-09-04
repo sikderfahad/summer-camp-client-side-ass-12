@@ -117,7 +117,7 @@ const Register = () => {
 
   const inputStyle = "border w-full p-3 rounded-lg input-bg";
   return (
-    <div className="py-[200px] max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+    <div className="pt-28 md:pt-36 lg:pt-[200px] w-11/12 max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
       <div data-aos="zoom-in-down" className="order-2">
         <img src="https://i.ibb.co/sKG9M7t/sign-up-side-image.png" alt="" />
       </div>
@@ -125,7 +125,7 @@ const Register = () => {
         data-aos="zoom-in-up"
         className="order-1 flex flex-col gap-7  top-[100px] "
       >
-        <h1 className="text-center spicy-title text-5xl font-medium ">
+        <h1 className="text-center spicy-title text-2xl md:text-3xl lg:text-5xl font-medium ">
           Create Nota Corda Account{" "}
         </h1>
 
@@ -142,7 +142,7 @@ const Register = () => {
         )}
 
         <div>
-          <div className="w-100% w-[320px] mx-auto">
+          <div className="w-full md:w-[320px] mx-auto">
             <form
               onSubmit={handleSubmit(onSubmit)}
               className="flex flex-col gap-5"
@@ -150,7 +150,7 @@ const Register = () => {
             >
               {/* NAME FIELD */}
               <div>
-                <div className="flex items-center max-w-[320px] login-box">
+                <div className="flex items-center w-full md:max-w-[320px] login-box">
                   <input
                     {...register("name", {
                       required: "Name is required!",
@@ -170,7 +170,7 @@ const Register = () => {
               </div>
 
               {/* EMAIL FIELD */}
-              <div className="flex items-center max-w-[320px] login-box">
+              <div className="flex items-center w-full md:max-w-[320px] login-box">
                 <input
                   {...register("email", { required: "Email is required!" })}
                   className={inputStyle}
@@ -184,7 +184,7 @@ const Register = () => {
 
               {/* PASSWORD FIELD */}
               <div>
-                <div className="flex items-center max-w-[320px] login-box relative">
+                <div className="flex items-center w-full md:max-w-[320px] login-box relative">
                   <input
                     {...register("password", {
                       required: "Password is required",
@@ -220,7 +220,7 @@ const Register = () => {
 
               {/* CONFIRM PASSWORD FIELD */}
               <div>
-                <div className="flex items-center max-w-[320px] login-box relative">
+                <div className="flex items-center w-full md:max-w-[320px] login-box relative">
                   <input
                     {...register("confPassword", {
                       required: "Confirm password is required!",

@@ -23,7 +23,7 @@ const TeacherCard = ({ item, teacherPage }) => {
                 alt=""
               />
             </div>
-            <div className="card-body text-center">
+            <div className="card-body text-center break-words">
               <h1 className="text-[#0c4b65] text-2xl font-extrabold">
                 {teacherPage?.displayName}
               </h1>

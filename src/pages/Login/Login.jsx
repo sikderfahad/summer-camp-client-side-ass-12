@@ -141,19 +141,19 @@ const Login = () => {
   // React Hook From
 
   return (
-    <div className="py-[200px] max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-      <div data-aos="zoom-in-right">
+    <div className="pt-28 md:pt-36 lg:pt-[200px] w-11/12 max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      <div className="order-2 md:order-1" data-aos="zoom-in-right">
         <img
           src="https://i.ibb.co/n3d0PFZ/login-side-image.png"
-          className="w-10/12"
+          className="w-10/12 mx-auto"
           alt=""
         />
       </div>
       <div
         data-aos="zoom-in-left"
-        className="mx-auto flex flex-col gap-7 relative "
+        className="order1 md:order-2 mx-auto flex flex-col gap-7 relative "
       >
-        <h1 className="text-center text-5xl spicy-title font-medium ">
+        <h1 className="text-center text-2xl md:text-3xl lg:text-5xl spicy-title font-medium ">
           Let{"'"}s connect our universe{" "}
         </h1>
 
@@ -170,7 +170,7 @@ const Login = () => {
         )}
 
         {!login && (
-          <div className="text-center w-7/12 flex flex-col items-center justify-center mx-auto gap-4">
+          <div className="text-center w-full lg:w-7/12 flex flex-col items-center justify-center mx-auto gap-4">
             <span onClick={handledGoogleSignIn} className="w-full">
               <AwesomeButton
                 type="primary"
@@ -207,14 +207,14 @@ const Login = () => {
         )}
 
         {login && (
-          <div className="w-100% w-[320px] mx-auto">
+          <div className="w-full md:w-[320px] mx-auto">
             <form
               onSubmit={handleSubmit(onSubmit)}
               // onSubmit={handledLogin}
               className="flex flex-col gap-4"
               action=""
             >
-              <div className="flex items-center max-w-[320px] login-box">
+              <div className="flex items-center w-full md:max-w-[320px] login-box">
                 <input
                   {...register("email")}
                   className="w-full p-3 border border-gray-300 rounded-lg bg-[--fieldBg] "
@@ -224,7 +224,7 @@ const Login = () => {
                   required
                 />
               </div>
-              <div className="flex items-center max-w-[320px] login-box relative">
+              <div className="flex items-center w-full md:max-w-[320px] login-box relative">
                 <input
                   {...register("password")}
                   className="w-full p-3 border border-gray-300  rounded-lg bg-[--fieldBg] "

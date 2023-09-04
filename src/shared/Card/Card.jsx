@@ -124,12 +124,14 @@ const Card = ({
   const noSeat = classPage && item.availableSeats === 0;
 
   return (
-    <div data-aos="fade-up" data-aos-anchor-placement="center-bottom">
-      <div
-        className={`border ${
-          noSeat && "bg-red-600"
-        } shadow transform hover:scale-95 hover:shadow-xl duration-200 rounded-2xl`}
-      >
+    <div
+      className={`border ${
+        noSeat && "bg-red-600"
+      } shadow transform hover:scale-95 hover:shadow-xl duration-200 rounded-2xl`}
+      data-aos="fade-up"
+      data-aos-anchor-placement="center-bottom"
+    >
+      <div>
         <div className="card overflow-hidden">
           <figure>
             <img
@@ -139,17 +141,19 @@ const Card = ({
               alt="Shoes"
             />
           </figure>
-          <div className="card-body text-start">
+          <div className="card-body p-4 lg:p-4 xl:p-8 text-start">
             <h2 className="card-title text-2xl font-extrabold capitalize">
               <span className={`${noSeat ? "text-white" : "text-[#c25934]"} `}>
                 {item.name.split(" ")[0]}
               </span>
               <span className="text-[#0c4b65]">{item.name.split(" ")[1]}</span>
             </h2>
-            <h1 className="text-base md:text-lg font-bold flex items-center gap-2">
-              <span className="flex items-center gap-2 ">
-                <FaUserGraduate className="text-xl text-[#0c4b65]"></FaUserGraduate>{" "}
-                Instructor:
+            <h1 className="text-base md:text-lg font-bold flex flex-wrap items-center gap-2">
+              <span className="inline">
+                <span className="flex items-center gap-2">
+                  <FaUserGraduate className="text-xl text-[#0c4b65]"></FaUserGraduate>{" "}
+                  Instructor:
+                </span>
               </span>{" "}
               {item.instructor}
             </h1>

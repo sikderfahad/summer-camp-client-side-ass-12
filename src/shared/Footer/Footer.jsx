@@ -9,8 +9,8 @@ import {
 
 const Footer = () => {
   return (
-    <div className="p-5 md:p-10 bg-[--accent] mt-12">
-      <footer className="footer grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 justify-center max-w-screen-xl mx-auto md:p-10 text-[--white]">
+    <div className="py-10 xl:py-10 bg-[--accent] mt-12 ">
+      <footer className="footer w-11/12 max-w-screen-xl grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-12 justify-center mx-auto md:p-10 text-[--white]">
         <div>
           <img
             className="w-2/3"
@@ -92,59 +92,6 @@ const Footer = () => {
             </a>
           </div>
         </div>
-
-        {/* <div>
-          <h2 className="ftitle  font-semibold">Follow Us On </h2>
-          <div>
-            <ul className="flex flex-col gap-7 ">
-              <li>
-                <a
-                  className="hover:text-[#30beeb]  hover:ml-4 flex gap-5 duration-200 items-center"
-                  href="https://www.facebook.com/"
-                >
-                  <SlSocialFacebook />
-                  Facebook
-                </a>
-              </li>
-              <li>
-                <a
-                  className="hover:text-[#30beeb] hover:ml-4  flex gap-5 duration-200 items-center"
-                  href="https://www.twitter.com/"
-                >
-                  <SlSocialTwitter />
-                  Twitter
-                </a>
-              </li>
-              <li>
-                <a
-                  className="hover:text-[#30beeb] hover:ml-4  flex gap-5 duration-200 items-center"
-                  href="https://www.instagram.com/"
-                >
-                  <SlSocialInstagram />
-                  Instagram
-                </a>
-              </li>
-              <li>
-                <a
-                  className="hover:text-[#30beeb] hover:ml-4  flex gap-5 duration-200 items-center"
-                  href="https://www.youtube.com/"
-                >
-                  <SlSocialYoutube />
-                  Youtube
-                </a>
-              </li>
-              <li>
-                <a
-                  className="hover:text-[#30beeb] hover:ml-4  flex gap-5 duration-200 items-center"
-                  href="https://www.pinterest.com/"
-                >
-                  <SlSocialPintarest />
-                  Pintarest
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div> */}
       </footer>
     </div>
   );

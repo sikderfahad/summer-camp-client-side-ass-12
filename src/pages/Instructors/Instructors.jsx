@@ -9,7 +9,7 @@ const Instructors = () => {
   const [teachers, isLoading] = useInstructors();
   // console.log(teachers);
   return (
-    <div className="max-w-screen-xl mx-auto mt-40">
+    <div className="mt-40">
       <div>
         <Title
           title={"our team"}
@@ -18,7 +18,7 @@ const Instructors = () => {
         ></Title>
       </div>
       {!isLoading ? (
-        <div className=" grid grid-cols-1 mt-20 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="w-11/12 max-w-screen-xl mx-auto grid grid-cols-1 mt-20 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {teachers?.map((item) => (
             <TeacherCard key={item._id} teacherPage={item}></TeacherCard>
           ))}

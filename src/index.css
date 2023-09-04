@@ -18,6 +18,8 @@
   --modeBtnTextDb: #1f2937;
   --home-blog-bg: url("https://i.ibb.co/607tsLM/blog-BG-1.png");
   --blog-overlay: #f1eee7;
+  --testymony-header: #111827;
+  --dashboard-bg: #fff;
 }
 
 [data-theme="night"] {
@@ -34,6 +36,8 @@
   --modeBtnTextDb: #c8cad0;
   --home-blog-bg: transparent;
   --blog-overlay: transparent;
+  --testymony-header: #0c4b65;
+  --dashboard-bg: #0f1729;
 }
 html {
   transition: 0.3s ease-in-out;

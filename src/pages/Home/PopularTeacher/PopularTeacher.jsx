@@ -10,7 +10,7 @@ const PopularTeacher = () => {
       <div>
         <Title title={"our team"} subtitle={"Meet Our Teachers"}></Title>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 mt-8 lg:grid-cols-4 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 mt-8 lg:grid-cols-3 xl:grid-cols-4 gap-8">
         {popularTeachers.map((item) => (
           <TeacherCard key={item._id} item={item}></TeacherCard>
         ))}

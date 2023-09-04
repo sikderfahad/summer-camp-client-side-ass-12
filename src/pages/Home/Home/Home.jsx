@@ -11,6 +11,7 @@ import FlowtingBall from "../../../components/FlowtingBall/FlowtingBall";
 import OurMedia from "../OurMedia/OurMedia";
 import HomeBlogs from "../HomeBlogs/HomeBlogs";
 import "./Home.css";
+import Testimony from "../Testimony/Testimony";
 
 const Home = () => {
   useTitle("Home");
@@ -29,15 +30,21 @@ const Home = () => {
     <div>
       <div className="relative">
         <BannerCarousel></BannerCarousel>
-        <div className="lg:absolute block lg:transform lg:translate-x-[10%] lg:translate-y-[-25%]">
+        <div className="lg:absolute block transform xl:translate-x-[10%] lg:translate-x-0 lg:translate-y-[-10%] xl:translate-y-[-25%]">
           <Notes></Notes>
+        </div>
+        {/* Flowting Ball */}
+        <div className="hidden lg:flex">
+          {bugArray.map((item) => (
+            <FlowtingBall key={item}></FlowtingBall>
+          ))}
         </div>
       </div>
 
       {/* Popular classes section */}
       <div>
         <div className=" w-11/12 max-w-screen-xl mx-auto">
-          <div className="mt-12 md:mt-[550px]">
+          <div className="mt-12 md:mt-24 lg:mt-[550px]">
             <PopularClasses></PopularClasses>
           </div>
         </div>
@@ -46,7 +53,7 @@ const Home = () => {
           <AboutSchool></AboutSchool>
         </div>
         {/* Popular Instuctors section */}
-        <div className=" max-w-screen-xl mx-auto">
+        <div className="w-11/12 max-w-screen-xl mx-auto">
           <div className="mt-12">
             <PopularTeacher></PopularTeacher>
           </div>
@@ -74,17 +81,15 @@ const Home = () => {
 
         {/* Home Blogs */}
         <div className="home-blog-container bg-[--home-blog-bg] relative">
-          <div className="lg:max-w-screen-xl md:w-10/12 w-11/12 mx-auto mt-12">
+          <div className=" w-11/12 max-w-screen-xl mx-auto mt-12">
             <HomeBlogs></HomeBlogs>
           </div>
         </div>
-      </div>
 
-      {/* Flowting Ball */}
-      <div className="hidden xl:flex">
-        {bugArray.map((item) => (
-          <FlowtingBall key={item}></FlowtingBall>
-        ))}
+        {/* Testimony */}
+        <div className="w-11/12 max-w-screen-xl mx-auto mt-12">
+          <Testimony></Testimony>
+        </div>
       </div>
     </div>
   );

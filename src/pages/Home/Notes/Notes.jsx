@@ -14,13 +14,13 @@ const Notes = () => {
   return (
     <motion.div
       animate={bounceAnimation}
-      className="md:p-[100px] p-4 max-w-screen-xl mx-auto rounded-lg bg-center bg-no-repeat bg-[#efcf4f]"
+      className="xl:p-[100px] lg:p-[70px] md:p-12 p-4 max-w-screen-xl mx-auto rounded-lg bg-center bg-no-repeat bg-[#efcf4f]"
       style={{ backgroundImage: `url('https://i.ibb.co/mRb70NJ/notes.png')` }}
     >
-      <div className="text-center font-extrabold flex flex-col gap-5 w-full md:w-9/12 mx-auto">
-        <h3 className="text-[#c25934] text-2xl  capitalize">opening offer</h3>
+      <div className="text-center font-extrabold flex flex-col gap-5 w-full md:w-11/12 xl:w-9/12 mx-auto">
+        <h3 className="text-[#c25934] text-2xl capitalize">opening offer</h3>
         <h1
-          className="text-white text-4xl md:text-7xl  uppercase"
+          className="text-white text-4xl md:text-5xl lg:text-6xl xl:text-7xl  uppercase"
           style={{ textShadow: "6px 8px 0px rgba(0,0,0,.05)" }}
         >
           get a free lesson

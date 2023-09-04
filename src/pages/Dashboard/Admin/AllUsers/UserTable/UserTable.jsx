@@ -82,7 +82,7 @@ const UserTable = ({ users, refetch }) => {
                   <span className="text-lg font-semibold">{user?.role}</span>
                 </td>
                 <td>
-                  <span className="flex flex-col gap-3">
+                  <span className="flex flex-col gap-3 w-[175px] lg:w-auto">
                     <AwesomeButton
                       disabled={user?.role === "instructor" && true}
                       onPress={() =>

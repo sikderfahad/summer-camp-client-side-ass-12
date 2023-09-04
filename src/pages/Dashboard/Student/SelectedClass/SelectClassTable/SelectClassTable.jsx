@@ -97,7 +97,7 @@ const SelectClassTable = ({ selectClass, refetch }) => {
                     </span>
                   </td>
                   <td>
-                    <span className="flex flex-col gap-3">
+                    <span className="flex flex-col gap-3 w-[150px] lg:w-auto">
                       <AwesomeButton
                         ripple={true}
                         type="danger"

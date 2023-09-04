@@ -1,10 +1,9 @@
-// import React from 'react';
+// import { GrClose, GrMenu } from "react-icons/gr";
 
 import { NavLink, Outlet } from "react-router-dom";
-import { GrClose, GrMenu } from "react-icons/gr";
 import { AiFillHome } from "react-icons/ai";
 import { GiTeacher } from "react-icons/gi";
-import { BiSolidBookAdd } from "react-icons/bi";
+import { BiMenu, BiSolidBookAdd } from "react-icons/bi";
 import { HiUserGroup } from "react-icons/hi";
 import { FaBook, FaCalendarAlt, FaHistory, FaUsersCog } from "react-icons/fa";
 import "./Dashboard.css";
@@ -13,6 +12,7 @@ import ToastBox from "../../../components/Toast/ToastBox";
 import ModeBtn from "../../../shared/ModeBtn/ModeBtn";
 import useUserType from "../../../hooks/useUserType";
 import { motion } from "framer-motion";
+import { MdClose } from "react-icons/md";
 
 // Admin Dashboard Menu
 const adminMenu = [
@@ -108,19 +108,19 @@ const Dashboard = () => {
         >
           {/* Page content here */}
 
-          <div className="lg:hidden flex w-full p-2 justify-between items-center">
+          <div className="lg:hidden flex py-4 w-11/12 mx-auto justify-between items-center">
             <div className="logo flex flex-col ">
               <img
-                className=""
+                className="w-3/4 lg:w-full"
                 src={"https://i.ibb.co/rfK9GSn/nota-logo.png"}
                 alt=""
               />
             </div>
             <label
               htmlFor="my-drawer-2"
-              className="btn btn-square drawer-button  p-0"
+              className="btn btn-square drawer-button bg-[#f2f2f2] p-0"
             >
-              <GrMenu className=" text-2xl"></GrMenu>
+              <BiMenu className="text-2xl text-[--accent] "></BiMenu>
             </label>
           </div>
 
@@ -133,10 +133,10 @@ const Dashboard = () => {
         </div>
         <div
           style={{ minHeight: "100vh" }}
-          className="drawer-side border-r-2 w-fit px-8 min-h-full "
+          className="drawer-side lg:border-r-2 border-0 w-full lg:w-fit min-h-full "
         >
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-          <ul className="menu px-4 h-full py-6 grid grid-cols-1 items-center  text-base-content">
+          <ul className="menu px-4 h-full py-6 grid grid-cols-1 items-center bg-[--dashboard-bg] text-base-content">
             {/* Sidebar content here */}
             <div className="flex gap-4 justify-between items-center">
               {/* Logo */}
@@ -149,10 +149,10 @@ const Dashboard = () => {
               </div>
               <label
                 htmlFor="my-drawer-2"
-                className="btn btn-outline  drawer-button lg:hidden"
+                className="btn btn-outline drawer-button bg-[#f2f2f2] lg:hidden"
               >
                 <span className="">
-                  <GrClose className="text-2xl"></GrClose>
+                  <MdClose className="text-3xl text-red-600 font-semibold"></MdClose>
                 </span>
               </label>
             </div>

@@ -51,7 +51,7 @@ const FlowtingBall = () => {
 
   return (
     <motion.span
-      className="cursor-grab inline-block animate-pulse"
+      className="cursor-grab inline animate-pulse"
       drag
       style={{
         fontSize: "24px",

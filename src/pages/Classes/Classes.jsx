@@ -12,7 +12,7 @@ const Classes = () => {
 
   // console.log(allClass);
   return (
-    <div className="max-w-screen-xl mx-auto mt-40">
+    <div className="mt-20 md:mt-24 lg:mt-32 xl:mt-40">
       <div>
         <div className="">
           <Title
@@ -22,7 +22,7 @@ const Classes = () => {
           ></Title>
         </div>
         {!isLoading ? (
-          <div className="mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="w-11/12 max-w-screen-xl mx-auto mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {allClass?.map((item) => (
               <div key={item._id}>
                 {item?.status === "approved" && (
@@ -36,7 +36,7 @@ const Classes = () => {
             ))}
           </div>
         ) : (
-          <div className="mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="w-11/12 max-w-screen-xl mx-auto mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[1, 2, 3].map((item, idx) => (
               <Skeleton key={idx}></Skeleton>
             ))}
