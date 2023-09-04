@@ -13,6 +13,8 @@ import ModeBtn from "../../../shared/ModeBtn/ModeBtn";
 import useUserType from "../../../hooks/useUserType";
 import { motion } from "framer-motion";
 import { MdClose } from "react-icons/md";
+import { useEffect, useState } from "react";
+import { PageLoading } from "../../../components/Spinner/Spinner";
 
 // Admin Dashboard Menu
 const adminMenu = [
@@ -97,6 +99,13 @@ const Dashboard = () => {
     },
   };
 
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
+  }, []);
   return (
     <div className="">
       <div className="drawer lg:drawer-open">
@@ -124,10 +133,14 @@ const Dashboard = () => {
             </label>
           </div>
 
-          <div className="p-4 lg:py-12 lg:px-8">
-            <Outlet></Outlet>
-            <ToastBox></ToastBox>
-          </div>
+          {isLoading ? (
+            <PageLoading />
+          ) : (
+            <div className="p-4 lg:py-12 lg:px-8">
+              <Outlet></Outlet>
+              <ToastBox></ToastBox>
+            </div>
+          )}
 
           {/* Page content here */}
         </div>

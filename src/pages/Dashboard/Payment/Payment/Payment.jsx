@@ -31,7 +31,7 @@ const Payment = () => {
           noDesc={true}
         ></Title>
       </div>
-      <div className="w-1/2 border hover:shadow-lg duration-200 rounded-lg p-6 mt-20">
+      <div className="w-full lg:w-1/2 border hover:shadow-lg duration-200 rounded-lg p-6 mt-5 md:mt-10 lg:mt-20">
         <Elements stripe={stripePromise}>
           <CheckoutForm selectClass={selectClass} />
         </Elements>
